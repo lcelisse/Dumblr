@@ -64,7 +64,7 @@
 
 ### View comment
 
-- you will be abel to view the comments when you click the comment icon, theyll pop up in a modal
+- you will be abel to view the comments when you click the comment icon, theyll show below the post
 
 ### Delete a comment
 
