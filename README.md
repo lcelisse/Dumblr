@@ -25,7 +25,7 @@
 
 ### Log Out
 
-\*The logout button will be in the profile drop down menu
+* The logout button will be in the profile drop down menu
 
 - when you log out it will redirect you to the log in page/splash page
 
