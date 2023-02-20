@@ -49,3 +49,8 @@
   * you will be abel to view the comments when you click the comment icon, theyll pop up in a modal
 ### Delete a comment
 * should be able to successfully delete comment and have it removed from the post 
+
+
+
+##Database Schema Design
+
