@@ -1,18 +1,57 @@
-from app.models import db, User, environment, SCHEMA
+from app.models import db, Post, environment, SCHEMA
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+    kevin = Post(
+        username='koolaidman', email='kevin@aa.io', password='password')
+    phyllis = Post(
+        username='pvance', email='phyllis@aa.io', password='password')
+    jim = Post(
+        username='jimothy', email='jim@aa.io', password='password')
+    pam = Post(
+        username='beesly', email='pam@aa.io', password='password')
+    andy = Post(
+        username='narddog', email='andy@aa.io', password='password')
+    oscar = Post(
+        username='cspan', email='oscar@aa.io', password='password')
+    stanley = Post(
+        username='pretzels', email='stanley@aa.io', password='password')
+    kelly = Post(
+        username='fashionchick', email='kelly@aa.io', password='password')
+    angela = Post(
+        username='monkey', email='angela@aa.io', password='password')
+    dwight = Post(
+        username='schrute', email='dwight@aa.io', password='password')
+    meredith = Post(
+        username='iliketoparty', email='meredith@aa.io', password='password')
+    ryan = Post(
+        username='fireguy', email='ryan@aa.io', password='password')
+    roy = Post(
+        username='warehouseguy', email='roy@aa.io', password='password')
+    creed = Post(
+        username='creed', email='creed@aa.io', password='password')
+    toby = Post(
+        username='hr', email='toby@aa.io', password='password')
+    michael = Post(
+        username='agentscarn', email='michael@aa.io', password='password')
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(kevin)
+    db.session.add(phyllis)
+    db.session.add(jim)
+    db.session.add(pam)
+    db.session.add(andy)
+    db.session.add(oscar)
+    db.session.add(stanley)
+    db.session.add(kelly)
+    db.session.add(angela)
+    db.session.add(dwight)
+    db.session.add(meredith)
+    db.session.add(ryan)
+    db.session.add(creed)
+    db.session.add(roy)
+    db.session.add(toby)
+    db.session.add(michael)
     db.session.commit()
 
 
@@ -24,8 +63,9 @@ def seed_users():
 # it will reset the primary keys for you as well.
 def undo_users():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM users")
-        
+
     db.session.commit()

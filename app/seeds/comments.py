@@ -1,0 +1,106 @@
+from app.models import db, Comment, environment, SCHEMA
+
+
+def seed_comments():
+    comment1 = Comment(comment="very nice", user_id=9, post_id=96)
+    comment2 = Comment(comment="very nice", user_id=2, post_id=82)
+    comment3 = Comment(comment="very nice", user_id=16, post_id=7)
+    comment4 = Comment(comment="very nice", user_id=6, post_id=115)
+    comment5 = Comment(comment="very nice", user_id=11, post_id=109)
+    comment6 = Comment(comment="very nice", user_id=11, post_id=101)
+    comment7 = Comment(comment="very nice", user_id=1, post_id=55)
+    comment8 = Comment(comment="very nice", user_id=2, post_id=4)
+    comment9 = Comment(comment="very nice", user_id=12, post_id=124)
+    comment10 = Comment(comment="very nice", user_id=5, post_id=104)
+    comment11 = Comment(comment="very nice", user_id=3, post_id=46)
+    comment12 = Comment(comment="very nice", user_id=15, post_id=94)
+    comment13 = Comment(comment="very nice", user_id=15, post_id=20)
+    comment14 = Comment(comment="very nice", user_id=15, post_id=106)
+    comment15 = Comment(comment="very nice", user_id=1, post_id=72)
+    comment16 = Comment(comment="very nice", user_id=12, post_id=100)
+    comment17 = Comment(comment="very nice", user_id=15, post_id=52)
+    comment18 = Comment(comment="very nice", user_id=9, post_id=38)
+    comment19 = Comment(comment="very nice", user_id=13, post_id=107)
+    comment20 = Comment(comment="very nice", user_id=13, post_id=49)
+    comment21 = Comment(comment="very nice", user_id=9, post_id=81)
+    comment22 = Comment(comment="very nice", user_id=5, post_id=55)
+    comment23 = Comment(comment="very nice", user_id=6, post_id=88)
+    comment24 = Comment(comment="very nice", user_id=4, post_id=24)
+    comment25 = Comment(comment="very nice", user_id=12, post_id=52)
+    comment26 = Comment(comment="very nice", user_id=16, post_id=25)
+    comment27 = Comment(comment="very nice", user_id=13, post_id=99)
+    comment28 = Comment(comment="very nice", user_id=14, post_id=42)
+    comment29 = Comment(comment="very nice", user_id=15, post_id=81)
+    comment30 = Comment(comment="very nice", user_id=5, post_id=1)
+    comment31 = Comment(comment="very nice", user_id=2, post_id=11)
+    comment32 = Comment(comment="very nice", user_id=4, post_id=20)
+    comment33 = Comment(comment="very nice", user_id=11, post_id=3)
+    comment34 = Comment(comment="very nice", user_id=10, post_id=3)
+    comment35 = Comment(comment="very nice", user_id=14, post_id=13)
+    comment36 = Comment(comment="very nice", user_id=3, post_id=2)
+    comment37 = Comment(comment="very nice", user_id=3, post_id=12)
+    comment38 = Comment(comment="very nice", user_id=2, post_id=17)
+    comment39 = Comment(comment="very nice", user_id=1, post_id=7)
+    comment40 = Comment(comment="very nice", user_id=11, post_id=9)
+    comment41 = Comment(comment="very nice", user_id=15, post_id=15)
+
+    db.session.add(comment1)
+    db.session.add(comment2)
+    db.session.add(comment3)
+    db.session.add(comment4)
+    db.session.add(comment5)
+    db.session.add(comment6)
+    db.session.add(comment7)
+    db.session.add(comment8)
+    db.session.add(comment9)
+    db.session.add(comment10)
+    db.session.add(comment11)
+    db.session.add(comment12)
+    db.session.add(comment13)
+    db.session.add(comment14)
+    db.session.add(comment15)
+    db.session.add(comment16)
+    db.session.add(comment17)
+    db.session.add(comment18)
+    db.session.add(comment19)
+    db.session.add(comment20)
+    db.session.add(comment21)
+    db.session.add(comment22)
+    db.session.add(comment23)
+    db.session.add(comment24)
+    db.session.add(comment25)
+    db.session.add(comment26)
+    db.session.add(comment27)
+    db.session.add(comment28)
+    db.session.add(comment29)
+    db.session.add(comment30)
+    db.session.add(comment31)
+    db.session.add(comment32)
+    db.session.add(comment33)
+    db.session.add(comment34)
+    db.session.add(comment35)
+    db.session.add(comment36)
+    db.session.add(comment37)
+    db.session.add(comment38)
+    db.session.add(comment39)
+    db.session.add(comment40)
+    db.session.add(comment41)
+
+    db.session.commit()
+
+# Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
+# have a built in function to do this. With postgres in production TRUNCATE
+# removes all the data from the table, and RESET IDENTITY resets the auto
+# incrementing primary key, CASCADE deletes any dependent entities.  With
+# sqlite3 in development you need to instead use DELETE to remove all data and
+# it will reset the primary keys for you as well.
+
+
+def undo_comments():
+    if environment == "production":
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.comments RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM comments")
+
+    db.session.commit()
