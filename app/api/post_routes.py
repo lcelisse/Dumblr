@@ -36,7 +36,7 @@ def delete_post(id):
     post = Post.query.get(id)
 
     if not post:
-        return {"Error": "Song Not Found"}
+        return {"Error": "Post Not Found"}
 
     db.session.delete(post)
     db.session.commit()
