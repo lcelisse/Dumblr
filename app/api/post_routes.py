@@ -1,16 +1,16 @@
 from flask import Blueprint
-from flask import Blueprint, request, redirect, render_template
+from flask import Blueprint
 from app.models import Post, User, db
 from flask_login import login_required, current_user
-from app.forms import PostForm
+
 # import app.s3_helpers as s3
 
-bp = Blueprint('posts', __name__)
+post_routes = Blueprint('posts', __name__)
 
 # Get all Post
 
 
-@bp.route('')
+@post_routes.route('')
 def posts():
     posts = Post.query.all()
     return {post.id: post.to_dict_individual_post() for post in posts}
@@ -18,7 +18,7 @@ def posts():
 # Get a single post
 
 
-@bp.route("/<int:id>")
+@post_routes.route("/<int:id>")
 def post(id):
     post = Post.query.get(id)
 
@@ -30,7 +30,7 @@ def post(id):
 # Delete the post
 
 
-@bp.route("/<int:id>", methods=["DELETE"])
+@post_routes.route("/<int:id>", methods=["DELETE"])
 @login_required
 def delete_post(id):
     post = Post.query.get(id)
@@ -41,3 +41,14 @@ def delete_post(id):
     db.session.delete(post)
     db.session.commit()
     return {"Message": "Delete Successful"}
+
+# Create a Post
+
+
+# @bp.route('', methods=["POST"])
+# @login_required
+# def create_post():
+#     new_post = Post(
+
+
+#     )

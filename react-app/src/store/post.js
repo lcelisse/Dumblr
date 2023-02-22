@@ -145,7 +145,7 @@ export default function postReducer(state = initialState, action) {
       newState.allPosts = action.posts;
       return newState;
     case READ_SINGLE_POST:
-      return { ...state, singlePost: action.song };
+      return { ...state, singlePost: action.post };
     case UPDATE_POST:
       return { ...state, singlePost: action.post };
     case DELETE_POST:

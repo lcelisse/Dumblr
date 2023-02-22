@@ -18,8 +18,8 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow())
 
     user = db.relationship("User", back_populates="posts")
-    comment = db.relationship(
-        "Comment", back_populates="posts", cascade="all,delete")
+    comments = db.relationship(
+        "Comment", back_populates="post", cascade="all,delete")
 
     def to_dict(self):
         return {
@@ -30,8 +30,8 @@ class Post(db.Model):
             "url": self.url,
             "title": self.title,
             "created_at": self.created_at,
-            # "user": self.user.to_dict(),
-            "comment_count": len(self.self.comment)
+            "user": self.user.to_dict(),
+            "comment_count": len(self.self.comments)
 
         }
 
@@ -45,6 +45,6 @@ class Post(db.Model):
             "title": self.title,
             "created_at": self.created_at,
             "user": self.user.to_dict(),
-            "comment_count": len(self.self.comment),
-            "comment": [com.to_dict() for com in self.comment]
+            "comment_count": len(self.self.comments),
+            "comments": [com.to_dict() for com in self.comments]
         }

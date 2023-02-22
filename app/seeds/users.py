@@ -1,39 +1,39 @@
-from app.models import db, Post, environment, SCHEMA
+from app.models import db, User, environment, SCHEMA
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    kevin = Post(
+    kevin = User(
         username='koolaidman', email='kevin@aa.io', password='password')
-    phyllis = Post(
+    phyllis = User(
         username='pvance', email='phyllis@aa.io', password='password')
-    jim = Post(
+    jim = User(
         username='jimothy', email='jim@aa.io', password='password')
-    pam = Post(
+    pam = User(
         username='beesly', email='pam@aa.io', password='password')
-    andy = Post(
+    andy = User(
         username='narddog', email='andy@aa.io', password='password')
-    oscar = Post(
+    oscar = User(
         username='cspan', email='oscar@aa.io', password='password')
-    stanley = Post(
+    stanley = User(
         username='pretzels', email='stanley@aa.io', password='password')
-    kelly = Post(
+    kelly = User(
         username='fashionchick', email='kelly@aa.io', password='password')
-    angela = Post(
+    angela = User(
         username='monkey', email='angela@aa.io', password='password')
-    dwight = Post(
+    dwight = User(
         username='schrute', email='dwight@aa.io', password='password')
-    meredith = Post(
+    meredith = User(
         username='iliketoparty', email='meredith@aa.io', password='password')
-    ryan = Post(
+    ryan = User(
         username='fireguy', email='ryan@aa.io', password='password')
-    roy = Post(
+    roy = User(
         username='warehouseguy', email='roy@aa.io', password='password')
-    creed = Post(
+    creed = User(
         username='creed', email='creed@aa.io', password='password')
-    toby = Post(
+    toby = User(
         username='hr', email='toby@aa.io', password='password')
-    michael = Post(
+    michael = User(
         username='agentscarn', email='michael@aa.io', password='password')
 
     db.session.add(kevin)
@@ -56,7 +56,7 @@ def seed_users():
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
-# have a built in function to do this. With postgres in production TRUNCATE
+# have a built in function to do this. With Usergres in production TRUNCATE
 # removes all the data from the table, and RESET IDENTITY resets the auto
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and

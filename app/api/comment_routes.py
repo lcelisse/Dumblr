@@ -2,9 +2,9 @@ from flask import Blueprint, request
 from app.models import Post, Comment, db
 from flask_login import login_required, current_user
 from .post_routes import post_routes
-from app.forms import CommentForm
+from app.forms import comment_form
 
-bp = Blueprint("comments", __name__)
+comment_routes = Blueprint("comments", __name__)
 
 # Get all the post comments
 
@@ -24,7 +24,7 @@ def post_comments(id):
 @post_routes.route("/<int:id>/comments", methods=["POST"])
 @login_required
 def create_comment(id):
-    form = CommentForm()
+    form = comment_form()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
@@ -42,7 +42,7 @@ def create_comment(id):
 # Delete the comment
 
 
-@bp.route("/<int:id>", methods=['DELETE'])
+@comment_routes.route("/<int:id>", methods=['DELETE'])
 @login_required
 def delete_comment(id):
     comment = Comment.query.get(id)
