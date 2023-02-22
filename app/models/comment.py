@@ -1,23 +1,23 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .bp import bp, environment, SCHEMA, add_prefix_for_prod
 import datetime
 
 
-class Comment(db.Model):
+class Comment(bp.Model):
     __tablename__ = "comments"
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-    id = db.Column(db.Integer, primary_key=True)
-    post_id = db.Column(db.Integer, db.ForeignKey(
+    id = bp.Column(bp.Integer, primary_key=True)
+    post_id = bp.Column(bp.Integer, bp.ForeignKey(
         add_prefix_for_prod("posts.id")), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey(
+    user_id = bp.Column(bp.Integer, bp.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False)
-    comment = db.Column(db.String(475), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow())
+    comment = bp.Column(bp.String(475), nullable=False)
+    created_at = bp.Column(bp.DateTime, default=datetime.datetime.utcnow())
 
-    user = db.relationship("User", back_populates="comments")
-    post = db.relationship("Post", back_populates="comments")
+    user = bp.relationship("User", back_populates="comments")
+    post = bp.relationship("Post", back_populates="comments")
 
     def to_dict(self):
         return {
