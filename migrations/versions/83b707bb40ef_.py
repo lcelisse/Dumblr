@@ -1,20 +1,16 @@
-"""create_users_table
+"""empty message
 
-Revision ID: ffdc0a98111c
-Revises:
-Create Date: 2020-11-20 15:06:02.230689
+Revision ID: 83b707bb40ef
+Revises: 
+Create Date: 2023-02-21 18:52:28.315002
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
-
 
 # revision identifiers, used by Alembic.
-revision = 'ffdc0a98111c'
+revision = '83b707bb40ef'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,10 +27,7 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-    # ### end Alembic commands ###qqqqqqqqq
+    # ### end Alembic commands ###
 
 
 def downgrade():

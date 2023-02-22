@@ -9,7 +9,7 @@ class Post(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    post_type = db.Column(db.String, nullable=False)
+    post_type = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False, )
     title = db.Column(db.String(255))
