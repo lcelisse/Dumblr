@@ -1,0 +1,18 @@
+.sign-in-form-container{
+    text-align: center;
+    border-radius: 10px;
+
+    justify-content: center;
+    align-items: center;
+    padding: 40px 60px;
+
+}
+
+.sign-in-container{
+    margin-top: 40%;
+    height: 100%;
+    width: 100%;
+
+    top: -100%;
+    overflow-y: auto;
+}

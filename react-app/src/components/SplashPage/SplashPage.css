@@ -37,12 +37,12 @@
     height: 33px;
 }
 
-.splash-page-login-button{
+.splash-page-login-button-a{
     padding: 6px 15px;
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.5;
-    background: #00cf35;
+    background: #00b8ff;
     border-radius: 3px;
     border: none;
 
@@ -52,4 +52,15 @@
 }
 .visible{
     visibility: visible;
+}
+
+.splash-page-login-button-b{
+    padding: 6px 15px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    background: #00cf35;
+    border-radius: 3px;
+    border: none;
+
 }

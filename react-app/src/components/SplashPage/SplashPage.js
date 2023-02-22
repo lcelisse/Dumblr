@@ -8,6 +8,7 @@ import LoginFormPage from "../LoginFormPage";
 export default function SplashPage() {
   const [splashPage, setSplashPage] = useState("Sign Up");
   const [removeLogin, setRemoveLogin] = useState("visible");
+  const [buttonColor, setButtonColor] = useState("splash-page-login-button-a");
 
   const history = useHistory();
 
@@ -27,6 +28,13 @@ export default function SplashPage() {
     setRemoveLogin("login-hidden");
   };
 
+  const changeButtonColorA = () => {
+    setButtonColor("splash-page-login-button-a");
+  };
+  const changeButtonColorB = () => {
+    setButtonColor("splash-page-login-button-b");
+  };
+
   return (
     <div className="splash-page-container">
       <div className="splash-page-top">
@@ -36,15 +44,18 @@ export default function SplashPage() {
           </div>
           <div className="splash-page-nav-right-side">
             <button
-              className="splash-page-login-button"
+              className={buttonColor}
               onClick={() => {
                 if (splashPage === "Sign Up") {
                   changeButton("Log In");
                   handleClickSignup();
                   removeLogIn();
+                  changeButtonColorB();
                 } else {
                   changeButton("Sign Up");
                   handleClickLogin();
+
+                  changeButtonColorA();
                 }
               }}
             >
