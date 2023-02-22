@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Post, Comment, bp
+from app.models import Post, Comment, db
 from flask_login import login_required, current_user
 from .post_routes import post_routes
 from app.forms import CommentForm
@@ -33,8 +33,8 @@ def create_comment(id):
             user_id=current_user.id,
             post_id=id,
         )
-        bp.session.add(comment)
-        bp.session.commit()
+        db.session.add(comment)
+        db.session.commit()
 
         return comment.to_dict()
     return {"Error": "Could not create"}
@@ -49,6 +49,6 @@ def delete_comment(id):
     if not comment:
         return {"Error": "Comment Not Found"}
 
-    bp.session.delete(comment)
-    bp.session.commit()
+    db.session.delete(comment)
+    db.session.commit()
     return {"message": "Delete successful"}

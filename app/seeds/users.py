@@ -1,4 +1,4 @@
-from app.models import bp, Post, environment, SCHEMA
+from app.models import db, Post, environment, SCHEMA
 
 
 # Adds a demo user, you can add other users here if you want
@@ -36,23 +36,23 @@ def seed_users():
     michael = Post(
         username='agentscarn', email='michael@aa.io', password='password')
 
-    bp.session.add(kevin)
-    bp.session.add(phyllis)
-    bp.session.add(jim)
-    bp.session.add(pam)
-    bp.session.add(andy)
-    bp.session.add(oscar)
-    bp.session.add(stanley)
-    bp.session.add(kelly)
-    bp.session.add(angela)
-    bp.session.add(dwight)
-    bp.session.add(meredith)
-    bp.session.add(ryan)
-    bp.session.add(creed)
-    bp.session.add(roy)
-    bp.session.add(toby)
-    bp.session.add(michael)
-    bp.session.commit()
+    db.session.add(kevin)
+    db.session.add(phyllis)
+    db.session.add(jim)
+    db.session.add(pam)
+    db.session.add(andy)
+    db.session.add(oscar)
+    db.session.add(stanley)
+    db.session.add(kelly)
+    db.session.add(angela)
+    db.session.add(dwight)
+    db.session.add(meredith)
+    db.session.add(ryan)
+    db.session.add(creed)
+    db.session.add(roy)
+    db.session.add(toby)
+    db.session.add(michael)
+    db.session.commit()
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
@@ -63,9 +63,9 @@ def seed_users():
 # it will reset the primary keys for you as well.
 def undo_users():
     if environment == "production":
-        bp.session.execute(
+        db.session.execute(
             f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
-        bp.session.execute("DELETE FROM users")
+        db.session.execute("DELETE FROM users")
 
-    bp.session.commit()
+    db.session.commit()
