@@ -2,6 +2,7 @@ from app.models import db, User, environment, SCHEMA
 
 
 # Adds a demo user, you can add other users here if you want
+
 def seed_users():
     kevin = User(
         username='koolaidman', email='kevin@aa.io', password='password')
