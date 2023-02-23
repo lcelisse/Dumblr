@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage/SplashPage";
+import Feed from "./components/Post/Feed/Feed";
 
 function App() {
   const user = useSelector((state) => state.session.user);
@@ -18,22 +19,31 @@ function App() {
 
   return (
     <>
-      {!user?.id ? (
-        <Route path="/">
-          <SplashPage isLoaded={isLoaded} />
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
+      <Switch>
+        {!user?.id ? (
+          <switch>
+            <Route path="/">
+              <SplashPage isLoaded={isLoaded} />
+            </Route>
+            <Route path="/login">
+              <LoginFormPage />
+            </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route path="/posts">
+              <Feed />
+            </Route>
+          </switch>
+        ) : (
+          <div className="The-Body">
+            <Navigation isLoaded={isLoaded} />
+          </div>
+        )}
+        <Route path="/posts">
+          <Feed />
         </Route>
-      ) : (
-        <div className="The-Body">
-          <Navigation isLoaded={isLoaded} />
-          {isLoaded && <Switch></Switch>}
-        </div>
-      )}
+      </Switch>
     </>
   );
 }

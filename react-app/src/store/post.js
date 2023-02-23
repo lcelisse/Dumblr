@@ -2,9 +2,9 @@
 
 const CREATE_POST = "posts/CREATE_POST";
 const READ_USER_POST = "posts/READ_USER_POST";
-const READ_ALL_POST = "posts/READ_POST";
+const READ_ALL_POST = "posts/READ_ALL_POST";
 const READ_SINGLE_POST = "posts/READ_SINGLE_POST";
-const UPDATE_POST = "post/UPDATE_POST";
+const UPDATE_POST = "posts/UPDATE_POST";
 const DELETE_POST = "posts/DELETE_POST";
 
 // CREATOR
@@ -78,10 +78,14 @@ export const readUserPostThunk = (userId) => async (dispatch) => {
 
 export const readAllPostThunk = () => async (dispatch) => {
   const res = await fetch(`/api/posts`);
+
   if (res.ok) {
     const posts = await res.json();
     dispatch(readAllPost(posts));
+
     return posts;
+  } else {
+    return res;
   }
 };
 
@@ -126,16 +130,15 @@ const initialState = {
   singlePost: {},
   userPosts: {},
 };
-
 // REDUCER
 
 export default function postReducer(state = initialState, action) {
   let newState = { ...state };
+
   switch (action.type) {
     case CREATE_POST:
       newState.allPosts = { ...state.allPosts, [action.post.id]: action.post };
       return newState;
-
     case READ_USER_POST:
       newState = { ...state };
       newState.userPosts = { ...action.posts };
@@ -143,6 +146,7 @@ export default function postReducer(state = initialState, action) {
     case READ_ALL_POST:
       newState = { ...state };
       newState.allPosts = action.posts;
+
       return newState;
     case READ_SINGLE_POST:
       return { ...state, singlePost: action.post };

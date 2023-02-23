@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./SplashPage.css";
 import logo from "../../assets/d.png";
 import { useHistory } from "react-router-dom";
-import { signUp } from "../../store/session";
-import LoginFormPage from "../LoginFormPage";
+// import { signUp } from "../../store/session";
+// import LoginFormPage from "../LoginFormPage";
 
 export default function SplashPage() {
   const [splashPage, setSplashPage] = useState("Sign Up");
@@ -35,12 +35,20 @@ export default function SplashPage() {
     setButtonColor("splash-page-login-button-b");
   };
 
+  const clickFeed = () => {
+    history.push("/posts");
+  };
   return (
     <div className="splash-page-container">
       <div className="splash-page-top">
         <nav className="splash-page-nav">
           <div className="splash-page-nav-left-side">
-            <img src={logo} alt="logo" className="splash-page-logo-d" />
+            <img
+              src={logo}
+              alt="logo"
+              className="splash-page-logo-d"
+              onClick={clickFeed}
+            />
           </div>
           <div className="splash-page-nav-right-side">
             <button
