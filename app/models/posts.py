@@ -12,8 +12,8 @@ class Post(db.Model):
     post_type = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False, )
-    title = db.Column(db.String(255))
-    body = db.Column(db.String(255))
+    title = db.Column(db.String(475))
+    body = db.Column(db.String(475))
     url = db.Column(db.String)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow())
 
