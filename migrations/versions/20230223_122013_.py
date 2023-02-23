@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 79dc22484d5e
+Revision ID: 7d3dad51575b
 Revises:
-Create Date: 2023-02-23 00:16:11.727729
+Create Date: 2023-02-23 12:20:13.529367
 
 """
 from alembic import op
@@ -12,7 +12,7 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 # revision identifiers, used by Alembic.
-revision = '79dc22484d5e'
+revision = '7d3dad51575b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -37,8 +37,8 @@ def upgrade():
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('post_type', sa.String(), nullable=True),
                     sa.Column('user_id', sa.Integer(), nullable=False),
-                    sa.Column('title', sa.String(length=255), nullable=True),
-                    sa.Column('body', sa.String(length=255), nullable=True),
+                    sa.Column('title', sa.String(length=475), nullable=True),
+                    sa.Column('body', sa.String(length=475), nullable=True),
                     sa.Column('url', sa.String(), nullable=True),
                     sa.Column('created_at', sa.DateTime(), nullable=True),
                     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
@@ -57,6 +57,7 @@ def upgrade():
                     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
+
     if environment == "production":
         op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###

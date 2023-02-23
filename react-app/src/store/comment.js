@@ -31,11 +31,11 @@ const deleteComment = (commentId) => {
 
 export const readPostCommentsThunk = (postId) => async (dispatch) => {
   const res = await fetch(`api/posts/${postId}/comments`);
-
+  console.log(res);
   if (res.ok) {
     const comments = await res.json();
     dispatch(readPostComments(comments));
-
+    console.log("im here");
     return comments;
   }
 };

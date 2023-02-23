@@ -31,7 +31,8 @@ class Post(db.Model):
             "title": self.title,
             "created_at": self.created_at,
             "user": self.user.to_dict(),
-            "comment_count": len(self.comments)
+            "comment_count": len(self.comments),
+            # "comments": [com.to_dict() for com in self.comments]
 
         }
 

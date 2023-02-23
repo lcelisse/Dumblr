@@ -1,10 +1,9 @@
 from flask import Blueprint, request
-from flask import Blueprint
 from app.models import Post, User, db
 from flask_login import login_required, current_user
-
 import app.s3_helpers as s3
-
+from sqlalchemy.sql.expression import func
+from random import random
 post_routes = Blueprint('posts', __name__)
 
 # Get all Post
@@ -12,7 +11,7 @@ post_routes = Blueprint('posts', __name__)
 
 @post_routes.route('')
 def posts():
-    posts = Post.query.all()
+    posts = Post.query.order_by(Post.created_at).all()
     return {post.id: post.to_dict() for post in posts}
 
 # Get a single post

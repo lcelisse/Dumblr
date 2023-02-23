@@ -1,0 +1,102 @@
+.single-post-container {
+    position: relative;
+    color:black;
+    background: white;
+    width: 100%;
+    max-width: 540px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.single-post-username{
+    background-color: white;
+    width: 100%;
+    max-width: 540px;
+    box-sizing: border-box;
+font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;;
+    border-radius: 3px 3px 0 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+}
+
+.single-post-body{
+    overflow: clip;
+}
+
+.single-post-title{
+    white-space: pre-wrap;
+    width: 100%;
+    color: black;
+    min-height: 1.5em;
+    word-break: break-word;
+    box-sizing: border-box;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+.delete-and-edit-post{
+    min-height: 45px;
+}
+
+.right-side-of-edit-delete{
+    border-top: 0;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.delete-post{
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.edit-post{
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.single-post-bottom {
+    border-top: 1px solid lightgray;
+}
+
+.right-side-bottom{
+    border-top: 0;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.post-comment{
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.comment-button{
+    border: none;
+    background: white;
+}
+
+.comment-section-clicked{
+    visibility: visible;
+}
+
+.comment-section-unclicked{
+    visibility: hidden;
+}
