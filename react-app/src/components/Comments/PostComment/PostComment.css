@@ -17,7 +17,7 @@
 
 .input-and-submit{
     border: 1px solid rgba(var(--black),.25);
-    width: calc(100% 20px - 32px - 10px);
+
     border-radius: 20px;
     flex: 1;
     margin-left: 10px;
