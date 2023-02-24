@@ -26,7 +26,7 @@ function LoginFormPage() {
   return (
     <div className="log-in-container">
       <div className="log-in-form-container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="the-form-container">
           <ul>
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
@@ -35,6 +35,7 @@ function LoginFormPage() {
           <label>
             Email
             <input
+              className="input-top-part"
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -44,6 +45,7 @@ function LoginFormPage() {
           <label>
             Password
             <input
+              className="input-top-part"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

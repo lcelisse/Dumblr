@@ -1,10 +1,9 @@
 .sign-in-form-container{
-    text-align: center;
-    border-radius: 10px;
-
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px 60px;
+    margin: auto;
+    display: flex;
 
 }
 

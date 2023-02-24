@@ -7,7 +7,7 @@ import "./EachPost.css";
 
 const EachPost = ({ eachPost }) => {
   const currentUser = useSelector((state) => state.session.user);
-
+  console.log(eachPost);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -21,6 +21,7 @@ const EachPost = ({ eachPost }) => {
                 {eachPost.user.username}
               </div>
               <div className="single-post-title">{eachPost.title}</div>
+              <div className="single-post-url">{eachPost.url}</div>
               <div className="single-post-body">{eachPost.body}</div>
               <div className="delete-and-edit-post">
                 <div className="right-side-of-edit-delete">
@@ -50,7 +51,9 @@ const EachPost = ({ eachPost }) => {
                 {eachPost.user.username}
               </div>
               <div className="single-post-title">{eachPost.title}</div>
+              <div className="single-post-url">{eachPost.url}</div>
               <div className="single-post-body">{eachPost.body}</div>
+
               <div className="single-post-bottom">
                 <div className="right-side-bottom">
                   <PostPageComments eachPost={eachPost} />
@@ -63,7 +66,9 @@ const EachPost = ({ eachPost }) => {
         <div className="single-post-container">
           <div className="single-post-username">{eachPost.user.username}</div>
           <div className="single-post-title">{eachPost.title}</div>
+          <div className="single-post-url">{eachPost.url}</div>
           <div className="single-post-body">{eachPost.body}</div>
+
           <div className="single-post-bottom">
             <div className="right-side-bottom">
               <PostPageComments eachPost={eachPost} />
