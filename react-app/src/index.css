@@ -9,3 +9,14 @@ body {
     padding: 0;
 
 }
+
+button {
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+}
+
+ol, ul {
+    list-style: none;
+
+}

@@ -1,0 +1,12 @@
+.create-post-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-create{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}

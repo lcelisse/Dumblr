@@ -14,5 +14,5 @@ def type(form, field):
 class PostForm(FlaskForm):
     title = StringField('Title')
     post_type = StringField('Post Type', validators=[DataRequired(), type])
-    body = StringField('body', validators=[DataRequired()])
+    body = StringField('body')
     url = StringField('url')

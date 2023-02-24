@@ -7,18 +7,16 @@ const DELETE_COMMENT = "comments/DELETE_COMMENTS";
 // CREATOR
 
 const readPostComments = (comments) => {
-  console.log("im hit");
   return {
     type: READ_POST_COMMENTS,
     comments,
   };
 };
 
-const createComment = (postId, comment) => {
-  console.log("whats up", comment, postId);
+const createComment = (comment) => {
   return {
     type: CREATE_COMMENT,
-    postId,
+
     comment,
   };
 };
@@ -44,18 +42,15 @@ export const readPostCommentsThunk = (postId) => async (dispatch) => {
 };
 
 export const createCommentThunk = (postId, comment) => async (dispatch) => {
-  console.log("comment in the thunk", comment);
-  console.log("id in the thunk", postId);
   const res = await fetch(`/api/posts/${postId}/comments`, {
     method: "POST",
     headers: { "Conetent-Type": "application/json" },
     body: JSON.stringify(comment),
   });
-  console.log("this is the res", res);
 
   if (res.ok) {
     const createdComment = await res.json();
-    dispatch(createComment(postId, createdComment));
+    dispatch(createComment(createdComment));
     return createdComment;
   }
 };

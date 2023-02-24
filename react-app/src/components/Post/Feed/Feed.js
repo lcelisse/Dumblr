@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { readAllPostThunk } from "../../../store/post";
+import CreateComment from "../../Comments/CreateComment/CreateComment";
+import CreatePost from "../CreatePost/CreatePost";
 import EachPost from "../EachPost/EachPost";
 import "./Feed.css";
 
@@ -28,6 +30,9 @@ const Feed = () => {
     <div className="feed-container">
       <div className="feed-left-side">
         <div className="inside-feed-left-side">
+          <div className="top-of-left-side-post">
+            <CreatePost />
+          </div>
           <div className="feed-post">
             <div className="feed-nav-bar"></div>
             <ul className="post">{post}</ul>

@@ -5,7 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import SplashPage from "./components/SplashPage/SplashPage";
+
 import Feed from "./components/Post/Feed/Feed";
 
 function App() {
@@ -22,9 +22,7 @@ function App() {
       <Switch>
         {!user?.id ? (
           <switch>
-            <Route path="/">
-              <SplashPage isLoaded={isLoaded} />
-            </Route>
+            <Navigation isLoaded={isLoaded} />
             <Route path="/login">
               <LoginFormPage />
             </Route>
@@ -43,6 +41,7 @@ function App() {
             </Route>
           </div>
         )}
+        <Navigation isLoaded={isLoaded} />
         <Route path="/posts">
           <Feed />
         </Route>
