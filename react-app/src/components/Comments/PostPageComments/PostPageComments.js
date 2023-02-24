@@ -15,34 +15,15 @@ const PostPageComments = ({ eachPost }) => {
     dispatch(readPostCommentsThunk(eachPost.id));
   }, [dispatch, eachPost.id]);
 
-  const [click, setClick] = useState("comment-section-unclicked");
-
-  const handleClick = () => {
-    if (click === "comment-section-clicked") {
-      setClick("comment-section-unclicked");
-      history.push(`/posts`);
-    } else {
-      setClick("comment-section-clicked");
-      history.push(`/posts/${eachPost.id}/comments`);
-    }
-  };
-
   let postCommentsArr;
   if (postComments) postCommentsArr = Object.values(postComments);
 
   return (
     <div className="all-comments-section-container">
       <div className="add-a-comment"></div>
-      <div className="post-comment">
-        <button
-          onClick={() => {
-            handleClick();
-          }}
-        >
-          <i class="fa-sharp fa-regular fa-comment"></i>
-        </button>
-      </div>
-      <div className={click}>
+
+      <div className="post-comment"></div>
+      <div>
         {postCommentsArr.map((comment) => {
           return (
             <PostComment
