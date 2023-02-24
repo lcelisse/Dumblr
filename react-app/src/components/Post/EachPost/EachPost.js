@@ -10,18 +10,6 @@ const EachPost = ({ eachPost }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [click, setClick] = useState("comment-section-unclicked");
-
-  const handleClick = () => {
-    if (click === "comment-section-clicked") {
-      setClick("comment-section-unclicked");
-      history.push(`/posts/${eachPost.id}`);
-    } else {
-      setClick("comment-section-clicked");
-      history.push(`/posts`);
-    }
-  };
-
   return (
     <>
       {/* {currentUser.id === eachPost.user.id ? (
@@ -91,18 +79,7 @@ const EachPost = ({ eachPost }) => {
         <div className="single-post-body">{eachPost.body}</div>
         <div className="single-post-bottom">
           <div className="right-side-bottom">
-            <div className="post-comment">
-              <button
-                onClick={() => {
-                  handleClick();
-                }}
-              >
-                <i class="fa-sharp fa-regular fa-comment"></i>
-              </button>
-              <div className={click}>
-                <PostPageComments eachPost={eachPost} />
-              </div>
-            </div>
+            <PostPageComments eachPost={eachPost} />
           </div>
         </div>
       </div>

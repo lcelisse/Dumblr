@@ -80,23 +80,3 @@ font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, san
     display: flex;
 }
 
-.post-comment{
-    width: 48px;
-    height: 48px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.comment-button{
-    border: none;
-    background: white;
-}
-
-.comment-section-clicked{
-    visibility: visible;
-}
-
-.comment-section-unclicked{
-    visibility: hidden;
-}

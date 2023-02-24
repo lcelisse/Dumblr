@@ -2,8 +2,7 @@ from flask import Blueprint, request
 from app.models import Post, Comment, db
 from flask_login import login_required, current_user
 from .post_routes import post_routes
-from app.forms import comment_form
-
+from app.forms import CommentForm
 comment_routes = Blueprint("comments", __name__)
 
 # Get all the post comments
@@ -24,7 +23,7 @@ def post_comments(id):
 @post_routes.route("/<int:id>/comments", methods=["POST"])
 @login_required
 def create_comment(id):
-    form = comment_form()
+    form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
