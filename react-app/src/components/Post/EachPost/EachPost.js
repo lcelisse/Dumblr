@@ -7,15 +7,15 @@ import "./EachPost.css";
 
 const EachPost = ({ eachPost }) => {
   const currentUser = useSelector((state) => state.session.user);
-  console.log(eachPost);
+
   const dispatch = useDispatch();
   const history = useHistory();
 
   return (
     <>
-      {!currentUser === null ? (
+      {currentUser ? (
         <>
-          {currentUser.id === eachPost.user.id ? (
+          {currentUser.id === eachPost.user.id ? ( // current user is the author of this post
             <div className="single-post-container">
               <div className="single-post-username">
                 {eachPost.user.username}
@@ -63,6 +63,7 @@ const EachPost = ({ eachPost }) => {
           )}{" "}
         </>
       ) : (
+        // Not signed in
         <div className="single-post-container">
           <div className="single-post-username">{eachPost.user.username}</div>
           <div className="single-post-title">{eachPost.title}</div>

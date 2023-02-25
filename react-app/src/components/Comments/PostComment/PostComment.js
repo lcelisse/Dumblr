@@ -17,7 +17,7 @@ const PostComment = ({ comment, eachPost }) => {
   const history = useHistory();
   const currentUser = useSelector((state) => state.session.user);
   const [isOpen, setIsOpen] = useState(false);
-  console.log("im here");
+
   const createComment = async (com) => {
     let errors = [];
 
@@ -25,7 +25,6 @@ const PostComment = ({ comment, eachPost }) => {
   };
 
   const handleClick = () => {
-    console.log("IM HIT");
     setIsOpen(!isOpen);
   };
 

@@ -10,3 +10,13 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.errors {
+    display: block;
+    color: red;
+    height: 300px;
+}
+
+.form-for-create-post {
+    height: 400px;
+}

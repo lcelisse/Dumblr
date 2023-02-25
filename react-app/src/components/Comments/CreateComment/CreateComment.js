@@ -11,9 +11,9 @@ const CreateComment = ({ createComment, comment, eachPost }) => {
   const [theComment, setTheComment] = useState("");
   const [errors, setErrors] = useState([]);
 
-  //   useEffect(() => {
-  //     dispatch(readPostCommentsThunk(eachPost.user_id));
-  //   }, [dispatch, eachPost.user_id]);
+  // useEffect(() => {
+  //   dispatch(readPostCommentsThunk(eachPost.user_id));
+  // }, [dispatch, eachPost.user_id]);
 
   return (
     <div className="create-comment-container">

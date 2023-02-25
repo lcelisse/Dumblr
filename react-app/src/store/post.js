@@ -54,25 +54,19 @@ const deletePost = (postId) => {
 // THUNKS
 
 export const createPostThunk = (type, post, img) => async (dispatch) => {
-  if (type === "photo") {
-    const s3img = await fetch(`/api/posts/upload`, {
-      method: "POST",
-      body: img,
-    });
-    if (s3img.ok) {
-      await s3img.json().then(async (url) => {
-        const res = await fetch(`/api/posts`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ type, post, url: url.url }),
-        });
-        if (res.ok) {
-          const newPost = await res.json();
-          dispatch(createPost(newPost));
-          return newPost;
-        }
-      });
-    }
+  const formData = new FormData();
+  formData.append("image", img);
+  formData.append("post_type", type);
+  formData.append("body", post);
+
+  const res = await fetch(`/api/posts`, {
+    method: "POST",
+    body: formData,
+  });
+  if (res.ok) {
+    const newPost = await res.json();
+    dispatch(createPost(newPost));
+    return newPost;
   }
 };
 
@@ -91,7 +85,7 @@ export const readAllPostThunk = () => async (dispatch) => {
 
   if (res.ok) {
     const posts = await res.json();
-    console.log(posts);
+
     dispatch(readAllPost(posts));
 
     return posts;

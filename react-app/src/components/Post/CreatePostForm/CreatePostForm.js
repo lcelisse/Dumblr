@@ -4,10 +4,7 @@ import { createPostThunk } from "../../../store/post";
 import "./CreatePostForm.css";
 
 const CreatePostForm = ({ setShowModal }) => {
-  console.log("i made it in !");
   let dispatch = useDispatch();
-
-  const currentUser = useSelector((state) => console.log(state.session.user));
 
   const [post, setPost] = useState("");
   const [image, setImage] = useState("");
@@ -15,33 +12,19 @@ const CreatePostForm = ({ setShowModal }) => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
-  useEffect(() => {
-    if (post.length < 10)
-      errors.push("Post must have a minimum of 10 characters");
-    if (post.length > 475)
-      errors.push("Post must not have a maximum of 475 characters");
-
-    setErrors(errors);
-  }, [post, type, errors]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setLoading(true);
-    if (!errors.length) {
-      const img = new FormData();
-      img.append("image", image);
-      await dispatch(createPostThunk(type, post, img)).catch(async (res) => {
-        const data = await res.json;
 
-        if (data && data.errors) {
+    if (!errors.length) {
+      await dispatch(createPostThunk(type, post, image))
+        .then(() => {
           setLoading(false);
-        }
-      });
-      if (!errors.length) {
-        setLoading(false);
-        setShowModal(false);
-      }
+          setShowModal(false);
+        })
+        .catch((error) => {
+          setErrors(error);
+        });
     }
   };
 
@@ -52,7 +35,6 @@ const CreatePostForm = ({ setShowModal }) => {
 
   return (
     <div className="create-post-form-container">
-      <div className="username-create-post-form">{currentUser}</div>
       <div className="form-for-create-post">
         <form onSubmit={handleSubmit} className="form-create">
           <label className="post-type-choose">
@@ -72,8 +54,8 @@ const CreatePostForm = ({ setShowModal }) => {
               <input
                 name="type"
                 type="radio"
-                checked={type === "image"}
-                value="image"
+                checked={type === "photo"}
+                value="photo"
                 onChange={(e) => setType(e.target.value)}
               ></input>
             </label>
@@ -81,13 +63,28 @@ const CreatePostForm = ({ setShowModal }) => {
               <textarea
                 name="post"
                 onChange={(e) => {
-                  setPost(e.target.value);
+                  const postText = e.target.value;
+                  setPost(postText);
+
+                  if (postText.length < 1) {
+                    setErrors([
+                      ...errors,
+                      "Post must have a minimum of 10 characters",
+                    ]);
+                  } else if (postText.length > 475) {
+                    setErrors([
+                      ...errors,
+                      "Post must not have a maximum of 475 characters",
+                    ]);
+                  } else {
+                    setErrors([]);
+                  }
                 }}
                 className="post-text"
                 value={post}
               ></textarea>
             </label>
-            {type === "image" && (
+            {type === "photo" && (
               <label>
                 <input
                   name="image"
@@ -100,10 +97,17 @@ const CreatePostForm = ({ setShowModal }) => {
             <button disabled={loading} type="submit">
               {loading ? "Your Image is Loading ...." : "Create Post"}
             </button>
+            {/* If there are validation errors, notify the user */}
           </label>
         </form>
+        {errors?.length > 0 && (
+          <div className="errors">
+            {errors.map((e) => (
+              <div className="error">{e}</div>
+            ))}
+          </div>
+        )}
       </div>
-      <div className="errors"></div>
     </div>
   );
 };

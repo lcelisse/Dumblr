@@ -47,36 +47,40 @@ def delete_post(id):
 @post_routes.route('', methods=["POST"])
 @login_required
 def create_post():
+    print(request)
+    global url
+    global new_post
+    if "image" in request.files:
+        image = request.files["image"]
 
-    if "image" not in request.files:
-        return {"Error": "Image Required"}
+        if not s3.image_file(image.filename):
+            return {"Error": "File Type Not Permitted"}
 
-    image = request.files["image"]
+        image.filename = s3.get_unique_filename(image.filename)
 
-    if not s3.image_file(image.filename):
-        return {"Error": "File Type Not Permitted"}
+        upload_image = s3.upload_image_file_to_s3(image)
 
-    image.filename = s3.get_unique_filename(image.filename)
+        if "url" not in upload_image:
+            return {"Error": upload_image}
 
-    upload_image = s3.upload_image_file_to_s3(image)
-
-    if "url" not in upload_image:
-        return {"Error": upload_image}
-
-    url = upload_image["url"]
-    form_data = request.form.to_dict()
-
-    new_post = Post(
-        user_id=current_user.id,
-        title=form_data["title"],
-        post_type=form_data["post type"],
-        body=form_data["body"],
-        url=url
-    )
-
+        url = upload_image["url"]
+        new_post = Post(
+            user_id=current_user.id,
+            title=request.form.get("title"),
+            post_type=request.form.get("post_type"),
+            body=request.form.get("body"),
+            url=url
+        )
+    else:
+        new_post = Post(
+            user_id=current_user.id,
+            title=request.form.get("title"),
+            post_type=request.form.get("post_type"),
+            body=request.form.get("body")
+        )
     db.session.add(new_post)
     db.session.commit()
-    return new_post.to_dict_individual_post
+    return new_post.to_dict_individual_post()
 
 # Edit Post
 
@@ -106,11 +110,9 @@ def edit_post():
 
     url = upload_image['url']
 
-    form_data = request.form.to_dict()
-
-    post.title = form_data["title"],
-    post.post_type = form_data["post type"],
-    post.body = form_data["body"],
+    post.title = request.form.get("title")
+    post.post_type = request.form.get("post_type")
+    post.body = request.form.get("body")
     post.url = url
 
     db.session.add(post)

@@ -11,9 +11,11 @@ const PostPageComments = ({ eachPost }) => {
   const history = useHistory();
   const postComments = useSelector((state) => state.comment.post);
 
-  useEffect(() => {
-    dispatch(readPostCommentsThunk(eachPost.id));
-  }, [dispatch, eachPost.id]);
+  // useEffect(() => {
+  //   if (eachPost?.id) {
+  //     dispatch(readPostCommentsThunk(eachPost.id));
+  //   }
+  // }, [dispatch, eachPost]);
 
   let postCommentsArr;
   if (postComments) postCommentsArr = Object.values(postComments);

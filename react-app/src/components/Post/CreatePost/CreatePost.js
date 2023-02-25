@@ -33,7 +33,7 @@ const CreatePost = () => {
         <OpenModalButton
           buttonText="Create Post"
           onItemClick={closeMenu}
-          modalComponent={<CreatePostForm />}
+          modalComponent={<CreatePostForm setShowModal={setShowModal} />}
         />
       </div>
     </div>
