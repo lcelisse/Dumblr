@@ -103,18 +103,24 @@ export const readSinglePostThunk = (postId) => async (dispatch) => {
   }
 };
 
-export const updatePostThunk = (post, postId) => async (dispatch) => {
-  const res = await fetch(`/api/posts/${postId}`, {
-    method: "PUT",
-    body: post,
-  });
+export const updatePostThunk =
+  (type, post, img, postId) => async (dispatch) => {
+    const formData = new FormData();
+    formData.append("image", img);
+    formData.append("post_type", type);
+    formData.append("body", post);
 
-  if (res.ok) {
-    const post = await res.json();
-    dispatch(updatePost(post));
-    return post;
-  }
-};
+    const res = await fetch(`/api/posts/${postId}`, {
+      method: "PUT",
+      body: formData,
+    });
+
+    if (res.ok) {
+      const post = await res.json();
+      dispatch(updatePost(post));
+      return post;
+    }
+  };
 
 export const deletePostThunk = (postId) => async (dispatch) => {
   const res = await fetch(`/api/posts/${postId}`, {

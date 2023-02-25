@@ -47,7 +47,6 @@ def delete_post(id):
 @post_routes.route('', methods=["POST"])
 @login_required
 def create_post():
-    print(request)
     global url
     global new_post
     if "image" in request.files:
@@ -87,35 +86,37 @@ def create_post():
 
 @post_routes.route('/<int:id>', methods=["PUT"])
 @login_required
-def edit_post():
+def edit_post(id):
+    print(request)
+
     post = Post.query.get(id)
 
-    if not post:
-        return {"Error": "Post Not Found"}
-
+    global url
+    global new_post
     if "image" in request.files:
-        imageKey = post.url.rsplit("/")[-1]
-        s3.remove_image_file_from_s3(imageKey)
+        image = request.files["image"]
 
-    image = request.files["image"]
+        if not s3.image_file(image.filename):
+            return {"Error": "File Type Not Permitted"}
 
-    if not s3.image_file(image.filename):
-        return {"Error": "File Type Not Permitted"}
+        image.filename = s3.get_unique_filename(image.filename)
 
-    image.filename = s3.get_unique_filename(image.filename)
+        upload_image = s3.upload_image_file_to_s3(image)
 
-    upload_image = s3.upload_image_file_to_s3(image)
-    if "url" not in upload_image:
-        return {"Error": upload_image}
+        if "url" not in upload_image:
+            return {"Error": upload_image}
 
-    url = upload_image['url']
+        url = upload_image['url']
 
-    post.title = request.form.get("title")
-    post.post_type = request.form.get("post_type")
-    post.body = request.form.get("body")
-    post.url = url
+        post.title = request.form.get("title")
+        post.post_type = request.form.get("post_type")
+        post.body = request.form.get("body")
+        post.url = url
+    else:
+        post.title = request.form.get("title")
+        post.post_type = request.form.get("post_type")
+        post.body = request.form.get("body")
 
-    db.session.add(post)
     db.session.commit()
 
     return post.to_dict_individual_post()

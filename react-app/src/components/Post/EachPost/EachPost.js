@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deletePostThunk, updatePostThunk } from "../../../store/post";
 import PostPageComments from "../../Comments/PostPageComments/PostPageComments";
+import EditPost from "../EditPost/EditPost";
 import "./EachPost.css";
 
 const EachPost = ({ eachPost }) => {
@@ -21,7 +22,8 @@ const EachPost = ({ eachPost }) => {
                 {eachPost.user.username}
               </div>
               <div className="single-post-title">{eachPost.title}</div>
-              <div className="single-post-url">{eachPost.url}</div>
+
+              <img src={eachPost.url} />
               <div className="single-post-body">{eachPost.body}</div>
               <div className="delete-and-edit-post">
                 <div className="right-side-of-edit-delete">
@@ -36,7 +38,9 @@ const EachPost = ({ eachPost }) => {
                       <i class="fa-solid fa-trash-can"></i>
                     </button>
                   </div>
-                  <div className="edit-post"></div>
+                  <div className="edit-post">
+                    <EditPost eachPost={eachPost} />
+                  </div>
                 </div>
               </div>
               <div className="single-post-bottom">
@@ -51,7 +55,7 @@ const EachPost = ({ eachPost }) => {
                 {eachPost.user.username}
               </div>
               <div className="single-post-title">{eachPost.title}</div>
-              <div className="single-post-url">{eachPost.url}</div>
+              <img src={eachPost.url} />
               <div className="single-post-body">{eachPost.body}</div>
 
               <div className="single-post-bottom">
@@ -60,14 +64,14 @@ const EachPost = ({ eachPost }) => {
                 </div>
               </div>
             </div>
-          )}{" "}
+          )}
         </>
       ) : (
         // Not signed in
         <div className="single-post-container">
           <div className="single-post-username">{eachPost.user.username}</div>
           <div className="single-post-title">{eachPost.title}</div>
-          <div className="single-post-url">{eachPost.url}</div>
+          <img src={eachPost.url} />
           <div className="single-post-body">{eachPost.body}</div>
 
           <div className="single-post-bottom">
