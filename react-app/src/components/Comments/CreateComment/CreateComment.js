@@ -1,19 +1,26 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   createCommentThunk,
   readPostCommentsThunk,
 } from "../../../store/comment";
 
-const CreateComment = ({ createComment, comment, eachPost }) => {
+const CreateComment = ({ postId }) => {
   const dispatch = useDispatch();
   const [theComment, setTheComment] = useState("");
   const [errors, setErrors] = useState([]);
+  const userId = useSelector((state) => state.session.user.id);
 
   // useEffect(() => {
   //   dispatch(readPostCommentsThunk(eachPost.user_id));
   // }, [dispatch, eachPost.user_id]);
+
+  const createComment = async (e) => {
+    e.preventDefault();
+
+    dispatch(createCommentThunk(userId, postId, theComment));
+  };
 
   return (
     <div className="create-comment-container">
@@ -23,20 +30,15 @@ const CreateComment = ({ createComment, comment, eachPost }) => {
             <form
               className="comment-form-container"
               type="submit"
-              onSubmit={async () => {
-                const res = await createComment(theComment);
-
-                if (res && res.errors && res.errors.length) {
-                  setErrors(res.errors);
-                }
-              }}
+              onSubmit={createComment}
             >
-              <input
+              <textarea
+                type="text"
                 placeholder="Reply Your Heart Out"
                 value={theComment}
                 onChange={(e) => setTheComment(e.target.value)}
-              ></input>
-              <input type="submit" />
+              ></textarea>
+              <input type="submit" onClick={createComment} />
             </form>
           </div>
 

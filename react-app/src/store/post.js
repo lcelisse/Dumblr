@@ -141,8 +141,8 @@ const initialState = {
   singlePost: {},
   userPosts: {},
 };
-// REDUCER
 
+// REDUCER
 export default function postReducer(state = initialState, action) {
   let newState = { ...state };
 
@@ -157,7 +157,6 @@ export default function postReducer(state = initialState, action) {
     case READ_ALL_POST:
       newState = { ...state };
       newState.allPosts = action.posts;
-
       return newState;
     case READ_SINGLE_POST:
       return { ...state, singlePost: action.post };

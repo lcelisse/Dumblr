@@ -26,7 +26,7 @@ const EditPostForm = ({ eachPost, setShowModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("inside the update thunk handle submit");
+
     await dispatch(updatePostThunk(type, posts, image, eachPost.id));
   };
 

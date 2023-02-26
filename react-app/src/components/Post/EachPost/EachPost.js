@@ -38,14 +38,12 @@ const EachPost = ({ eachPost }) => {
                       <i class="fa-solid fa-trash-can"></i>
                     </button>
                   </div>
-                  <div className="edit-post">
-                    <EditPost eachPost={eachPost} />
-                  </div>
+                  <div className="edit-post"></div>
                 </div>
               </div>
               <div className="single-post-bottom">
                 <div className="right-side-bottom">
-                  <PostPageComments />
+                  <PostPageComments eachPost={eachPost} />
                 </div>
               </div>
             </div>
@@ -61,6 +59,7 @@ const EachPost = ({ eachPost }) => {
               <div className="single-post-bottom">
                 <div className="right-side-bottom">
                   <PostPageComments eachPost={eachPost} />
+                  {/* <CreateComment /> */}
                 </div>
               </div>
             </div>

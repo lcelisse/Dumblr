@@ -8,6 +8,17 @@ comment_routes = Blueprint("comments", __name__)
 # Get all the post comments
 
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
+
 @post_routes.route("/<int:id>/comments")
 def post_comments(id):
     comments = Comment.query.filter(
@@ -16,7 +27,7 @@ def post_comments(id):
     if comments:
         return [comment.to_dict() for comment in comments]
     else:
-        return {"Error": "No Comments Found"}
+        return []
 
 
 # Create a comment on the post
@@ -28,15 +39,16 @@ def create_comment(id):
 
     if form.validate_on_submit():
         comment = Comment(
-            comment=form.data["body"],
+            comment=form.data["comment"],
             user_id=current_user.id,
             post_id=id,
         )
+        print(comment)
         db.session.add(comment)
         db.session.commit()
 
         return comment.to_dict()
-    return {"Error": "Could not create"}
+    return {"Error": validation_errors_to_error_messages(form.errors)}
 
 # Delete the comment
 

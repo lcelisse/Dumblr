@@ -13,18 +13,19 @@ const readPostComments = (comments) => {
   };
 };
 
-const createComment = (comment) => {
+const createComment = (userId, comment) => {
   return {
     type: CREATE_COMMENT,
-
+    userId,
     comment,
   };
 };
 
-const deleteComment = (commentId) => {
+const deleteComment = ({ commentId, postId }) => {
   return {
     type: DELETE_COMMENT,
     commentId,
+    postId,
   };
 };
 
@@ -41,64 +42,69 @@ export const readPostCommentsThunk = (postId) => async (dispatch) => {
   }
 };
 
-export const createCommentThunk = (postId, comment) => async (dispatch) => {
-  const res = await fetch(`/api/posts/${postId}/comments`, {
-    method: "POST",
-    headers: { "Conetent-Type": "application/json" },
-    body: JSON.stringify(comment),
-  });
+export const createCommentThunk =
+  (userId, postId, comment) => async (dispatch) => {
+    const res = await fetch(`/api/posts/${postId}/comments`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ comment, userId }),
+      // body: { comment: JSON.stringify(comment) },
+    });
 
-  if (res.ok) {
-    const createdComment = await res.json();
-    dispatch(createComment(createdComment));
-    return createdComment;
-  }
-};
+    if (res.ok) {
+      const createdComment = await res.json();
+      dispatch(createComment(userId, createdComment));
+      return createdComment;
+    }
+  };
 
-export const deleteCommentThunk = (commentId) => async (dispatch) => {
-  const res = await fetch(`/api/comments/${commentId}`, {
-    method: "DELETE",
-  });
+export const deleteCommentThunk =
+  ({ commentId, postId }) =>
+  async (dispatch) => {
+    const res = await fetch(`/api/comments/${commentId}`, {
+      method: "DELETE",
+    });
 
-  if (res.ok) {
-    const deletedComment = await res.json();
-    dispatch(deleteComment(commentId));
-    return deletedComment;
-  }
-};
+    if (res.ok) {
+      const deletedComment = await res.json();
+      dispatch(deleteComment({ commentId, postId }));
+      return deletedComment;
+    }
+  };
 
 // STATE
 
-const initialState = {
-  post: {},
-  user: {},
-};
+const initialState = {};
+
+/**
+ * comment = {
+ *    56: [ { comment: 'very nice', userId: 4, id: 10 } ],
+ *    25: [ { comment: 'dope', userId: 2, id: 12 }, { comment: 'also i think dope', userId: 5, id: 20 } ]
+ * }
+ */
 
 // REDUCER
 export default function commentsReducer(state = initialState, action) {
   let newState = { ...state };
   switch (action.type) {
     case READ_POST_COMMENTS:
-      newState.post = {};
-      if (Array.isArray(action.comments)) {
-        action.comments.forEach((comment) => {
-          newState.post[comment.id] = comment;
-        });
+      let postId;
+      if (action.comments.length > 0) {
+        postId = action.comments[0].post_id;
       }
+      newState[postId] = action.comments;
       return newState;
     case CREATE_COMMENT:
-      newState.post = { ...state.post, [action.comment.id]: action.comment };
+      newState[action.comment.post_id] = [
+        ...state[action.comment.post_id],
+        action.comment,
+      ];
       return newState;
     case DELETE_COMMENT:
-      newState.post = { ...state.post };
-      delete newState.post[action.commentId];
-      if (
-        Object.values(newState.user).length &&
-        newState.user[action.commentId]
-      ) {
-        newState.user = { ...state.user };
-        delete newState.user[action.commentId];
-      }
+      const commentIdToDelete = action.commentId;
+      newState[action.postId] = newState[action.postId].filter(
+        (comment) => comment.id !== commentIdToDelete
+      );
       return newState;
     default:
       return state;
