@@ -19,8 +19,9 @@ function LoginFormPage() {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else {
+      history.push("/posts");
     }
-    history.push("/posts");
   };
 
   return (

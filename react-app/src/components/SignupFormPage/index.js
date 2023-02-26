@@ -17,6 +17,10 @@ function SignupFormPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (password.length < 4)
+      setErrors(["Password must be larger than 4 characters "]);
+
     if (password === confirmPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
