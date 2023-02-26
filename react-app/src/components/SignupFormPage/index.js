@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import "./SignupForm.css";
-
+import dumb from "../../assets/dumb.png";
 function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -31,6 +31,7 @@ function SignupFormPage() {
 
   return (
     <div className="sign-in-container">
+      <img src={dumb} className="full-logo-splash-page"></img>
       <div className="sign-in-form-container">
         <form onSubmit={handleSubmit} className="the-form-container">
           <ul>

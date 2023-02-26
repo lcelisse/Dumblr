@@ -19,27 +19,32 @@ const PostPageComments = ({ eachPost }) => {
       dispatch(readPostCommentsThunk(eachPost.id));
     }
   }, []);
+  const currentUser = useSelector((state) => state.session.user);
 
   return (
-    <div className="all-comments-section-container">
-      <div className="add-a-comment">
-        <CreateComment postId={eachPost.id} />
-      </div>
-      {/* 
+    <>
+      {currentUser !== null && (
+        <div className="add-a-comment">
+          <CreateComment postId={eachPost.id} />
+        </div>
+      )}
+      <div className="all-comments-section-container">
+        {/* 
       <div className="post-comment"></div> */}
-      <div className="all-comments">
-        {/* render all the comments under each post */}
-        {postComments?.map((comment) => {
-          return (
-            <PostComment
-              key={comment.id}
-              comment={comment}
-              eachPost={eachPost}
-            />
-          );
-        })}
+        <div className="all-comments">
+          {/* render all the comments under each post */}
+          {postComments?.map((comment) => {
+            return (
+              <PostComment
+                key={comment.id}
+                comment={comment}
+                eachPost={eachPost}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -8,7 +8,6 @@ import LoginFormPage from "../LoginFormPage";
 import SignupFormPage from "../SignupFormPage";
 import Feed from "../Post/Feed/Feed";
 import logo from "../../assets/d.png";
-import dumb from "../../assets/dumb.png";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -60,9 +59,7 @@ function Navigation({ isLoaded }) {
                 />
               </div>
               <div className="splash-page-nav-right-side">
-                <div>
-                  <img src={dumb} className="full-logo-splash-page"></img>
-                </div>
+                <div></div>
                 <button
                   className={buttonColor}
                   onClick={() => {
