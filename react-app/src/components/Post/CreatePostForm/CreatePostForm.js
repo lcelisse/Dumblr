@@ -39,8 +39,12 @@ const CreatePostForm = ({ setShowModal }) => {
         <form onSubmit={handleSubmit} className="form-create">
           <label className="post-type-choose">
             <div className="image-types"></div>
+            <h5>
+              To make a post you must have some sort of text or an image ..
+              chosse below
+            </h5>
             <label className="text-icon-create-post">
-              <i class="fa-sharp fa-solid fa-font"></i>
+              <p>Some Words</p>
               <input
                 name="type"
                 type="radio"
@@ -50,7 +54,7 @@ const CreatePostForm = ({ setShowModal }) => {
               />
             </label>
             <label className="image-icon-create-post">
-              <i class="fa-regular fa-camera"></i>
+              <p>An Image</p>
               <input
                 name="type"
                 type="radio"
@@ -59,9 +63,11 @@ const CreatePostForm = ({ setShowModal }) => {
                 onChange={(e) => setType(e.target.value)}
               ></input>
             </label>
+
             <label>
               <textarea
                 name="post"
+                placeholder="Type your heart out"
                 onChange={(e) => {
                   const postText = e.target.value;
                   setPost(postText);
