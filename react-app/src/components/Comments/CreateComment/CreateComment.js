@@ -33,6 +33,7 @@ const CreateComment = ({ postId }) => {
               onSubmit={createComment}
             >
               <textarea
+                className="input-container-style"
                 type="text"
                 placeholder="Reply Your Heart Out"
                 value={theComment}

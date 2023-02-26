@@ -22,13 +22,16 @@ const EachPost = ({ eachPost }) => {
                 {eachPost.user.username}
               </div>
               <div className="single-post-title">{eachPost.title}</div>
+              <div className="image-container">
+                <img src={eachPost.url} className="each-image"></img>
+              </div>
 
-              <img src={eachPost.url} />
               <div className="single-post-body">{eachPost.body}</div>
               <div className="delete-and-edit-post">
                 <div className="right-side-of-edit-delete">
                   <div className="delete-post">
                     <button
+                      className="delete-button"
                       onClick={() =>
                         dispatch(deletePostThunk(eachPost.id)).then(() =>
                           history.push("/posts")

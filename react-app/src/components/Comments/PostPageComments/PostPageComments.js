@@ -25,9 +25,9 @@ const PostPageComments = ({ eachPost }) => {
       <div className="add-a-comment">
         <CreateComment postId={eachPost.id} />
       </div>
-
-      <div className="post-comment"></div>
-      <div>
+      {/* 
+      <div className="post-comment"></div> */}
+      <div className="all-comments">
         {/* render all the comments under each post */}
         {postComments?.map((comment) => {
           return (
