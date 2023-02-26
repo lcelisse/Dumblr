@@ -49,9 +49,7 @@ const PostComment = ({ comment, eachPost }) => {
             </div>
             <div className="view-the-comments-container">
               <div className="comment-container-box">
-                <div className="the-original-poster">
-                  <span>☆ Orginal Poster</span>
-                </div>
+                <div className="the-original-poster"></div>
                 <div className="username-for-comment">
                   {comment.user.username}
                 </div>
@@ -101,9 +99,7 @@ const PostComment = ({ comment, eachPost }) => {
           </div>
           <div className="view-the-comments-container">
             <div className="comment-container-box">
-              <div className="the-original-poster">
-                <span>☆ Orginial Poster</span>
-              </div>
+              <div className="the-original-poster"></div>
               <div className="username-for-comment">
                 {comment.user.username}
               </div>

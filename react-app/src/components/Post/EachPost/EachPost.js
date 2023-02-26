@@ -37,6 +37,7 @@ const EachPost = ({ eachPost }) => {
                     >
                       <i class="fa-solid fa-trash-can"></i>
                     </button>
+                    <EditPost eachPost={eachPost} />
                   </div>
                   <div className="edit-post"></div>
                 </div>
