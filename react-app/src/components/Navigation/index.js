@@ -46,61 +46,69 @@ function Navigation({ isLoaded }) {
   };
 
   return (
-    <ul>
-      <div>
-        {sessionUser === null ? (
-          <div className="splash-page-container">
-            <div className="splash-page-top">
-              <nav className="splash-page-nav">
-                <div className="splash-page-nav-left-side">
+    <div>
+      {sessionUser === null ? (
+        <div className="splash-page-container">
+          <div className="splash-page-top">
+            <nav className="splash-page-nav">
+              <div className="splash-page-nav-left-side">
+                <img
+                  src={logo}
+                  alt="logo"
+                  className="splash-page-logo-d"
+                  onClick={clickFeed}
+                />
+              </div>
+              <div className="splash-page-nav-right-side">
+                <div>
+                  <img src={dumb} className="full-logo-splash-page"></img>
+                </div>
+                <button
+                  className={buttonColor}
+                  onClick={() => {
+                    if (splashPage === "Sign Up") {
+                      changeButton("Log In");
+                      handleClickSignup();
+                      removeLogIn();
+                      changeButtonColorB();
+                    } else {
+                      changeButton("Sign Up");
+                      handleClickLogin();
+
+                      changeButtonColorA();
+                    }
+                  }}
+                >
+                  {splashPage}
+                </button>
+              </div>
+            </nav>
+          </div>
+          <div className="splash-page-footer"></div>
+        </div>
+      ) : (
+        <div className="nav-bar-logged-in">
+          {isLoaded && (
+            <div className="links-on-the-nav">
+              <div className="left-side-of-nav-bar">
+                <NavLink exact to="/posts">
                   <img
                     src={logo}
                     alt="logo"
                     className="splash-page-logo-d"
                     onClick={clickFeed}
                   />
-                </div>
-                <div className="splash-page-nav-right-side">
-                  <div>
-                    <img src={dumb} className="full-logo-splash-page"></img>
-                  </div>
-                  <button
-                    className={buttonColor}
-                    onClick={() => {
-                      if (splashPage === "Sign Up") {
-                        changeButton("Log In");
-                        handleClickSignup();
-                        removeLogIn();
-                        changeButtonColorB();
-                      } else {
-                        changeButton("Sign Up");
-                        handleClickLogin();
-
-                        changeButtonColorA();
-                      }
-                    }}
-                  >
-                    {splashPage}
-                  </button>
-                </div>
-              </nav>
-            </div>
-            <div className="splash-page-footer"></div>
-          </div>
-        ) : (
-          <div>
-            {isLoaded && (
-              <li>
-                <ProfileButton user={sessionUser} />
-                <NavLink exact to="/posts">
-                  Home
                 </NavLink>
-              </li>
-            )}
-          </div>
-        )}
-      </div>
-    </ul>
+              </div>
+
+              <div className="right-side-of-nav-bar">
+                <ProfileButton user={sessionUser} />
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
 
