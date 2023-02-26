@@ -57,7 +57,9 @@ const EachPost = ({ eachPost }) => {
                 {eachPost.user.username}
               </div>
               <div className="single-post-title">{eachPost.title}</div>
-              <img src={eachPost.url} />
+              <div className="image-container">
+                <img src={eachPost.url} className="each-image"></img>
+              </div>
               <div className="single-post-body">{eachPost.body}</div>
 
               <div className="single-post-bottom">
@@ -74,7 +76,9 @@ const EachPost = ({ eachPost }) => {
         <div className="single-post-container">
           <div className="single-post-username">{eachPost.user.username}</div>
           <div className="single-post-title">{eachPost.title}</div>
-          <img src={eachPost.url} />
+          <div className="image-container">
+            <img src={eachPost.url} className="each-image"></img>
+          </div>
           <div className="single-post-body">{eachPost.body}</div>
 
           <div className="single-post-bottom">

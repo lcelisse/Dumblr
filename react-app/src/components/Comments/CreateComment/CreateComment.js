@@ -18,8 +18,20 @@ const CreateComment = ({ postId }) => {
 
   const createComment = async (e) => {
     e.preventDefault();
+    setErrors([]);
 
+    const errors = [];
+    if (theComment.length > 475)
+      errors.push("Your comment must be less than 475 characters");
+    if (theComment.length < 1) errors.push("Cannot submit empty");
+
+    if (errors.length > 0) {
+      setErrors(errors);
+      return;
+    }
     dispatch(createCommentThunk(userId, postId, theComment));
+
+    setTheComment("");
   };
 
   return (

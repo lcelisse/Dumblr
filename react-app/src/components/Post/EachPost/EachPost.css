@@ -7,6 +7,7 @@
     border-radius: 3px;
     margin-bottom: 20px;
     margin-top: 20px;
+
 }
 
 .single-post-username{
@@ -96,7 +97,7 @@
 }
 
 button {
-    background: none;
+
     border: 0.5px solid grey;
     cursor: pointer;
     border-radius: 5px;

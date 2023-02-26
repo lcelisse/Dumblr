@@ -1,10 +1,13 @@
 import { Component, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { createPostThunk } from "../../../store/post";
+import { useModal } from "../../../context/Modal";
 import "./CreatePostForm.css";
 
 const CreatePostForm = ({ setShowModal }) => {
   let dispatch = useDispatch();
+  const { closeModal } = useModal();
 
   const [post, setPost] = useState("");
   const [image, setImage] = useState("");
@@ -12,8 +15,21 @@ const CreatePostForm = ({ setShowModal }) => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
+  const scrollToBottom = () => {
+    window.scrollTo(0, 1000000);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const errors = [];
+    if (post.length > 475)
+      errors.push("Your comment must be less than 475 characters");
+    if (post.length < 1 && !image) errors.push("Cannot submit empty");
+
+    if (errors.length > 0) {
+      setErrors(errors);
+      return;
+    }
     setLoading(true);
 
     if (!errors.length) {
@@ -26,6 +42,8 @@ const CreatePostForm = ({ setShowModal }) => {
           setErrors(error);
         });
     }
+    closeModal();
+    scrollToBottom();
   };
 
   const uploadImg = (e) => {
@@ -72,11 +90,8 @@ const CreatePostForm = ({ setShowModal }) => {
                   const postText = e.target.value;
                   setPost(postText);
 
-                  if (postText.length < 1) {
-                    setErrors([
-                      ...errors,
-                      "Post must have a minimum of 10 characters",
-                    ]);
+                  if (postText.length < 1 && !image) {
+                    setErrors([...errors, "Post must have text or an image"]);
                   } else if (postText.length > 475) {
                     setErrors([
                       ...errors,
