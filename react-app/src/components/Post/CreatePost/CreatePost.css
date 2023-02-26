@@ -2,9 +2,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: pink;
+
 }
 
 .button-for-create-post{
     cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.image-to-your-feed{
+    height: 150px;
+}
+
+
+.button-to-create-post{
+  background: none;  
+  margin-left: 220px;
 }

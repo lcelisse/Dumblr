@@ -3,6 +3,7 @@ import { Modal } from "../../../context/Modal";
 import CreatePostForm from "../CreatePostForm/CreatePostForm";
 import "./CreatePost.css";
 import OpenModalButton from "../../OpenModalButton/index";
+import img from "../../../assets/wel.png";
 
 const CreatePost = () => {
   const [showModal, setShowModal] = useState(false);
@@ -30,11 +31,17 @@ const CreatePost = () => {
   return (
     <div className="create-post-container">
       <div className="modal-to-create-post">
-        <OpenModalButton
-          buttonText="Create Post"
-          onItemClick={closeMenu}
-          modalComponent={<CreatePostForm setShowModal={setShowModal} />}
-        />
+        <div className="img-create-post">
+          <img src={img} className="image-to-your-feed" />
+        </div>
+        <div className="button-to-create-post">
+          <OpenModalButton
+            className="create-post-button"
+            buttonText="Create Post"
+            onItemClick={closeMenu}
+            modalComponent={<CreatePostForm setShowModal={setShowModal} />}
+          />
+        </div>
       </div>
     </div>
   );

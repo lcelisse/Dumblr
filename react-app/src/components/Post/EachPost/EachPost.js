@@ -22,13 +22,16 @@ const EachPost = ({ eachPost }) => {
                 {eachPost.user.username}
               </div>
               <div className="single-post-title">{eachPost.title}</div>
+              <div className="image-container">
+                <img src={eachPost.url} className="each-image"></img>
+              </div>
 
-              <img src={eachPost.url} />
               <div className="single-post-body">{eachPost.body}</div>
               <div className="delete-and-edit-post">
                 <div className="right-side-of-edit-delete">
                   <div className="delete-post">
                     <button
+                      className="delete-button"
                       onClick={() =>
                         dispatch(deletePostThunk(eachPost.id)).then(() =>
                           history.push("/posts")
@@ -37,6 +40,7 @@ const EachPost = ({ eachPost }) => {
                     >
                       <i class="fa-solid fa-trash-can"></i>
                     </button>
+                    <EditPost eachPost={eachPost} />
                   </div>
                   <div className="edit-post"></div>
                 </div>
@@ -53,7 +57,9 @@ const EachPost = ({ eachPost }) => {
                 {eachPost.user.username}
               </div>
               <div className="single-post-title">{eachPost.title}</div>
-              <img src={eachPost.url} />
+              <div className="image-container">
+                <img src={eachPost.url} className="each-image"></img>
+              </div>
               <div className="single-post-body">{eachPost.body}</div>
 
               <div className="single-post-bottom">
@@ -70,7 +76,9 @@ const EachPost = ({ eachPost }) => {
         <div className="single-post-container">
           <div className="single-post-username">{eachPost.user.username}</div>
           <div className="single-post-title">{eachPost.title}</div>
-          <img src={eachPost.url} />
+          <div className="image-container">
+            <img src={eachPost.url} className="each-image"></img>
+          </div>
           <div className="single-post-body">{eachPost.body}</div>
 
           <div className="single-post-bottom">

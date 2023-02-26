@@ -30,28 +30,13 @@ const PostComment = ({ comment, eachPost }) => {
 
   return (
     <>
-      {currentUser !== null ? (
-        <div>
-          {/* <button onClick={handleClick}>
-            <i class="fa-sharp fa-regular fa-comment"></i>
-          </button> */}
-          {/* {isOpen && ( */}
-          {/* <CreateComment createComment={createComment} /> */}
+      {currentUser !== null ? ( //the user is not null
+        <div className="drop-down-menu">
           <div className="post-comment-container">
             <div className="little-pop-up-nav"></div>
-
-            <div className="create-a-comment-input">
-              <div className="input-comment">
-                <div className="input-and-submit">
-                  <div className="input-to-the-comments"></div>
-                </div>
-              </div>
-            </div>
             <div className="view-the-comments-container">
               <div className="comment-container-box">
-                <div className="the-original-poster">
-                  <span>☆ Orginal Poster</span>
-                </div>
+                <div className="the-original-poster"></div>
                 <div className="username-for-comment">
                   {comment.user.username}
                 </div>
@@ -61,9 +46,10 @@ const PostComment = ({ comment, eachPost }) => {
               </div>
 
               <div className="delte-your-comment-container">
-                {currentUser.id === comment.user_id ? (
+                {currentUser.id === comment.user_id ? ( //the owner of the post
                   <div className="delete-button">
                     <button
+                      className="delete-button"
                       onClick={() =>
                         dispatch(
                           deleteCommentThunk({
@@ -72,8 +58,9 @@ const PostComment = ({ comment, eachPost }) => {
                           })
                         )
                       }
-                    ></button>
-                    <i class="fa-solid fa-trash-can"></i>
+                    >
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
                   </div>
                 ) : (
                   <div></div>
@@ -81,29 +68,15 @@ const PostComment = ({ comment, eachPost }) => {
               </div>
             </div>
           </div>
-          {/* )} */}
         </div>
       ) : (
+        //the user is null
+
         <div className="post-comment-container">
           <div className="little-pop-up-nav"></div>
-          <div className="create-a-comment-input">
-            <div className="input-comment">
-              <div className="input-and-submit">
-                {/* <div className="input-to-the-comments">
-                  <CreateComment
-                    createComment={createComment}
-                    comment={comment}
-                    eachPost={eachPost}
-                  />
-                </div> */}
-              </div>
-            </div>
-          </div>
           <div className="view-the-comments-container">
             <div className="comment-container-box">
-              <div className="the-original-poster">
-                <span>☆ Orginial Poster</span>
-              </div>
+              <div className="the-original-poster"></div>
               <div className="username-for-comment">
                 {comment.user.username}
               </div>
@@ -113,6 +86,8 @@ const PostComment = ({ comment, eachPost }) => {
             </div>
           </div>
         </div>
+
+        /*the end of it*/
       )}
     </>
   );

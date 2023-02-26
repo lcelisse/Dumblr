@@ -3,7 +3,7 @@ import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import "./LoginForm.css";
-
+import dumb from "../../assets/dumb.png";
 function LoginFormPage() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -19,12 +19,14 @@ function LoginFormPage() {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else {
+      history.push("/posts");
     }
-    history.push("/posts");
   };
 
   return (
     <div className="log-in-container">
+      <img src={dumb} className="full-logo-splash-page"></img>
       <div className="log-in-form-container">
         <form onSubmit={handleSubmit} className="the-form-container">
           <ul>
@@ -53,6 +55,15 @@ function LoginFormPage() {
             />
           </label>
           <button type="submit">Log In</button>
+          <button
+            type="submit"
+            onClick={(e) => {
+              setEmail("pam@aa.io");
+              setPassword("password");
+            }}
+          >
+            Demo user
+          </button>
         </form>
       </div>
     </div>

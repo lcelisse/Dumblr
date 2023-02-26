@@ -1,14 +1,5 @@
 
-.little-pop-up-nav{
-    width: 100%;
-    border-bottom: 1px solid lightgray;
-    justify-content: space-between;
-    display: flex;
-}
 
-.create-a-comment-input{
-    margin: 15px;
-}
 
 .input-comment{
     align-items: center;
@@ -17,7 +8,7 @@
 
 .input-and-submit{
     border: 1px solid rgba(var(--black),.25);
-
+    height: 80px;
     border-radius: 20px;
     flex: 1;
     margin-left: 10px;
@@ -26,16 +17,13 @@
 }
 .input-to-the-comments{
     color: black;
-    max-height: 150px;
-    box-sizing: border-box;
-    font-family: inherit;
-    flex: 1;
-    padding: 8px 0 10px;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    overflow-x: hidden;
-    overflow-y: auto;
+    margin-top: 10px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    padding: 0 10px;
+    display: flex;
+   
 }
 .the-button-reply{
     cursor: default;
@@ -52,9 +40,10 @@
     line-height: 1.5;
 }
 .view-the-comments-container{
+    background: white;
     box-sizing: border-box;
     flex-shrink: 0;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
     display: flex;
     position: relative;
 }
@@ -102,4 +91,24 @@
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
+}
+
+.comment-button{
+    margin-left: 500px;
+}
+
+.drop-down-menu{
+    background: white;
+    
+}
+
+.post-comment-container{
+    
+    background: white;
+}
+
+.delete-button {
+    border: none;
+
+    cursor: pointer;
 }

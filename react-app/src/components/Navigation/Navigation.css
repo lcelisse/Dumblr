@@ -1,5 +1,12 @@
 .profile-dropdown {
   position: absolute;
+    background: white;
+    margin-top: 150px;
+    height: 100px;
+    border-radius: 5px;
+    width: 170px;
+    padding: 0;
+  
 }
 
 .hidden {
@@ -73,10 +80,98 @@
 
 }
 
-.full-logo-splash-page{
-  width: 264px;
-  height: 60px;
- margin-right: 350px;
- margin-top: 500px;
+.navigation-profile-button{
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+}
 
+.nav-bar-logged-in{
+    z-index: 100;
+    background-color:inherit;
+    box-sizing: border-box;
+    height: 55px;
+    border-bottom: 1px solid gray;
+  margin: 0;
+    position: sticky;
+    top: 0;
+}
+.links-on-the-nav{
+  height: 54px;
+    width: 100%;
+    max-width: 1716px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding-left: 22px;
+    padding-right: 20px;
+    display: flex;
+}
+
+.left-side-of-nav-bar{
+  flex-grow: 1;
+  align-items: center;
+  display: flex;
+}
+
+.right-side-of-nav-bar{
+  justify-content: flex-end;
+    align-items: center;
+    display: flex;
+}
+
+.profile-container-button{
+  justify-content: center;
+  align-items: center;
+  margin: 0 16px;
+  display: flex;
+  position: relative;
+}
+
+.navigation-profile-button{
+  background: transparent;
+  border: none;
+ 
+}
+
+.fa-solid .fa-user {
+   height: 90px;
+}
+
+.account-profile-dropdown{
+  color: black;
+  background: lightgray;
+
+  font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  
+  width: 100%;
+  box-sizing: border-box;
+
+  height: 36px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px 5px 10px;
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  display: flex;
+  position: sticky;
+  top: 0;
+  border-radius: 5px;
+}
+
+.logout-button-profile{
+  background: none;
+  border: none;
+}
+
+.info-container{
+  margin-left: 10px;
+    flex-direction: column;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    list-style-type: none;
+    display: flex;
 }

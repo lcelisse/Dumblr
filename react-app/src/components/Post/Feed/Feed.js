@@ -9,7 +9,7 @@ import "./Feed.css";
 const Feed = () => {
   const dispatch = useDispatch();
   const allPosts = useSelector((state) => state.post.allPosts);
-
+  const currentUser = useSelector((state) => state.session.user);
   let postArr = Object.values(allPosts);
 
   useEffect(() => {
@@ -30,9 +30,12 @@ const Feed = () => {
     <div className="feed-container">
       <div className="feed-left-side">
         <div className="inside-feed-left-side">
-          <div className="top-of-left-side-post">
-            <CreatePost />
-          </div>
+          {currentUser !== null && (
+            <div className="top-of-left-side-post">
+              <CreatePost />
+            </div>
+          )}
+
           <div className="feed-post">
             <div className="feed-nav-bar"></div>
             <ul className="post">{post}</ul>

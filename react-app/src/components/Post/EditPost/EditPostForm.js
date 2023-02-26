@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { deletePostThunk, updatePostThunk } from "../../../store/post";
+import { useHistory } from "react-router-dom";
+import { useModal } from "../../../context/Modal";
+import {
+  deletePostThunk,
+  readAllPostThunk,
+  updatePostThunk,
+} from "../../../store/post";
 
 const EditPostForm = ({ eachPost, setShowModal }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [posts, setPost] = useState(eachPost.body);
   const [errors, setErrors] = useState([]);
   const [image, setImage] = useState("");
   const [type, setType] = useState("text");
   const [loading, setLoading] = useState(false);
 
+  const { closeModal } = useModal();
   const uploadImg = (e) => {
     const file = e.target.files[0];
     setImage(file);
@@ -27,7 +35,28 @@ const EditPostForm = ({ eachPost, setShowModal }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await dispatch(updatePostThunk(type, posts, image, eachPost.id));
+    const errors = [];
+    if (posts.length > 475)
+      errors.push("Your comment must be less than 475 characters");
+    if (posts.length < 1 && !image) errors.push("Cannot submit empty");
+
+    if (errors.length > 0) {
+      setErrors(errors);
+      return;
+    }
+    if (!errors.length) {
+      await dispatch(updatePostThunk(type, posts, image, eachPost.id))
+        .then(() => {
+          setLoading(false);
+          setShowModal(false);
+        })
+        .catch((error) => {
+          setErrors(error);
+        });
+      await dispatch(readAllPostThunk());
+
+      closeModal();
+    }
   };
 
   return (
@@ -64,10 +93,7 @@ const EditPostForm = ({ eachPost, setShowModal }) => {
                   setPost(postText);
 
                   if (postText.length < 1) {
-                    setErrors([
-                      ...errors,
-                      "Post must have a minimum of 10 characters",
-                    ]);
+                    setErrors([...errors, "Post cannot be empty"]);
                   } else if (postText.length > 475) {
                     setErrors([
                       ...errors,

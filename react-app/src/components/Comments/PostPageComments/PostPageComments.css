@@ -32,3 +32,12 @@
     visibility: hidden;
 }
 
+.all-comments-section-container{
+    margin: 0;
+    height: 300px;
+    overflow: scroll;
+}
+
+.all-comments{
+    
+}

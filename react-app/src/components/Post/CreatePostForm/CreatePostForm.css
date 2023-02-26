@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .form-create{
@@ -9,6 +10,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 .errors {
@@ -18,5 +20,33 @@
 }
 
 .form-for-create-post {
-    height: 400px;
+
+    padding-bottom: 50px;
+    width: 100%;
+    max-width: 540px;
+    align-items: flex-start;
+    margin: auto;
+    display: flex;
+    position: relative;
+    border-radius: 10px;
+}
+
+.form-create{
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    display: flex;
+    position: relative; 
+    
+}
+
+.post-text{
+    background-color: white;
+    width: 400px;
+    flex-direction: column;
+    align-items: flex-start;
+    display: flex;
+    position: relative;
+    border: none;
+    box-shadow: 0 8px 6px -6px black;
 }
