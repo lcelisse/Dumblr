@@ -95,10 +95,10 @@ export default function commentsReducer(state = initialState, action) {
       newState[postId] = action.comments;
       return newState;
     case CREATE_COMMENT:
-      newState[action.comment.post_id] = [
-        ...state[action.comment.post_id],
-        action.comment,
-      ];
+      let existingComments = state[action.comment.post_id];
+      if (!existingComments) existingComments = [];
+      newState[action.comment.post_id] = [...existingComments, action.comment];
+
       return newState;
     case DELETE_COMMENT:
       const commentIdToDelete = action.commentId;
