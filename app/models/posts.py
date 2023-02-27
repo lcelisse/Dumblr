@@ -22,7 +22,7 @@ class Post(db.Model):
     comments = db.relationship(
         "Comment", back_populates="post", cascade="all,delete")
     post_likes = db.relationship(
-        "User", seconday=likes, back_populates="user_likes")
+        "User", secondary=likes, back_populates="user_likes")
 
     def to_dict(self):
         return {
@@ -36,7 +36,8 @@ class Post(db.Model):
             "user": self.user.to_dict(),
             "comment_count": len(self.comments),
             "likes_count": len(self.post_likes),
-            "comment_count": len(self.comments)
+            "comment_count": len(self.comments),
+            "post_likes": {user.id: user.to_dict() for user in self.post_likes}
             # "comments": [com.to_dict() for com in self.comments]
 
         }
@@ -54,10 +55,10 @@ class Post(db.Model):
             "comment_count": len(self.comments),
             "comments": [com.to_dict() for com in self.comments],
             "likes_count": len(self.post_likes),
-            "posts_likes": {user.id: user.to_dict() for user in self.post_likes}
+            "post_likes": {user.id: user.to_dict() for user in self.post_likes}
         }
 
-    def post_likes(self):
+    def all_post_likes(self):
         return {
-            "posts_likes": {user.id: user.to_dict() for user in self.post_likes}
+            "post_likes": {user.id: user.to_dict() for user in self.post_likes}
         }

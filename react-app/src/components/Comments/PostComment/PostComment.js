@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import {
-  readPostCommentsThunk,
-  createCommentThunk,
-  deleteCommentThunk,
-} from "../../../store/comment";
+import { useHistory } from "react-router-dom";
+import { deleteCommentThunk } from "../../../store/comment";
 
-import { readSinglePostThunk } from "../../../store/post";
-import EachPost from "../../Post/EachPost/EachPost";
-import CreateComment from "../CreateComment/CreateComment";
 import "./PostComment.css";
 
 const PostComment = ({ comment, eachPost }) => {
@@ -17,12 +10,6 @@ const PostComment = ({ comment, eachPost }) => {
   const history = useHistory();
   const currentUser = useSelector((state) => state.session.user);
   const [isOpen, setIsOpen] = useState(false);
-
-  // const createComment = async (com) => {
-  //   let errors = [];
-
-  //   dispatch(createCommentThunk(eachPost.id, com));
-  // };
 
   const handleClick = () => {
     setIsOpen(!isOpen);
