@@ -39,7 +39,7 @@ const EditPostForm = ({ eachPost, setShowModal }) => {
     if (posts) {
       if (posts.length > 475)
         errors.push("Your comment must be less than 475 characters");
-      if (posts.length < 1 && !image) errors.push();
+      if (posts.length < 1 && !image) errors.push("Cannot submit empty");
     } else {
       console.log("Cannot submit empty");
     }
@@ -69,6 +69,10 @@ const EditPostForm = ({ eachPost, setShowModal }) => {
         <form onSubmit={handleSubmit} className="form-create">
           <label className="post-type-choose">
             <div className="image-types"></div>
+            <h5>
+              To make a post you must have some sort of text or an image ..
+              chosse below
+            </h5>
             <label className="text-icon-create-post">
               <i class="fa-sharp fa-solid fa-font"></i>
               <input
