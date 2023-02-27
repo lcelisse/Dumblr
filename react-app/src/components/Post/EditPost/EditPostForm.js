@@ -11,7 +11,7 @@ import {
 const EditPostForm = ({ eachPost, setShowModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [posts, setPost] = useState(eachPost.body);
+  const [posts, setPost] = useState(eachPost.body || "");
   const [errors, setErrors] = useState([]);
   const [image, setImage] = useState("");
   const [type, setType] = useState("text");
@@ -36,18 +36,16 @@ const EditPostForm = ({ eachPost, setShowModal }) => {
     e.preventDefault();
 
     const errors = [];
-    if (posts) {
-      if (posts.length > 475)
-        errors.push("Your comment must be less than 475 characters");
-      if (posts.length < 1 && !image) errors.push("Cannot submit empty");
-    } else {
-      console.log("Cannot submit empty");
-    }
+    if (posts.length > 475)
+      errors.push("Your comment must be less than 475 characters");
+    if (post.length < 1 && !image) errors.push("Cannot submit empty");
 
     if (errors.length > 0) {
       setErrors(errors);
       return;
     }
+    setLoading(true);
+
     if (!errors.length) {
       await dispatch(updatePostThunk(type, posts, image, eachPost.id))
         .then(() => {
@@ -57,10 +55,9 @@ const EditPostForm = ({ eachPost, setShowModal }) => {
         .catch((error) => {
           setErrors(error);
         });
-      await dispatch(readAllPostThunk());
-
-      closeModal();
     }
+    await dispatch(readAllPostThunk());
+    closeModal();
   };
 
   return (
