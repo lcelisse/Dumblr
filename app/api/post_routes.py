@@ -120,3 +120,32 @@ def edit_post(id):
     db.session.commit()
 
     return post.to_dict_individual_post()
+
+
+# Like a Post
+@post_routes.route("/<int:postId>/likes", method=["POST"])
+@login_required
+def like_post(postId):
+    post = Post.query.get(postId)
+    post.post_likes.append(current_user)
+
+    db.session.add(post)
+    db.session.commit()
+
+    return post.to_dict_individual_post()
+
+# Unlike a post
+
+
+@post_routes.route("/<int:postId>/likes", method=["DELETE"])
+@login_required
+def unlike_post(postId):
+    post = Post.query.get(postId)
+    post.post_likes.remove(current_user)
+
+    db.session.add(post)
+    db.session.commit()
+
+    return {"message": "Successfully Deleted"}
+
+# Unlike a p
