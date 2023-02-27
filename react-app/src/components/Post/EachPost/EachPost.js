@@ -32,11 +32,7 @@ const EachPost = ({ eachPost }) => {
                   <div className="delete-post">
                     <button
                       className="delete-button"
-                      onClick={() =>
-                        dispatch(deletePostThunk(eachPost.id)).then(() =>
-                          history.push("/posts")
-                        )
-                      }
+                      onClick={() => dispatch(deletePostThunk(eachPost.id))}
                     >
                       <i class="fa-solid fa-trash-can"></i>
                     </button>
