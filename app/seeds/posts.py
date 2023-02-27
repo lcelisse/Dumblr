@@ -25,7 +25,7 @@ def seed_posts():
     phyllis_post_text_1 = Post(
         user_id=2, post_type='text', title="Confession", body="I serve on the Party Planning Committee where I often butts heads with hypercritical Angela Martin, whom I've told to her face that I do not likeher .... Is that too mean ?")
     phyllis_post_img_1 = Post(
-        user_id=2, post_type='img', title="Happy Halloween", url="https://static.wikia.nocookie.net/theoffice/images/3/31/Phyllis%27s_first_Halloween_costume.jpg/revision/latest/scale-to-width-down/1920?cb=20210310133441")
+        user_id=2, post_type='img', title="Happy Halloween", url="https://imgb.srgcdn.com/4c35ef56-f8a6-431d-9ceb-b7865d7da83e.gif")
     phyllis_post_img_2 = Post(
         user_id=2, post_type='img', title="bobby and me", url="https://www.cheatsheet.com/wp-content/uploads/2020/07/Phyllis-and-Bob-4.jpg?w=1024&h=682")
     phyllis_post_quote_2 = Post(
@@ -122,7 +122,7 @@ def seed_posts():
     stanley_post_img_1 = Post(
         user_id=7, post_type='img', title="i miss florida stanley", url="https://bamfstyle.com/wp-content/uploads/2020/03/flstanley-main1.jpg")
     stanley_post_img_2 = Post(
-        user_id=7, post_type='img', title="pretzel day .. the greatest day ", url="https://static.wikia.nocookie.net/theoffice/images/e/e9/Funko-Pop-The-Office-Figures-972-Stanley-Hudson-Pretzel-Day-GameStop-Exclusive.jpg/revision/latest/scale-to-width-down/2")
+        user_id=7, post_type='img', title="pretzel day .. the greatest day ", url="https://media.tenor.com/f5zNERrlrXcAAAAC/pretzel-day-the-office.gif")
     stanley_post_quote_2 = Post(
         user_id=7, post_type='text', body="Florida Stanley Smiles, Florida Stanley Is Happy To Go To Work, Florida Stanley Is Who You Want On Your Florida Team")
     stanley_post_img_3 = Post(
@@ -194,11 +194,11 @@ def seed_posts():
         user_id=10, post_type='img', title="me and mose ", url="https://www.etsy.com/img/8734722/r/il/f73d35/2240486393/il_570xN.2240486393_adaa.jpg")
 
     meredith_post_img_1 = Post(
-        user_id=11, post_type='img', title="had to see it through", url="https://static.wikia.nocookie.net/theoffice/images/9/9e/Bald_Meredith.jpg/revision/latest?cb=20210304190858")
+        user_id=11, post_type='img', title="had to see it through", url="https://media.tenor.com/mN1ib-tjlf8AAAAC/the-office-meredith-palmer.gif")
     meredith_post_img_2 = Post(
         user_id=11, post_type='img', title="face of regret", url="https://www.looper.com/img/gallery/the-deleted-scene-that-solves-this-meredith-mystery-from-the-office-season-5/intro-1616250882.jpg")
     meredith_post_img_3 = Post(
-        user_id=11, post_type='img', title="aso i did something not so chill", url="https://www.gannett-cdn.com/media/USATODAY/popcandy/2013/01/11/meredith-16_9.jpgg")
+        user_id=11, post_type='img', title="aso i did something not so chill", url="https://media.tenor.com/pkBPAeZN4D8AAAAC/drinking-meredith-palmer.gif")
     meredith_post_img_4 = Post(
         user_id=11, post_type='img', url="https://m.media-amazon.com/images/M/MV5BMjA1MjExMDIyOV5BMl5BanBnXkFtZTcwMTE2NDkxMg@@._V1_.jpg")
     meredith_post_img_5 = Post(
