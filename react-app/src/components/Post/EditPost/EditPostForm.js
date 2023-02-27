@@ -39,9 +39,9 @@ const EditPostForm = ({ eachPost, setShowModal }) => {
     if (posts) {
       if (posts.length > 475)
         errors.push("Your comment must be less than 475 characters");
-      if (posts.length < 1 && !image) errors.push("Cannot submit empty");
+      if (posts.length < 1 && !image) errors.push();
     } else {
-      console.log("");
+      console.log("Cannot submit empty");
     }
 
     if (errors.length > 0) {
