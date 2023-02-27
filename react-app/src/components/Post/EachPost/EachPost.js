@@ -12,6 +12,10 @@ const EachPost = ({ eachPost }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  if (!eachPost) {
+    return null;
+  }
+
   return (
     <>
       {currentUser ? (
