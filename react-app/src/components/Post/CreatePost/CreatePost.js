@@ -1,5 +1,5 @@
 import { useState, React, useEffect, useRef } from "react";
-import { Modal } from "../../../context/Modal";
+
 import CreatePostForm from "../CreatePostForm/CreatePostForm";
 import "./CreatePost.css";
 import OpenModalButton from "../../OpenModalButton/index";
@@ -8,11 +8,6 @@ import img from "../../../assets/wel.png";
 const CreatePost = () => {
   const [showModal, setShowModal] = useState(false);
   const ulRef = useRef();
-  const openMenu = () => {
-    if (showModal) return;
-
-    setShowModal(true);
-  };
 
   useEffect(() => {
     if (!showModal) return;
@@ -32,7 +27,7 @@ const CreatePost = () => {
     <div className="create-post-container">
       <div className="modal-to-create-post">
         <div className="img-create-post">
-          <img src={img} className="image-to-your-feed" />
+          <img src={img} className="image-to-your-feed" alt="" />
         </div>
         <div className="button-to-create-post">
           <OpenModalButton

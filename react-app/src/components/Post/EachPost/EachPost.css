@@ -153,3 +153,7 @@ button {
     padding: 0;
     display: flex; 
 }
+
+.follow-button {
+    cursor: pointer;
+}

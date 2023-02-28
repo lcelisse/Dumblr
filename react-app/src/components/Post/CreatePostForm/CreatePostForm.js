@@ -1,6 +1,6 @@
-import { Component, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+
 import { createPostThunk } from "../../../store/post";
 import { useModal } from "../../../context/Modal";
 import "./CreatePostForm.css";

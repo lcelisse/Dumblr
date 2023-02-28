@@ -1,19 +1,13 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+
 import { deleteCommentThunk } from "../../../store/comment";
 
 import "./PostComment.css";
 
 const PostComment = ({ comment, eachPost }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const currentUser = useSelector((state) => state.session.user);
-  const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
+  const currentUser = useSelector((state) => state.session.user);
 
   return (
     <>

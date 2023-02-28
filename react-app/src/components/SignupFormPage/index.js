@@ -35,7 +35,7 @@ function SignupFormPage() {
 
   return (
     <div className="sign-in-container">
-      <img src={dumb} className="full-logo-splash-page"></img>
+      <img src={dumb} className="full-logo-splash-page" alt=""></img>
       <div className="sign-in-form-container">
         <form onSubmit={handleSubmit} className="the-form-container">
           <ul>
