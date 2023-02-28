@@ -16,7 +16,7 @@ const EachPost = ({ eachPost }) => {
 
   const currSession = useSelector((state) => state.session);
   const currUser = currSession.user;
-  console.log(eachPost);
+
   const dispatch = useDispatch();
 
   const { userId } = useParams();

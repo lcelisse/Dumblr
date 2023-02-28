@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
 import Feed from "./components/Post/Feed/Feed";
+import LikesPage from "./components/LikesPage/LikesPage";
 
 function App() {
   const user = useSelector((state) => state.session.user);
@@ -39,11 +40,17 @@ function App() {
             <Route path="/posts">
               <Feed />
             </Route>
+            <Route path="/users/:userId/likes">
+              <LikesPage isLoaded={isLoaded} />
+            </Route>
           </div>
         )}
         <Navigation isLoaded={isLoaded} />
         <Route path="/posts">
           <Feed />
+        </Route>
+        <Route path="/users/:userId/likes">
+          <LikesPage isLoaded={isLoaded} />
         </Route>
       </Switch>
     </>

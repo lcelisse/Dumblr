@@ -62,3 +62,14 @@ def unfollow(id):
     db.session.delete(follow)
     db.session.commit()
     return jsonify("User Unfollowed")
+
+
+@user_routes.route("/<int:id>/likes")
+def user_likes(id):
+    user = User.query.get(id)
+
+    if not user:
+        return {"errors": "User not found"}
+
+    posts = user.user_likes
+    return {post.id: post.to_dict_individual_post() for post in posts}
