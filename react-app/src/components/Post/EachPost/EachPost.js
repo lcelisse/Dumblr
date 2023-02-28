@@ -16,7 +16,7 @@ const EachPost = ({ eachPost }) => {
 
   const currSession = useSelector((state) => state.session);
   const currUser = currSession.user;
-
+  console.log(eachPost);
   const dispatch = useDispatch();
 
   const { userId } = useParams();
@@ -30,10 +30,10 @@ const EachPost = ({ eachPost }) => {
     const post_likes = eachPost.post_likes;
 
     if (post_likes[currentUser.id]) {
-      dispatch(unlikePostThunk(eachPost.id, currentUser, userId));
+      dispatch(unlikePostThunk(eachPost.user.id, currentUser, userId));
       setLike(false);
     } else {
-      dispatch(likePostThunk(eachPost.id, currentUser));
+      dispatch(likePostThunk(eachPost.user.id, currentUser));
       setLike(true);
     }
   };
@@ -44,15 +44,15 @@ const EachPost = ({ eachPost }) => {
   if (currUser?.Following) follows = Object.keys(currUser.Following);
 
   const followUser = () => {
-    dispatch(followUserThunk(eachPost.id, currUser.id));
+    dispatch(followUserThunk(eachPost.user.id, currUser.id));
   };
 
   const unfollowUser = () => {
-    dispatch(unfollowUserThunk(eachPost.id));
+    dispatch(unfollowUserThunk(eachPost.user.id));
   };
 
   let followBtn;
-  if (follows.includes(`${eachPost.id}`)) {
+  if (follows.includes(`${eachPost.user.id}`)) {
     followBtn = (
       <p className="follow-button" onClick={unfollowUser}>
         Unfollow User
