@@ -127,3 +127,33 @@ button {
     line-height: 0;
     position: relative;
 }
+
+.liked-like{
+    color: orange;
+    background: transparent;
+    border: none;
+    justify-content: flex-end;
+  
+}
+
+.unliked-like{
+    color: navy;
+    background: transparent;
+    border: none;
+    justify-content: flex-end;
+    
+
+}
+
+.like-post-container{
+    border-top: 0;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+}
+
+.follow-button {
+    cursor: pointer;
+}

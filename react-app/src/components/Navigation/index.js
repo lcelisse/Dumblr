@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { NavLink, Route, useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 
 import "./Navigation.css";
-import LoginFormPage from "../LoginFormPage";
-import SignupFormPage from "../SignupFormPage";
-import Feed from "../Post/Feed/Feed";
+
 import logo from "../../assets/d.png";
 
 function Navigation({ isLoaded }) {

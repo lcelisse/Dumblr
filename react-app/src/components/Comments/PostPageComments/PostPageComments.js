@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import {
-  createCommentThunk,
-  readPostCommentsThunk,
-} from "../../../store/comment";
-import EachPost from "../../Post/EachPost/EachPost";
+
+import { readPostCommentsThunk } from "../../../store/comment";
+
 import CreateComment from "../CreateComment/CreateComment";
 import PostComment from "../PostComment/PostComment";
 import "./PostPageComments.css";
 
 const PostPageComments = ({ eachPost }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+
   const postComments = useSelector((state) => state.comment[eachPost.id]);
   useEffect(() => {
     if (eachPost?.id) {

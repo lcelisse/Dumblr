@@ -1,21 +1,12 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  createCommentThunk,
-  readPostCommentsThunk,
-} from "../../../store/comment";
+import { createCommentThunk } from "../../../store/comment";
 
 const CreateComment = ({ postId }) => {
   const dispatch = useDispatch();
   const [theComment, setTheComment] = useState("");
   const [errors, setErrors] = useState([]);
   const userId = useSelector((state) => state.session.user.id);
-
-  // useEffect(() => {
-  //   dispatch(readPostCommentsThunk(eachPost.user_id));
-  // }, [dispatch, eachPost.user_id]);
-
   const createComment = async (e) => {
     e.preventDefault();
     setErrors([]);

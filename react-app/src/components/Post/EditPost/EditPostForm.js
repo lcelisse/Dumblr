@@ -1,16 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
-import {
-  deletePostThunk,
-  readAllPostThunk,
-  updatePostThunk,
-} from "../../../store/post";
+import { readAllPostThunk, updatePostThunk } from "../../../store/post";
 
 const EditPostForm = ({ eachPost, setShowModal }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const [posts, setPost] = useState(eachPost.body || "");
   const [errors, setErrors] = useState([]);
   const [image, setImage] = useState("");
@@ -22,15 +16,6 @@ const EditPostForm = ({ eachPost, setShowModal }) => {
     const file = e.target.files[0];
     setImage(file);
   };
-
-  // useEffect(() => {
-  //   if (posts.length < 10)
-  //     errors.push("Post must have a minimum of 10 characters");
-  //   if (posts.length > 475)
-  //     errors.push("Post must not have a maximum of 475 characters");
-
-  //   setErrors(errors);
-  // }, [posts]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

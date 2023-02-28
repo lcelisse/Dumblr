@@ -26,7 +26,7 @@ function LoginFormPage() {
 
   return (
     <div className="log-in-container">
-      <img src={dumb} className="full-logo-splash-page"></img>
+      <img src={dumb} className="full-logo-splash-page" alt=""></img>
       <div className="log-in-form-container">
         <form onSubmit={handleSubmit} className="the-form-container">
           <ul>

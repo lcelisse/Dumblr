@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { readAllPostThunk } from "../../../store/post";
-import CreateComment from "../../Comments/CreateComment/CreateComment";
 import CreatePost from "../CreatePost/CreatePost";
 import EachPost from "../EachPost/EachPost";
 import "./Feed.css";

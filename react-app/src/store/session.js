@@ -1,6 +1,8 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const FOLLOW_USER = "session/FOLLOW_USER";
+const UNFOLLOW_USER = "session/UNFOLLOW_USER";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -10,6 +12,20 @@ const setUser = (user) => ({
 const removeUser = () => ({
   type: REMOVE_USER,
 });
+
+const followUser = (user) => {
+  return {
+    type: FOLLOW_USER,
+    user,
+  };
+};
+
+const unfollowUser = (user) => {
+  return {
+    type: UNFOLLOW_USER,
+    user,
+  };
+};
 
 const initialState = { user: null };
 
@@ -94,12 +110,58 @@ export const signUp = (username, email, password) => async (dispatch) => {
   }
 };
 
+export const followUserThunk =
+  (followingId, followerId) => async (dispatch) => {
+    const res = await fetch(`/api/users/${followingId}/follow`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        followingId,
+        followerId,
+      }),
+    });
+
+    if (res.ok) {
+      const followed = await res.json();
+      dispatch(followUser(followed));
+      return followed;
+    }
+  };
+
+export const unfollowUserThunk = (followingId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${followingId}/follow`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    const unfollowed = await res.json();
+    dispatch(unfollowUser(followingId));
+    return unfollowed;
+  }
+};
+
+const normalizeArray = (arr) => {
+  let obj = {};
+  if (Array.isArray(arr)) arr.forEach((each) => (obj[each.id] = each));
+  return obj;
+};
+
 export default function reducer(state = initialState, action) {
+  let newState;
   switch (action.type) {
     case SET_USER:
-      return { user: action.payload };
+      newState = { user: action.payload };
+      newState.user.Following = normalizeArray(action.payload.Following);
+      return newState;
     case REMOVE_USER:
       return { user: null };
+    case FOLLOW_USER:
+      newState = { ...state };
+      newState.user.Following[action.user.id] = action.user;
+      return newState;
+    case UNFOLLOW_USER:
+      newState = { ...state };
+      delete newState.user.Following[action.user];
+      return newState;
     default:
       return state;
   }

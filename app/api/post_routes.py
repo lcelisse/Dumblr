@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Post, User, db
+from app.models import Post, User, db, likes
 from flask_login import login_required, current_user
 import app.s3_helpers as s3
 from sqlalchemy.sql.expression import func
@@ -120,3 +120,32 @@ def edit_post(id):
     db.session.commit()
 
     return post.to_dict_individual_post()
+
+
+# Like a Post
+@post_routes.route("/<int:postId>/likes", methods=["POST"])
+@login_required
+def like_post(postId):
+    post = Post.query.get(postId)
+    print(post.post_likes)
+    post.post_likes.append(current_user)
+    print(post.post_likes)
+    db.session.add(post)
+    db.session.commit()
+
+    return post.to_dict_individual_post()
+
+# Unlike a post
+
+
+@post_routes.route("/<int:postId>/likes", methods=["DELETE"])
+@login_required
+def unlike_post(postId):
+    post = Post.query.get(postId)
+    print(post.post_likes)
+    post.post_likes.remove(current_user)
+    print(post.post_likes)
+    db.session.add(post)
+    db.session.commit()
+
+    return {"message": "Successfully Deleted"}
