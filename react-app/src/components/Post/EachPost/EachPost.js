@@ -30,10 +30,10 @@ const EachPost = ({ eachPost }) => {
     const post_likes = eachPost.post_likes;
 
     if (post_likes[currentUser.id]) {
-      dispatch(unlikePostThunk(eachPost.user.id, currentUser, userId));
+      dispatch(unlikePostThunk(eachPost.id, currentUser, userId));
       setLike(false);
     } else {
-      dispatch(likePostThunk(eachPost.user.id, currentUser));
+      dispatch(likePostThunk(eachPost.id, currentUser));
       setLike(true);
     }
   };
