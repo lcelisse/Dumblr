@@ -101,7 +101,7 @@
     line-height: 1.5;
     display: flex;
     overflow: hidden;
-    visibility: hidden;
+    visibility: visible;
 }
 
 .right-side-bottom-clicked{
@@ -112,8 +112,8 @@
     font-weight: 400;
     line-height: 1.5;
     display: flex;
-    overflow: hidden;
-    visibility: hidden;
+    /* overflow: hidden; */
+    visibility: visible;
    
 }
 

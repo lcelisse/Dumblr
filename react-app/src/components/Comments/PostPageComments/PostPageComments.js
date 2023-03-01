@@ -22,10 +22,12 @@ const PostPageComments = ({
     }
   }, []);
   const currentUser = useSelector((state) => state.session.user);
-  if (click === true) {
-    setClickComment("add-a-comment");
-  } else {
-    setClickComment("add-a-comment-clicked");
+  if (currentUser !== null) {
+    if (click === true) {
+      setClickComment("add-a-comment");
+    } else {
+      setClickComment("add-a-comment-clicked");
+    }
   }
 
   return (
@@ -51,6 +53,7 @@ const PostPageComments = ({
                 key={comment.id}
                 comment={comment}
                 eachPost={eachPost}
+                setClickComment={setClickComment}
               />
             );
           })}
