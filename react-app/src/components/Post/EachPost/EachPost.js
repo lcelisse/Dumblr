@@ -58,14 +58,25 @@ const EachPost = ({ eachPost }) => {
   };
 
   const onCLickNote = () => {
-    click === false ? setClick(true) : setClick(false);
-    setClickLike(true);
+    if (currentUser !== null) {
+      click === false ? setClick(true) : setClick(false);
+      setClickLike(true);
+    } else {
+      click === true ? setClick(false) : setClick(true);
+      setClickLike(true);
+    }
   };
 
   const onCLickLike = () => {
-    clickLike === false ? setClickLike(true) : setClickLike(false);
-    setClick(true);
+    if (currentUser !== null) {
+      clickLike === false ? setClickLike(true) : setClickLike(false);
+      setClick(true);
+    } else {
+      clickLike === true ? setClickLike(false) : setClickLike(true);
+      setClick(true);
+    }
   };
+
   // follow
   let follows = [];
 
@@ -137,19 +148,10 @@ const EachPost = ({ eachPost }) => {
                 <p className="notes-label">
                   <p className="notes-label-text" onClick={onCLickNote}>
                     Notes
-                  </p>
+                  </p>{" "}
                   <p className="show-likes-for-post" onClick={onCLickLike}>
                     Likes
                   </p>
-                  <div
-                    className={
-                      clickLike
-                        ? "show-likes-for-post-drop-down"
-                        : "show-likes-for-post-drop-down-clicked"
-                    }
-                  >
-                    {postLike}
-                  </div>
                   <button className="comment-button">
                     <i class="fa-regular fa-comment" onClick={onCLickNote}></i>
                   </button>
@@ -166,6 +168,16 @@ const EachPost = ({ eachPost }) => {
                   click ? "single-post-bottom" : "single-post-bottom-clicked"
                 }
               >
+                {" "}
+                <div
+                  className={
+                    clickLike
+                      ? "show-likes-for-post-drop-down"
+                      : "show-likes-for-post-drop-down-clicked"
+                  }
+                >
+                  {postLike}
+                </div>
                 <div className={clickComments}>
                   <PostPageComments
                     eachPost={eachPost}
@@ -195,11 +207,10 @@ const EachPost = ({ eachPost }) => {
                 <p className="notes-label">
                   <p className="notes-label-text" onClick={onCLickNote}>
                     Notes
-                  </p>
+                  </p>{" "}
                   <p className="show-likes-for-post" onClick={onCLickLike}>
                     Likes
                   </p>
-
                   <button className="comment-button">
                     <i class="fa-regular fa-comment" onClick={onCLickNote}></i>
                   </button>
@@ -255,15 +266,6 @@ const EachPost = ({ eachPost }) => {
               <p className="show-likes-for-post" onClick={onCLickLike}>
                 Likes
               </p>
-              <div
-                className={
-                  click
-                    ? "show-likes-for-post-drop-down"
-                    : "show-likes-for-post-drop-down-clicked"
-                }
-              >
-                {postLike}
-              </div>
               <button className="comment-button">
                 <i class="fa-regular fa-comment" onClick={onCLickNote}></i>
               </button>
@@ -274,6 +276,16 @@ const EachPost = ({ eachPost }) => {
               click ? "logged-out-comments" : "logged-out-comments-clicked"
             }
           >
+            {" "}
+            <div
+              className={
+                clickLike
+                  ? "show-likes-for-post-drop-down"
+                  : "show-likes-for-post-drop-down-clicked"
+              }
+            >
+              {postLike}
+            </div>
             <div>
               <PostPageComments
                 eachPost={eachPost}
