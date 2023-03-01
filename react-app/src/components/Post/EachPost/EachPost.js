@@ -83,7 +83,11 @@ const EachPost = ({ eachPost }) => {
   if (currUser?.Following) follows = Object.keys(currUser.Following);
 
   const followUser = () => {
-    dispatch(followUserThunk(eachPost.user.id, currUser.id));
+    if (eachPost.user.id === currUser.id) {
+      return { Error: "You cant follow yourself" };
+    } else {
+      dispatch(followUserThunk(eachPost.user.id));
+    }
   };
 
   const unfollowUser = () => {
@@ -125,6 +129,7 @@ const EachPost = ({ eachPost }) => {
               <div className="single-post-username">
                 {eachPost.user.username}
               </div>
+
               <div className="single-post-title">{eachPost.title}</div>
               <div className="image-container">
                 <img src={eachPost.url} className="each-image" alt=""></img>

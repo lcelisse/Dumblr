@@ -22,7 +22,7 @@ const EditPostForm = ({ eachPost, setShowModal }) => {
 
     const errors = [];
     if (posts.length > 475)
-      errors.push("Your comment must be less than 475 characters");
+      errors.push("Post must not exceed 475 characters .");
     if (posts.length < 1 && !image) errors.push("Cannot submit empty");
 
     if (errors.length > 0) {
@@ -87,7 +87,7 @@ const EditPostForm = ({ eachPost, setShowModal }) => {
                   } else if (postText.length > 475) {
                     setErrors([
                       ...errors,
-                      "Post must not have a maximum of 475 characters",
+                      "Post must not exceed 475 characters .",
                     ]);
                   } else {
                     setErrors([]);

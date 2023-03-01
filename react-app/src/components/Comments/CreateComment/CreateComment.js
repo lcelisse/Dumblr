@@ -13,7 +13,7 @@ const CreateComment = ({ postId, click, clickComment, setClickComment }) => {
 
     const errors = [];
     if (theComment.length > 475)
-      errors.push("Your comment must be less than 475 characters");
+      errors.push("Post must not exceed 475 characters");
     if (theComment.length < 1) errors.push("Cannot submit empty");
 
     if (errors.length > 0) {

@@ -23,7 +23,7 @@
     margin-bottom: 6px;
     border-bottom: none;
     border-radius: 10px;
-    color: lightgray;
+    color: black;
     box-sizing: border-box;
     border: none;
     margin: 0;
@@ -45,5 +45,6 @@
     padding: 0;
 }
 body {
-    color: lightgray;
+    color: black;
+    background-color: #081c34;
 }
