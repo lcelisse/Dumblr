@@ -59,10 +59,12 @@ const EachPost = ({ eachPost }) => {
 
   const onCLickNote = () => {
     click === false ? setClick(true) : setClick(false);
+    setClickLike(true);
   };
 
   const onCLickLike = () => {
     clickLike === false ? setClickLike(true) : setClickLike(false);
+    setClick(true);
   };
   // follow
   let follows = [];
