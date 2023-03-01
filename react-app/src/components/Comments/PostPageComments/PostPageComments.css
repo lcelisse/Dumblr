@@ -34,9 +34,10 @@
 
 .all-comments-section-container{
   
-    height: 130px; 
+    height: 140px; 
     overflow: scroll;
     background: white;
+    padding-bottom: 30px;
 
 }
 

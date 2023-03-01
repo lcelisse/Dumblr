@@ -224,3 +224,21 @@ visibility: visible;
 border-top: 1px solid lightgray;
     height: 80px;
 }
+.show-likes-for-post{
+    margin: 0;
+    padding-left: 5px;
+}
+
+.show-likes-for-post-drop-down{
+    visibility: hidden;
+    height: 0;
+
+}
+
+.show-likes-for-post-drop-down-clicked{
+visibility: visible;
+background: white;
+height: 80px;
+overflow: scroll;
+
+}
