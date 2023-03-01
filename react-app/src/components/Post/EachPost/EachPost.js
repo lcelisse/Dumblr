@@ -27,6 +27,14 @@ const EachPost = ({ eachPost }) => {
 
   const [clickComment, setClickComment] = useState("right-side-bottom");
 
+  const [noUserComments, setNoUserComments] = useState("logged-out-comments");
+
+  const noUserClick = () => {
+    noUserClick === "logged-out-comments"
+      ? setNoUserComments("logged-out-comments-clicked")
+      : setNoUserComments("logged-out-comments");
+  };
+
   if (!eachPost) {
     return null;
   }
@@ -208,15 +216,15 @@ const EachPost = ({ eachPost }) => {
           </nav>
           <div
             className={
-              click ? "single-post-bottom" : "single-post-bottom-clicked"
+              click ? "logged-out-comments" : "logged-out-comments-clicked"
             }
           >
-            <div className={clickComments}>
+            <div>
               <PostPageComments
                 eachPost={eachPost}
                 click={click}
-                setClickComment={setClickComment}
-                clickComment={clickComment}
+                // setClickComment={setClickComment}
+                // clickComment={clickComment}
               />
             </div>
           </div>

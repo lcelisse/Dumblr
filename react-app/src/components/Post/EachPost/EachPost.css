@@ -212,3 +212,15 @@ button {
     
  
 }
+
+.logged-out-comments-clicked{
+visibility: hidden;
+border-top: 1px solid lightgray;
+    height: 0;
+}
+
+.logged-out-comments{
+visibility: visible;
+border-top: 1px solid lightgray;
+    height: 80px;
+}
