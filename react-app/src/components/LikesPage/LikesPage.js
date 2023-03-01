@@ -12,7 +12,6 @@ const LikesPage = ({ user, isLoaded }) => {
   }, [dispatch, state]);
 
   const likedPost = useSelector((state) => state.post.usersLikedPost);
-  console.log("um", likedPost);
 
   let likedPostArr;
   if (Object.values(likedPost).length) {
@@ -21,7 +20,7 @@ const LikesPage = ({ user, isLoaded }) => {
       <EachLikedPost key={each.id} each={each} />
     ));
   }
-  console.log("arr", likedPostArr);
+
   return (
     isLoaded && (
       <div className="likes-paage-container">

@@ -37,7 +37,7 @@ def read_user_post(id):
     return {post.id: post.to_dict_individual_post() for post in posts}
 
 
-@user_routes.route('/<int:id>/follow', methods=["POST"])
+@user_routes.route('/<int:id>/following', methods=["POST"])
 @login_required
 def follow(id):
     form = FollowForm()
@@ -54,7 +54,7 @@ def follow(id):
         return jsonify("Error when following User")
 
 
-@user_routes.route('/<int:id>/follow', methods=["DELETE"])
+@user_routes.route('/<int:id>/following', methods=["DELETE"])
 @login_required
 def unfollow(id):
     follow = Follow.query.filter(

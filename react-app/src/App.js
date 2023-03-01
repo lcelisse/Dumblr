@@ -8,10 +8,11 @@ import Navigation from "./components/Navigation";
 
 import Feed from "./components/Post/Feed/Feed";
 import LikesPage from "./components/LikesPage/LikesPage";
+import Following from "./components/Following/Following";
 
 function App() {
   const user = useSelector((state) => state.session.user);
-
+  const following = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
@@ -43,6 +44,9 @@ function App() {
             <Route path="/users/:userId/likes">
               <LikesPage isLoaded={isLoaded} />
             </Route>
+            <Route path="/users/following">
+              <Following isLoaded={isLoaded} />
+            </Route>
           </div>
         )}
         <Navigation isLoaded={isLoaded} />
@@ -51,6 +55,9 @@ function App() {
         </Route>
         <Route path="/users/:userId/likes">
           <LikesPage isLoaded={isLoaded} />
+        </Route>
+        <Route path="/users/following">
+          <Following isLoaded={isLoaded} />
         </Route>
       </Switch>
     </>

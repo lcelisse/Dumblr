@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../store/session";
+import { followUserThunk, logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
@@ -13,6 +13,10 @@ function ProfileButton({ user }) {
   const ulRef = useRef();
   const history = useHistory();
   const currUser = useSelector((state) => state.session.user.id);
+
+  const following = useSelector((state) => state.session.user.Following);
+
+  console.log(user.id);
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -40,10 +44,14 @@ function ProfileButton({ user }) {
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
-  // console.log(currUser);
-  const onClick = () => {
+
+  const onClickLikes = () => {
     history.push(`/users/${user.id}/likes`);
     dispatch(readUsersLikedPostThunk(user.id));
+  };
+
+  const onClickFollowing = () => {
+    history.push(`/users/following`);
   };
 
   return (
@@ -73,8 +81,12 @@ function ProfileButton({ user }) {
               </div>
             </div>
             <div className="likes-container=click">
-              <div className="likes-container-label" onClick={onClick}>
+              <div className="likes-container-label" onClick={onClickLikes}>
                 Likes
+              </div>
+
+              <div className="likes-container-label" onClick={onClickFollowing}>
+                Following
               </div>
               <div className="like-container-amount"> </div>
             </div>

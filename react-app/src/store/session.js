@@ -112,7 +112,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 
 export const followUserThunk =
   (followingId, followerId) => async (dispatch) => {
-    const res = await fetch(`/api/users/${followingId}/follow`, {
+    const res = await fetch(`/api/users/${followingId}/following`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -129,7 +129,7 @@ export const followUserThunk =
   };
 
 export const unfollowUserThunk = (followingId) => async (dispatch) => {
-  const res = await fetch(`/api/users/${followingId}/follow`, {
+  const res = await fetch(`/api/users/${followingId}/following`, {
     method: "DELETE",
   });
   if (res.ok) {
