@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createCommentThunk } from "../../../store/comment";
 
-const CreateComment = ({ postId }) => {
+const CreateComment = ({ postId, click, clickComment, setClickComment }) => {
   const dispatch = useDispatch();
   const [theComment, setTheComment] = useState("");
   const [errors, setErrors] = useState([]);
@@ -25,10 +25,16 @@ const CreateComment = ({ postId }) => {
     setTheComment("");
   };
 
+  if (click === true) {
+    setClickComment("input-and-submit");
+  } else {
+    setClickComment("input-and-submit-clicked");
+  }
+
   return (
     <div className="create-comment-container">
       <div className="create-comment-form-container">
-        <div className="input-and-submit">
+        <div className={clickComment}>
           <div className="input-to-the-comments">
             <form
               className="comment-form-container"

@@ -13,7 +13,7 @@
 
 .comment-section-clicked{
     visibility: visible;
-    height: 500px;
+    height: 550px;
     flex-direction: column;
     font-size: .875rem;
     font-weight: 400;
@@ -33,11 +33,24 @@
 }
 
 .all-comments-section-container{
-    margin: 0;
-    height: 300px;
-    overflow: scroll;
+    
+    height: 110px; 
+    overflow: scroll; 
+    background: white;
+    
+}
+
+.add-a-comment{
+    visibility: visible;
+}
+
+.add-a-comment-clicked {
+     visibility: visible;
 }
 
 .all-comments{
-    
+    visibility: visible;
+}
+.all-comments-clicked{
+    visibility: visible;
 }

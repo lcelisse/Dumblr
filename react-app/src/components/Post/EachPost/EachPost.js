@@ -23,6 +23,10 @@ const EachPost = ({ eachPost }) => {
 
   const [like, setLike] = useState(eachPost.post_likes[currentUser?.id]);
 
+  const [click, setClick] = useState(true);
+
+  const [clickComment, setClickComment] = useState("right-side-bottom");
+
   if (!eachPost) {
     return null;
   }
@@ -36,6 +40,16 @@ const EachPost = ({ eachPost }) => {
       dispatch(likePostThunk(eachPost.id, currentUser));
       setLike(true);
     }
+  };
+
+  const clickComments = () => {
+    clickComment === "right-side-bottom"
+      ? setClickComment("right-side-bottom-clicked")
+      : setClickComment("right-side-bottom");
+  };
+
+  const onCLickNote = () => {
+    click === false ? setClick(true) : setClick(false);
   };
 
   // follow
@@ -92,27 +106,44 @@ const EachPost = ({ eachPost }) => {
                     </button>
                     <EditPost eachPost={eachPost} />
                   </div>
-                </div>{" "}
-                <div className="notes-total">
+                </div>
+                <nav className="nav-for-comments-likes">
                   <p className="notes-label">
-                    Notes{" "}
                     <span className="amount-of-comments-plus-likes">
                       {eachPost.likes_count + eachPost.comment_count}
-                    </span>
+                    </span>{" "}
+                    <p className="notes-label-text" onClick={onCLickNote}>
+                      Notes
+                    </p>
+                    <button className="comment-button">
+                      <i
+                        class="fa-regular fa-comment"
+                        onClick={onCLickNote}
+                      ></i>
+                    </button>
+                    <button
+                      className={like ? "liked-like " : "unliked-like "}
+                      onClick={likeButton}
+                    >
+                      <i class="fas fa-heart"></i>
+                    </button>
                   </p>
-                </div>
-                <div className="like-post-container ">
-                  <button
-                    className={like ? "liked-like " : "unliked-like "}
-                    onClick={likeButton}
-                  >
-                    <i class="fas fa-heart"></i>
-                  </button>
-                </div>
+                </nav>
               </div>
               <div className="single-post-bottom">
-                <div className="right-side-bottom">
-                  <PostPageComments eachPost={eachPost} />
+                <div
+                  className={
+                    click ? "single-post-bottom" : "single-post-bottom-clicked"
+                  }
+                >
+                  <div className={clickComments}>
+                    <PostPageComments
+                      eachPost={eachPost}
+                      click={click}
+                      setClickComment={setClickComment}
+                      clickComment={clickComment}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -131,26 +162,37 @@ const EachPost = ({ eachPost }) => {
                 <img src={eachPost.url} className="each-image" alt=""></img>
               </div>
               <div className="single-post-body">{eachPost.body}</div>
-              <div className="notes-total">
+              <nav className="nav-for-comments-likes">
                 <p className="notes-label">
-                  Notes{" "}
                   <span className="amount-of-comments-plus-likes">
                     {eachPost.likes_count + eachPost.comment_count}
-                  </span>
+                  </span>{" "}
+                  <p className="notes-label-text" onClick={onCLickNote}>
+                    Notes
+                  </p>
+                  <button className="comment-button">
+                    <i class="fa-regular fa-comment" onClick={onCLickNote}></i>
+                  </button>
+                  <button
+                    className={like ? "liked-like " : "unliked-like "}
+                    onClick={likeButton}
+                  >
+                    <i class="fas fa-heart"></i>
+                  </button>
                 </p>
-              </div>
-              <div className="like-post-container">
-                <button
-                  className={like ? "liked-like" : "unliked-like"}
-                  onClick={likeButton}
-                >
-                  <i class="fas fa-heart"></i>
-                </button>
-              </div>
-              <div className="single-post-bottom">
-                <div className="right-side-bottom">
-                  <PostPageComments eachPost={eachPost} />
-                  {/* <CreateComment /> */}
+              </nav>
+              <div
+                className={
+                  click ? "single-post-bottom" : "single-post-bottom-clicked"
+                }
+              >
+                <div className={clickComments}>
+                  <PostPageComments
+                    eachPost={eachPost}
+                    click={click}
+                    setClickComment={setClickComment}
+                    clickComment={clickComment}
+                  />
                 </div>
               </div>
             </div>
@@ -173,6 +215,23 @@ const EachPost = ({ eachPost }) => {
               </span>
             </p>
           </div>
+          <nav className="nav-for-comments-likes">
+            <p className="notes-label">
+              <span className="amount-of-comments-plus-likes">
+                {eachPost.likes_count + eachPost.comment_count}
+              </span>{" "}
+              <p className="notes-label-text">Notes</p>
+              <button className="comment-button">
+                <i class="fa-regular fa-comment"></i>
+              </button>
+              <button
+                className={like ? "liked-like " : "unliked-like "}
+                onClick={likeButton}
+              >
+                <i class="fas fa-heart"></i>
+              </button>
+            </p>
+          </nav>
           <div className="single-post-bottom">
             <div className="right-side-bottom">
               <PostPageComments eachPost={eachPost} />

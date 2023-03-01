@@ -16,7 +16,8 @@
 .errors {
     display: block;
     color: red;
-    height: 300px;
+    height: 10px;
+    margin-bottom: 50px;
 }
 
 .form-for-create-post {
