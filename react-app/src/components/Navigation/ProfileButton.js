@@ -16,7 +16,6 @@ function ProfileButton({ user }) {
 
   const following = useSelector((state) => state.session.user.Following);
 
-  console.log(user.id);
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);

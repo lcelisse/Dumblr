@@ -41,10 +41,7 @@ function App() {
           </switch>
         ) : (
           <div className="The-Body">
-            <Navigation isLoaded={isLoaded} />
-            <Route path="/">
-              <LandingPage />
-            </Route>
+            <Navigation isLoaded={isLoaded} />{" "}
             <Route path="/posts">
               <Feed />
             </Route>
@@ -53,6 +50,9 @@ function App() {
             </Route>
             <Route path="/users/following">
               <Following isLoaded={isLoaded} />
+            </Route>
+            <Route path="/">
+              <LandingPage />
             </Route>
           </div>
         )}
