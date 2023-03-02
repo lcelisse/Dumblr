@@ -48,11 +48,13 @@ const CreateComment = ({ postId, click, clickComment, setClickComment }) => {
                 value={theComment}
                 onChange={(e) => setTheComment(e.target.value)}
               ></textarea>
-              <input
+              <button
                 type="submit"
                 onClick={createComment}
                 className="create-button-css"
-              />
+              >
+                Submit
+              </button>
             </form>
           </div>
 

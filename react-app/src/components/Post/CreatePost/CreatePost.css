@@ -18,5 +18,6 @@
 
 .button-to-create-post{
   background: none;  
-  margin-left: 220px;
+  margin-left: 200px;
+  position: relative;
 }

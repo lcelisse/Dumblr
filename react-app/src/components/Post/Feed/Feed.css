@@ -56,7 +56,7 @@
     background: white;
     min-height: 50px;
     border-radius: 3px;
-    justify-content: space-between;
+
     align-items: center;
     margin-bottom: 20px;
     padding: 15px 5px;
@@ -64,6 +64,7 @@
     position: relative;
     width: 100%;
     max-width: 540px;
+    margin-left: 100px;
 
 }
 

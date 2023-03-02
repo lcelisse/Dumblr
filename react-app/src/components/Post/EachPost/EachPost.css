@@ -7,7 +7,7 @@
     border-radius: 3px;
     margin-bottom: 20px;
     
-    margin-top: 20px;
+    margin-top: 30px;
     padding-bottom: 50px;
 }
 
@@ -201,7 +201,7 @@ button {
 .notes-label-text{
     margin: 0;
     display:inline;
-    
+    cursor: pointer;
     
 }
 
@@ -235,6 +235,7 @@ border-top: 1px solid lightgray;
 .show-likes-for-post{
     margin: 0;
     display:inline;
+    cursor: pointer;
 }
 
 .show-likes-for-post-drop-down{
@@ -246,7 +247,25 @@ border-top: 1px solid lightgray;
 .show-likes-for-post-drop-down-clicked{
 visibility: visible;
 background: white;
-height: 80px;
+height: 85px;
 overflow: scroll;
+overflow-wrap: anywhere;
+flex: 1 1 0%;
+justify-content: space-between;
+align-items: center;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding-left: 10px;
+margin-top: 10px;
 
+
+
+}
+
+.display-username-of-likes{
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
