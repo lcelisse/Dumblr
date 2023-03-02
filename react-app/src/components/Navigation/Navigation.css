@@ -92,13 +92,14 @@
 
 .nav-bar-logged-in{
     z-index: 100;
-    background-color:inherit;
+    background-color: #081c34;
     box-sizing: border-box;
     height: 55px;
     border-bottom: 1px solid gray;
   margin: 0;
-    position: sticky;
+    position: fixed;
     top: 0;
+    width: 100%;
 }
 .links-on-the-nav{
   height: 54px;

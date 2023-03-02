@@ -24,7 +24,7 @@ const LikesPage = ({ user, isLoaded }) => {
 
   return (
     isLoaded && (
-      <div className="likes-paage-container">
+      <div className="likes-page-container">
         <div className="">{likedPostArr}</div>
       </div>
     )
