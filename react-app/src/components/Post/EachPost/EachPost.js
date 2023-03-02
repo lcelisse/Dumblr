@@ -86,7 +86,7 @@ const EachPost = ({ eachPost }) => {
     if (eachPost.user.id === currUser.id) {
       return { Error: "You cant follow yourself" };
     } else {
-      dispatch(followUserThunk(eachPost.user.id));
+      dispatch(followUserThunk(eachPost.user.id, currUser.id));
     }
   };
 

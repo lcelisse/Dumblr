@@ -51,7 +51,7 @@ def follow(id):
         db.session.commit()
         return jsonify(new_follow.to_dict())
     else:
-        return jsonify("Error when following User")
+        return jsonify(form)
 
 
 @user_routes.route('/<int:id>/following', methods=["DELETE"])

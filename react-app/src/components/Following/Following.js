@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
+import "./Following.css";
 
 const Following = ({ isLoaded }) => {
   const state = useSelector((state) => state);
   const following = useSelector((state) => state.session.user.Following);
-  console.log(following);
 
   let followingArr;
   if (Object.values(following).length) {

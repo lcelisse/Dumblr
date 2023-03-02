@@ -23,7 +23,8 @@
     font-weight: 700;
     line-height: 1.5;
     display: flex;
-
+border-radius: 10px;
+padding-left: 10px;
 }
 
 .each-title-container{
