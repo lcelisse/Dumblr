@@ -199,8 +199,8 @@ const EachPost = ({ eachPost }) => {
               <div className="top-of-single-post-container">
                 <div className="single-post-username">
                   {eachPost.user.username}
+                  <div className="to-follow-or-unfollow">{followBtn}</div>
                 </div>
-                <div className="to-follow-or-unfollow">{followBtn}</div>
               </div>
 
               <div className="single-post-title">{eachPost.title}</div>

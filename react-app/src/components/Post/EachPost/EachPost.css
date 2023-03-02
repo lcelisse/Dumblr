@@ -179,6 +179,9 @@ button {
 
 .follow-button {
     cursor: pointer;
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: 1px;
 }
 
 .nav-for-comments-likes{
@@ -211,7 +214,7 @@ button {
 
     align-items: center;
    
-    margin-left: 70% ;
+    margin-left: 60% ;
     padding: 0;
     
  
