@@ -10,6 +10,8 @@ import Feed from "./components/Post/Feed/Feed";
 import LikesPage from "./components/LikesPage/LikesPage";
 import Following from "./components/Following/Following";
 import LandingPage from "./components/LandingPage/LandingPage";
+import AboutUs from "./components/AboutUs/AboutUs";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 
 function App() {
   const user = useSelector((state) => state.session.user);
@@ -31,12 +33,16 @@ function App() {
             </Route>
             <Route exact path="/">
               <LandingPage />
+              <AboutUs />
             </Route>
             <Route exact path="/login">
               <LoginFormPage />
             </Route>
             <Route exact path="/signup">
               <SignupFormPage />
+            </Route>
+            <Route path="/404">
+              <PageNotFound />
             </Route>
           </switch>
         ) : (
@@ -51,8 +57,12 @@ function App() {
             <Route exact path="/users/following">
               <Following isLoaded={isLoaded} />
             </Route>
+            <Route path="/404">
+              <PageNotFound />
+            </Route>
             <Route exact path="/">
               <LandingPage />
+              <AboutUs />
             </Route>
           </div>
         )}
