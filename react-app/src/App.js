@@ -42,6 +42,9 @@ function App() {
         ) : (
           <div className="The-Body">
             <Navigation isLoaded={isLoaded} />
+            <Route path="/">
+              <LandingPage />
+            </Route>
             <Route path="/posts">
               <Feed />
             </Route>
