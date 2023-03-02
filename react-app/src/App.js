@@ -28,12 +28,12 @@ function App() {
         {!user?.id ? (
           <switch>
             <Navigation isLoaded={isLoaded} />
+
             <Route exact path="/posts">
               <Feed />
             </Route>
             <Route exact path="/">
               <LandingPage />
-              <AboutUs />
             </Route>
             <Route exact path="/login">
               <LoginFormPage />
@@ -43,6 +43,9 @@ function App() {
             </Route>
             <Route path="/404">
               <PageNotFound />
+            </Route>
+            <Route path="/">
+              <AboutUs />
             </Route>
           </switch>
         ) : (
@@ -62,6 +65,8 @@ function App() {
             </Route>
             <Route exact path="/">
               <LandingPage />
+            </Route>
+            <Route path="/">
               <AboutUs />
             </Route>
           </div>
