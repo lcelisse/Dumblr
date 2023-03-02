@@ -38,7 +38,7 @@ function LoginFormPage() {
             Email
             <input
               className="input-top-part"
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
