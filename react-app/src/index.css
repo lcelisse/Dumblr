@@ -13,15 +13,16 @@ body {
 button {
     border: none;
     background: none;
-height: 20px;
-font-family:  "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;;
-color: white;
+    height: 30px;
+    font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+    color: white;
     background: #081c34;
     border-radius: 3px;
     border: none;
-margin-bottom: 10px;
-
-    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 ol, ul {

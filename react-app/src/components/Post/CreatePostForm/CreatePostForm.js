@@ -56,12 +56,11 @@ const CreatePostForm = ({ setShowModal }) => {
         <form onSubmit={handleSubmit} className="form-create">
           <label className="post-type-choose">
             <div className="image-types"></div>
-            <h5>
-              To make a post you must have some sort of text or an image ..
-              chosse below
-            </h5>
+
             <label className="text-icon-create-post">
-              <p>Some Words</p>
+              <p>
+                <i class="fa-light fa-comment-text"></i>Text
+              </p>
               <input
                 name="type"
                 type="radio"
@@ -71,7 +70,9 @@ const CreatePostForm = ({ setShowModal }) => {
               />
             </label>
             <label className="image-icon-create-post">
-              <p>An Image</p>
+              <p>
+                <i class="fa-solid fa-camera"></i>
+              </p>
               <input
                 name="type"
                 type="radio"
@@ -114,7 +115,11 @@ const CreatePostForm = ({ setShowModal }) => {
                 />
               </label>
             )}
-            <button disabled={loading} type="submit">
+            <button
+              className="button-to-create-css"
+              disabled={loading}
+              type="submit"
+            >
               {loading ? "Your Image is Loading ...." : "Create Post"}
             </button>
             {/* If there are validation errors, notify the user */}
