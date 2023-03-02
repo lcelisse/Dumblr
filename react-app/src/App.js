@@ -26,32 +26,32 @@ function App() {
         {!user?.id ? (
           <switch>
             <Navigation isLoaded={isLoaded} />
-            <Route path="/posts">
+            <Route exact path="/posts">
               <Feed />
             </Route>
-            <Route path="/">
+            <Route exact path="/">
               <LandingPage />
             </Route>
-            <Route path="/login">
+            <Route exact path="/login">
               <LoginFormPage />
             </Route>
-            <Route path="/signup">
+            <Route exact path="/signup">
               <SignupFormPage />
             </Route>
           </switch>
         ) : (
           <div className="The-Body">
             <Navigation isLoaded={isLoaded} />{" "}
-            <Route path="/posts">
+            <Route exact path="/posts">
               <Feed />
             </Route>
-            <Route path="/users/:userId/likes">
+            <Route exact path="/users/:userId/likes">
               <LikesPage isLoaded={isLoaded} />
             </Route>
-            <Route path="/users/following">
+            <Route exact path="/users/following">
               <Following isLoaded={isLoaded} />
             </Route>
-            <Route path="/">
+            <Route exact path="/">
               <LandingPage />
             </Route>
           </div>

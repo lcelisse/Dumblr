@@ -34,11 +34,12 @@
 
 .all-comments-section-container{
   
-    height: 140px; 
+    height: 100px; 
     overflow: scroll;
     
     padding-bottom: 30px;
-
+overflow-x: hidden;
+overflow-y: auto;
 }
 
 .add-a-comment{
