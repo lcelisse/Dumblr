@@ -13,7 +13,7 @@ const CreateComment = ({ postId, click, clickComment, setClickComment }) => {
 
     const errors = [];
     if (theComment.length > 475)
-      errors.push("Post must not exceed 475 characters");
+      errors.push("Post must not exceed 475 characters .");
     if (theComment.length < 1) errors.push("Cannot submit empty");
 
     if (errors.length > 0) {
@@ -48,7 +48,11 @@ const CreateComment = ({ postId, click, clickComment, setClickComment }) => {
                 value={theComment}
                 onChange={(e) => setTheComment(e.target.value)}
               ></textarea>
-              <input type="submit" onClick={createComment} />
+              <input
+                type="submit"
+                onClick={createComment}
+                className="create-button-css"
+              />
             </form>
           </div>
 

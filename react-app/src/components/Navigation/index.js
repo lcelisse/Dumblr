@@ -57,24 +57,21 @@ function Navigation({ isLoaded }) {
                 />
               </div>
               <div className="splash-page-nav-right-side">
-                <div></div>
                 <button
-                  className={buttonColor}
+                  className="splash-page-login-button-b"
                   onClick={() => {
-                    if (splashPage === "Sign Up") {
-                      changeButton("Log In");
-                      handleClickSignup();
-                      removeLogIn();
-                      changeButtonColorB();
-                    } else {
-                      changeButton("Sign Up");
-                      handleClickLogin();
-
-                      changeButtonColorA();
-                    }
+                    handleClickSignup();
                   }}
                 >
-                  {splashPage}
+                  Sign Up
+                </button>
+                <button
+                  className="splash-page-login-button-a"
+                  onClick={() => {
+                    handleClickLogin();
+                  }}
+                >
+                  Log In
                 </button>
               </div>
             </nav>

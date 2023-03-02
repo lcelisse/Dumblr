@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import Feed from "./components/Post/Feed/Feed";
 import LikesPage from "./components/LikesPage/LikesPage";
 import Following from "./components/Following/Following";
+import LandingPage from "./components/LandingPage/LandingPage";
 
 function App() {
   const user = useSelector((state) => state.session.user);
@@ -25,14 +26,17 @@ function App() {
         {!user?.id ? (
           <switch>
             <Navigation isLoaded={isLoaded} />
+            <Route path="/posts">
+              <Feed />
+            </Route>
+            <Route path="/">
+              <LandingPage />
+            </Route>
             <Route path="/login">
               <LoginFormPage />
             </Route>
             <Route path="/signup">
               <SignupFormPage />
-            </Route>
-            <Route path="/posts">
-              <Feed />
             </Route>
           </switch>
         ) : (

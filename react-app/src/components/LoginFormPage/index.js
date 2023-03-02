@@ -54,13 +54,16 @@ function LoginFormPage() {
               required
             />
           </label>
-          <button type="submit">Log In</button>
+          <button type="submit" className="login-buttons-css">
+            Log In
+          </button>
           <button
             type="submit"
             onClick={(e) => {
               setEmail("pam@aa.io");
               setPassword("password");
             }}
+            className="login-buttons-css"
           >
             Demo user
           </button>

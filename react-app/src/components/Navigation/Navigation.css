@@ -77,6 +77,7 @@
   background: #00cf35;
   border-radius: 3px;
   border: none;
+  margin-right: 10px;
 
 }
 
@@ -84,6 +85,9 @@
   justify-content: flex-end;
   align-items: center;
   display: flex;
+  color: white;
+  
+
 }
 
 .nav-bar-logged-in{
@@ -119,6 +123,7 @@
   justify-content: flex-end;
     align-items: center;
     display: flex;
+    height: 10px;
 }
 
 .profile-container-button{

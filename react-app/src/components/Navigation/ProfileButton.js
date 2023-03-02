@@ -58,7 +58,7 @@ function ProfileButton({ user }) {
     <>
       <div className="profile-container-button">
         <button className="navigation-profile-button" onClick={openMenu}>
-          <i class="fa-solid fa-user"></i>
+          <i class="fa-solid fa-user fa-xl"></i>
         </button>
       </div>
 
