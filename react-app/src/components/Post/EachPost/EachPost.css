@@ -188,7 +188,6 @@ button {
     min-height: 30px;
     border-top: 1px solid lightgray;
     
-
 }
 
 .notes-label {
@@ -196,13 +195,15 @@ button {
     display:inline;
     
     align-items: center;
+    
 }
 
 .notes-label-text{
     margin: 0;
     display:inline;
     cursor: pointer;
-    
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .amount-of-comments-plus-likes{
