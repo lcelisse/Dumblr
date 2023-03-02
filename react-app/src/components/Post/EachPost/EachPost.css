@@ -210,11 +210,11 @@ button {
 }
 
 .comment-button{
-    width: 10%;
-
+    width: 5%;
+  height: 20px;
     align-items: center;
    
-    margin-left: 60% ;
+    margin-left: 65% ;
     padding: 0;
     
  

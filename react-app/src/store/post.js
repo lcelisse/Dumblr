@@ -261,8 +261,9 @@ export default function postReducer(state = initialState, action) {
         if (newState.usersLikedPost[postId]) {
           newState.usersLikedPost[postId] = { ...state.usersLikedPost[postId] };
           newState.usersLikedPost[postId].likes_count++;
-
-          newState.usersLikedPost[postId].post_likes[current_user.id] =
+          if (!newState.usersLikedPost[postId])
+            newState.usersLikedPost[postId] = [];
+          newState.usersLikedPost[postId].post_likes[current_user?.id] =
             current_user;
         } else {
           newState.usersLikedPost[postId] = post;
