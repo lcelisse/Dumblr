@@ -27,7 +27,8 @@ const CreatePost = () => {
     <div className="create-post-container">
       <div className="modal-to-create-post">
         <div className="img-create-post">
-          <img src={img} className="image-to-your-feed" alt="" />
+          <span className="welcome">Welcome !</span>
+          <p className="welcome-style">Create a Post Here ⇩</p>
         </div>
         <div className="button-to-create-post">
           <OpenModalButton
