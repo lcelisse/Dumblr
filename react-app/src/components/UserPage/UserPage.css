@@ -19,8 +19,8 @@
     align-items: flex-end;
     display: flex;
     border-radius: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
+ 
+
 }
 
 .top-part-user-page{
@@ -229,11 +229,11 @@
 .user-page-nav-bar{
     width: auto;
     position: absolute;
-    left: 0;
+
     width: 100%;
     font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
     color: #00b8ff;
-    margin: auto auto 10px 8%;
+
     font-size: 1.125rem;
     font-weight: 700;
     line-height: 1.333;
@@ -248,6 +248,7 @@
     padding: 6px 12px 10px;
     text-decoration: none;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .users-liked-post{
@@ -257,6 +258,7 @@
     padding: 6px 12px 10px;
     text-decoration: none;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .who-the-user-is-following{
@@ -266,6 +268,7 @@
     padding: 6px 12px 10px;
     text-decoration: none;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .user-page-post-clicked{
@@ -276,6 +279,7 @@
     text-decoration: none;
     overflow: hidden;
     box-shadow: inset 0px -2px 0px #00b8ff;
+    cursor: pointer;
 }
 
 .users-liked-post-clicked{
@@ -286,6 +290,7 @@
     text-decoration: none;
     overflow: hidden;
     box-shadow: inset 0px -2px 0px #00b8ff;
+    cursor: pointer;
 }
 
 .who-the-user-is-following-clicked{
@@ -296,5 +301,25 @@
     text-decoration: none;
     overflow: hidden;
     box-shadow: inset 0px -2px 0px #00b8ff;
+    cursor: pointer;
 }
 
+.bottom-part-user-page{
+    width: 100%;
+    max-width: 540px;
+    flex-direction: column;
+    align-self: center;
+    margin-bottom: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+}
+.user-post-feed-container{
+    margin-top: 20px;
+}
+
+.inside-the-container{
+    width: 100%;
+    overflow-anchor: none;
+    margin-top: 0;
+}

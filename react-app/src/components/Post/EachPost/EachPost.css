@@ -6,7 +6,7 @@
     max-width: 540px;
     border-radius: 3px;
     margin-bottom: 20px;
-    
+    box-shadow: 0 0 0 0.5px lightgray;
     margin-top: 30px;
     padding-bottom: 50px;
 }
@@ -272,5 +272,9 @@ margin-top: 10px;
 }
 
 .username-link{
-    cursor: pointer;
+
+}
+
+.link-for-username{
+    text-decoration: none;
 }

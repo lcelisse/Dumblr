@@ -8,6 +8,7 @@ import { addHeader } from "../../store/userPage";
 import "./UserPage.css";
 import OpenModalButton from "../OpenModalButton";
 import EditUserPageForm from "./EditUserPageForm/EditUserPageForm";
+import EachPost from "../Post/EachPost/EachPost";
 
 const UserPage = () => {
   const { userId } = useParams();
@@ -64,6 +65,18 @@ const UserPage = () => {
     randomNum = Math.floor(Math.random() * 6);
     return headers[randomNum];
   };
+
+  let postArr = Object.values(userPosts);
+
+  let post;
+
+  if (Object.values(userPosts).length) {
+    post = postArr.map((eachPost) => {
+      return <EachPost key={eachPost.id} eachPost={eachPost} />;
+    });
+  }
+
+  if (!Object.values(userPosts).length) return null;
 
   return (
     <div className="user-page-container-outer">
@@ -142,7 +155,9 @@ const UserPage = () => {
               </div>
             </div>
             <div className="bottom-part-user-page">
-              <div className="user-post-feed-container"></div>
+              <div className="user-post-feed-container">
+                <div className="inside-the-container">{post}</div>
+              </div>
             </div>
           </div>
         </div>
