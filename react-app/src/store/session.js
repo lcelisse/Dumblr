@@ -3,6 +3,8 @@ const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const FOLLOW_USER = "session/FOLLOW_USER";
 const UNFOLLOW_USER = "session/UNFOLLOW_USER";
+const EDIT_USER = "session/EDIT_USER";
+const SET_HEADER = "session/SET_HEADER";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -26,6 +28,16 @@ const unfollowUser = (user) => {
     user,
   };
 };
+
+const editUser = (user) => ({
+  type: EDIT_USER,
+  user,
+});
+
+const setHeader = (image) => ({
+  type: SET_HEADER,
+  image,
+});
 
 const initialState = { user: null };
 
@@ -139,6 +151,39 @@ export const unfollowUserThunk = (followingId) => async (dispatch) => {
   }
 };
 
+export const editUserThunk = (user, userId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}`, {
+    method: "PUT",
+    body: user,
+  });
+
+  if (res.ok) {
+    const editedUser = await res.json();
+    dispatch(editUser(editedUser));
+    return editedUser;
+  } else {
+    const data = await res.json();
+    if (data.errors) {
+      return data;
+    }
+  }
+};
+
+export const setHeaderThunk = (data, userId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}/header-image`, {
+    method: "POST",
+    body: data,
+  });
+
+  if (res.ok) {
+    const user = await res.json();
+    dispatch(setHeader(user.header_image_url));
+    return user.header_image_url;
+  } else {
+    return res;
+  }
+};
+
 const normalizeArray = (arr) => {
   let obj = {};
   if (Array.isArray(arr)) arr.forEach((each) => (obj[each.id] = each));
@@ -161,6 +206,16 @@ export default function reducer(state = initialState, action) {
     case UNFOLLOW_USER:
       newState = { ...state };
       delete newState.user.Following[action.user];
+      return newState;
+
+    case EDIT_USER: {
+      newState = { ...state };
+      newState.user = { ...state.user, ...action.user };
+      return newState;
+    }
+    case SET_HEADER:
+      newState = { ...state, user: { ...state.user } };
+      newState.header_image_url = action.image;
       return newState;
     default:
       return state;
