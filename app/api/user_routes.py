@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import User, Follow, db
-from app.forms import FollowForm
+from app.forms import FollowForm, UserForm
+import app.s3_helpers as s3
 
 user_routes = Blueprint('users', __name__)
 
@@ -73,3 +74,89 @@ def user_likes(id):
 
     posts = user.user_likes
     return {post.id: post.to_dict_individual_post() for post in posts}
+
+
+@user_routes.route("/<int:id>/header-img", methods=['POST'])
+@login_required
+def set_header(id):
+    user = User.query.get(id)
+
+    if not user:
+        return {"Error": "User not found"}, 404
+
+    header_image_url = user.header_image_url
+
+    if "header_picture" in request.files:
+        header_picture = request.files["header_picture"]
+
+        if not s3.image_file(header_picture.filename):
+            print("file type not permitted")
+            return {"Error": "File type not permitted"}, 400
+
+        if header_image_url:
+            image = user.header_image_url.rsplit('/')[-1]
+            s3.remove_image_file_from_s3
+
+        header_picture.filename = s3.get_unique_filename(
+            header_picture.filename)
+
+        upload_img = s3.upload_image_file_to_s3(header_picture)
+
+        if "url" not in upload_img:
+            print("Error upload")
+
+            return {"Error": upload_img}, 400
+
+        header_image_url = upload_img["url"]
+
+    user.header_image_url = header_image_url
+
+    db.session.add(user)
+    db.session.commit()
+
+    return user.to_dict()
+
+
+@user_routes.route("/<int:id>", methods=['PUT'])
+@login_required
+def edit_user(id):
+    user = User.query.get(id)
+
+    if not user:
+        return {"Error": "User not found"}, 404
+
+    profile_image_url = user.profile_image_url
+
+    if "profile_picture" in request.files:
+        profile_picture = request.files["profile_picture"]
+
+        if not s3.image_file(profile_picture.filename):
+            print("Error")
+            return {"Error": "File type not permitted"}, 400
+
+        if profile_image_url:
+            image = user.profile_image_url.rsplit('/')[-1]
+            s3.remove_image_file_from_s3(image)
+
+        profile_picture.filename = s3.get_unique_filename(
+            profile_picture.filename)
+
+        upload_image = s3.upload_image_file_to_s3(profile_picture)
+
+        if "url" not in upload_image:
+            print("Error")
+
+            return {"Error": upload_image}, 400
+
+        profile_image_url = upload_image["url"]
+
+    form_data = request.form.to_dict()
+
+    user.display_name = form_data["display_name"]
+    user.title = form_data["title"]
+    user.bio = form_data["bio"]
+    user.profile_image_url = form_data["profile_image_url"]
+
+    db.session.add(user)
+    db.session.commit()
+    return user.to_dict()
