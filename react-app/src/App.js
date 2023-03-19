@@ -48,9 +48,9 @@ function App() {
               <Route path="/users/:userId">
                 <UserPage />
               </Route>{" "}
-              <Route exact path="*">
+              {/* <Route exact path="*">
                 {<PageNotFound />}
-              </Route>
+              </Route> */}
             </switch>
           ) : (
             <switch className="The-Body">
@@ -73,9 +73,9 @@ function App() {
               <Route path="/">
                 <AboutUs />
               </Route>
-              <Route exact path="*">
+              {/* <Route exact path="*">
                 {<PageNotFound />}
-              </Route>
+              </Route> */}
             </switch>
           )}
           <Navigation isLoaded={isLoaded} />
@@ -92,9 +92,9 @@ function App() {
           <Route exact path="/users/:userId">
             <UserPage />
           </Route>
-          <Route exact path="*">
+          {/* <Route exact path="*">
             {<PageNotFound />}
-          </Route>
+          </Route> */}
         </Switch>
       </BrowserRouter>
     </>

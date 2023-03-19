@@ -99,6 +99,7 @@ export const readUserPostThunk = (userId) => async (dispatch) => {
 
   if (res.ok) {
     const posts = await res.json();
+
     dispatch(readUserPost(posts));
     return posts;
   }
@@ -207,7 +208,9 @@ export default function postReducer(state = initialState, action) {
       return newState;
     case READ_USER_POST:
       newState = { ...state };
-      newState.userPosts = { ...action.posts };
+
+      newState.userPosts = { ...action.post };
+
       return newState;
     case READ_ALL_POST:
       newState = { ...state };

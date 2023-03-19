@@ -27,7 +27,7 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route('/<int:id>/DELETEs')
+@user_routes.route('/<int:id>/posts')
 def read_user_post(id):
     user = User.query.get(id)
 
