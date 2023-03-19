@@ -60,7 +60,7 @@ function App() {
             <Route exact path="/users/following">
               <Following isLoaded={isLoaded} />
             </Route>
-            <Route path="/404">
+            <Route path="*">
               <PageNotFound />
             </Route>
             <Route exact path="/">
