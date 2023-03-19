@@ -170,7 +170,7 @@
     font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
 }
 
-.edit-profile-button-container{
+.edit-profile-button-container> button{
 
     align-items: stretch;
     margin: 16px 0 0;
@@ -178,7 +178,7 @@
  
 }
 
-.the-button-container{
+.the-button-container> button{
     width: 100%;
     vertical-align: top;
   
@@ -189,13 +189,13 @@
  margin-bottom: 12px;
 }
 
-.the-link-to-the-button{
+.the-link-to-the-button > button{
     border-radius: 20px;
     font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
     padding: 6px 15px;
     font-size: 1rem;
     font-weight: 700;
-    height: 30px;
+    height: 35px;
     color: white;
     background: #00b8ff;
     border: none;
@@ -209,8 +209,92 @@
     cursor: pointer;
 }
 
-.span-button-container{
+.span-button-container> button{
     width: 100%;
     vertical-align: top;
    
 }
+
+.middle-part-user-page{
+    box-sizing: border-box;
+    border-bottom: 1px solid #00b8ff;
+    height: 40px;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 0 20px;
+    display: flex;
+    position: relative;
+}
+
+.user-page-nav-bar{
+    width: auto;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+    color: #00b8ff;
+    margin: auto auto 10px 8%;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.333;
+    display: flex;
+    overflow: hidden;
+}
+
+.user-page-post{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: -1px;
+    padding: 6px 12px 10px;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.users-liked-post{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: -1px;
+    padding: 6px 12px 10px;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.who-the-user-is-following{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: -1px;
+    padding: 6px 12px 10px;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.user-page-post-clicked{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: -1px;
+    padding: 6px 12px 10px;
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: inset 0px -2px 0px #00b8ff;
+}
+
+.users-liked-post-clicked{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: -1px;
+    padding: 6px 12px 10px;
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: inset 0px -2px 0px #00b8ff;
+}
+
+.who-the-user-is-following-clicked{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: -1px;
+    padding: 6px 12px 10px;
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: inset 0px -2px 0px #00b8ff;
+}
+

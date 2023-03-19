@@ -6,6 +6,8 @@ import { readUserPostThunk, readUsersLikedPostThunk } from "../../store/post";
 import { setHeaderThunk } from "../../store/session";
 import { addHeader } from "../../store/userPage";
 import "./UserPage.css";
+import OpenModalButton from "../OpenModalButton";
+import EditUserPageForm from "./EditUserPageForm/EditUserPageForm";
 
 const UserPage = () => {
   const { userId } = useParams();
@@ -121,10 +123,12 @@ const UserPage = () => {
                 </div>
                 <div className="edit-profile-button-container">
                   <span className="the-button-container">
-                    <span className="span-button-container">
-                      <Link className="the-link-to-the-button">
-                        <i class="fa-solid fa-gear">ㅤ</i>Blog Settings
-                      </Link>
+                    <span className="the-link-to-the-button">
+                      <OpenModalButton
+                        className="the-link-to-the-button"
+                        modalComponent={<EditUserPageForm />}
+                        buttonText="Blog Settings"
+                      />
                     </span>
                   </span>
                 </div>
@@ -132,9 +136,9 @@ const UserPage = () => {
             </div>
             <div className="middle-part-user-page">
               <div className="user-page-nav-bar">
-                <div className="user-page-post"></div>
-                <div className="users-liked-post"></div>
-                <div className="who-the-user-is-following"></div>
+                <div className="user-page-post">Posts</div>
+                <div className="users-liked-post">Likes</div>
+                <div className="who-the-user-is-following">Following</div>
               </div>
             </div>
             <div className="bottom-part-user-page">
