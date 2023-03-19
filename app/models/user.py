@@ -54,6 +54,7 @@ class User(db.Model, UserMixin):
             'header_image_url': self.header_image_url,
             'profile_image_url': self.profile_image_url,
             "user_likes": len(self.user_likes),
+
             "Following": [following.to_dict() for following in self.followers]
 
         }

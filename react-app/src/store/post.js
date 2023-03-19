@@ -259,7 +259,7 @@ export default function postReducer(state = initialState, action) {
         }
       }
       if (Object.values(newState.usersLikedPost).length) {
-        newState.usersLikedPost[postId] = { ...state.usersLikedPost };
+        newState.usersLikedPost = { ...state.usersLikedPost };
 
         if (newState.usersLikedPost[postId]) {
           newState.usersLikedPost[postId] = { ...state.usersLikedPost[postId] };
@@ -316,11 +316,13 @@ export default function postReducer(state = initialState, action) {
         if (newState.usersLikedPost[postId]) {
           newState.usersLikedPost[postId] = { ...state.usersLikedPost[postId] };
 
-          if (current_user.id === userId)
+          if (current_user.id === userId) {
+            newState.usersLikedPost[postId].likes_count--;
             delete newState.usersLikedPost[postId];
-          else {
+          } else {
             newState.usersLikedPost[postId].likes_count--;
             delete newState.usersLikedPost[postId].post_likes[current_user.id];
+            return newState;
           }
         }
       }

@@ -1,8 +1,14 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadUserThunk } from "../../store/userPage";
-import { readUserPostThunk, readUsersLikedPostThunk } from "../../store/post";
+import {
+  likePostThunk,
+  readUserPostThunk,
+  readUsersLikedPostThunk,
+  unlikePostThunk,
+} from "../../store/post";
 import { setHeaderThunk } from "../../store/session";
 import { addHeader } from "../../store/userPage";
 import "./UserPage.css";
@@ -14,6 +20,36 @@ const UserPage = () => {
   const { userId } = useParams();
   const dispatch = useDispatch();
 
+  const [likedPost, setLikedPost] = useState("users-liked-post");
+  const [myPost, setMyPost] = useState("user-page-post-clicked");
+
+  const [visiblePost, setVisiblePost] = useState("users-liked-post-hidden");
+  const [visibleMyPost, setVisibleMyPost] = useState(
+    "user-post-feed-container"
+  );
+
+  const likedPostClickHandler = () => {
+    if (likedPost === "users-liked-post") {
+      setLikedPost("users-liked-post-clicked");
+      setMyPost("user-page-post");
+      setVisibleMyPost("user-post-feed-container-hidden");
+
+      setVisiblePost("users-liked-post");
+    }
+  };
+
+  const myPostClickHandler = () => {
+    if (myPost === "user-page-post") {
+      setMyPost("user-page-post-clicked");
+      setLikedPost("users-liked-post");
+
+      setVisibleMyPost("user-post-feed-container");
+      setVisiblePost("users-liked-post-hidden");
+    }
+    if (myPost === "user-page-post-clicked") {
+      setVisiblePost("users-liked-post-hidden");
+    }
+  };
   useEffect(() => {
     dispatch(loadUserThunk(userId));
     dispatch(readUserPostThunk(userId));
@@ -22,7 +58,9 @@ const UserPage = () => {
 
   const currUser = useSelector((state) => state.session.user);
   const userProf = useSelector((state) => state.userPage.userProfile);
+
   const userPosts = useSelector((state) => state.post.userPosts);
+  const userLikedPost = useSelector((state) => state.post?.usersLikedPost);
 
   const editHeaderImage = (e) => {
     const file = e.target.files[0];
@@ -77,6 +115,16 @@ const UserPage = () => {
   }
 
   if (!Object.values(userPosts).length) return null;
+
+  let likesPostArr = Object.values(userLikedPost);
+
+  let likePosts;
+  if (!Object.values(userLikedPost).length) return null;
+  if (Object.values(userLikedPost).length) {
+    likePosts = likesPostArr.map((eachPost) => {
+      return <EachPost key={eachPost.id} eachPost={eachPost} />;
+    });
+  }
 
   return (
     <div className="user-page-container-outer">
@@ -149,14 +197,20 @@ const UserPage = () => {
             </div>
             <div className="middle-part-user-page">
               <div className="user-page-nav-bar">
-                <div className="user-page-post">Posts</div>
-                <div className="users-liked-post">Likes</div>
-                <div className="who-the-user-is-following">Following</div>
+                <div className={myPost} onClick={myPostClickHandler}>
+                  Posts
+                </div>
+                <div className={likedPost} onClick={likedPostClickHandler}>
+                  Likes
+                </div>
               </div>
             </div>
             <div className="bottom-part-user-page">
-              <div className="user-post-feed-container">
-                <div className="inside-the-container">{post}</div>
+              <div className="post-div-container">
+                <div className={visibleMyPost}>{post}</div>
+              </div>
+              <div className="post-div-container">
+                <div className={visiblePost}>{likePosts}</div>
               </div>
             </div>
           </div>

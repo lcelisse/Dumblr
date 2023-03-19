@@ -3,16 +3,19 @@ import "./Following.css";
 
 const Following = ({ isLoaded }) => {
   const state = useSelector((state) => state);
-  const following = useSelector((state) => state.session.user.Following);
+  const following = useSelector((state) => state.session?.user?.Following);
 
   let followingArr;
-  if (Object.values(following).length) {
-    const arr = Object.values(following);
-    followingArr = arr.map((each) => (
-      <EachFollowing key={each.id} each={each} />
-    ));
-  } else {
-    return "Not Following Anyone Yet ";
+
+  if (following) {
+    if (Object.values(following).length) {
+      const arr = Object.values(following);
+      followingArr = arr.map((each) => (
+        <EachFollowing key={each.id} each={each} />
+      ));
+    } else {
+      return "Not Following Anyone Yet ";
+    }
   }
 
   return (

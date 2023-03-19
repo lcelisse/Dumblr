@@ -6,7 +6,7 @@ import "./LikesPage.css";
 
 const LikesPage = ({ user, isLoaded }) => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.session.user.id);
+  const state = useSelector((state) => state.session.user?.id);
 
   useEffect(() => {
     dispatch(readUsersLikedPostThunk(state));

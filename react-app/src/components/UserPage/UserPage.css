@@ -50,7 +50,7 @@
     box-sizing: border-box;
     width: 100%;
     max-width: 960px;
-    min-height: 100%;
+
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     flex-direction: row;
@@ -253,7 +253,7 @@
 
 .users-liked-post{
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: clip;
     margin-bottom: -1px;
     padding: 6px 12px 10px;
     text-decoration: none;
@@ -263,17 +263,18 @@
 
 .who-the-user-is-following{
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: clip;
     margin-bottom: -1px;
     padding: 6px 12px 10px;
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
+   
 }
 
 .user-page-post-clicked{
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: clip;
     margin-bottom: -1px;
     padding: 6px 12px 10px;
     text-decoration: none;
@@ -284,7 +285,7 @@
 
 .users-liked-post-clicked{
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: clip;
     margin-bottom: -1px;
     padding: 6px 12px 10px;
     text-decoration: none;
@@ -295,16 +296,17 @@
 
 .who-the-user-is-following-clicked{
     text-overflow: ellipsis;
-    white-space: nowrap;
+ 
     margin-bottom: -1px;
     padding: 6px 12px 10px;
     text-decoration: none;
     overflow: hidden;
     box-shadow: inset 0px -2px 0px #00b8ff;
-    cursor: pointer;
+    cursor: pointer; 
+
 }
 
-.bottom-part-user-page{
+/* .bottom-part-user-page{
     width: 100%;
     max-width: 540px;
     flex-direction: column;
@@ -313,9 +315,17 @@
     margin-left: 20px;
     margin-right: 20px;
     display: flex;
-}
+} */
 .user-post-feed-container{
     margin-top: 20px;
+
+    max-width: 540px;
+    flex-direction: column;
+    align-self: center;
+    margin-bottom: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
 }
 
 .inside-the-container{
@@ -323,3 +333,53 @@
     overflow-anchor: none;
     margin-top: 0;
 }
+
+/* .user-page-post-hidden{
+    text-overflow: ellipsis;
+    white-space: clip;
+    margin-bottom: -1px;
+    padding: 6px 12px 10px;
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: inset 0px -2px 0px #00b8ff;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+
+ */
+
+ .who-the-user-is-following-hidden{
+
+    visibility: hidden;
+    height: 0px;
+}
+
+.who-the-user-is-following-visible{
+    text-overflow: ellipsis;
+    white-space: clip;
+    margin-bottom: -1px;
+    padding: 6px 12px 10px;
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: inset 0px -2px 0px #00b8ff;
+    cursor: pointer;
+}
+
+.user-post-feed-container-hidden{
+    margin-top: 20px;
+    visibility: hidden;
+    height: 0px;
+
+}
+
+.post-div-container{
+    height: 0%;
+}
+.users-liked-post-hidden{
+    height: 0px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+/* .bottom-part-user-page{} */

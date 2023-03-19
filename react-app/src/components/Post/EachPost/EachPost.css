@@ -26,7 +26,7 @@
     display: flex;
 }
 
-.single-post-body{
+.single-post-body {
     overflow: clip;
     font-family:  "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
     margin-left: 15px;
@@ -271,9 +271,6 @@ margin-top: 10px;
     margin-bottom: 5px;
 }
 
-.username-link{
-
-}
 
 .link-for-username{
     text-decoration: none;
