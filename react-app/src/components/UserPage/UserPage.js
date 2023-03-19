@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadUserThunk } from "../../store/userPage";
@@ -117,9 +117,17 @@ const UserPage = () => {
                 </div>
                 {/* <div className="display-name-container"></div> */}
                 <div className="bio-container">
-                  <div className="bio-label"></div>
+                  <div className="bio-label">{userProf?.bio}</div>
                 </div>
-                <div className="edit-profile-button-container"></div>
+                <div className="edit-profile-button-container">
+                  <span className="the-button-container">
+                    <span className="span-button-container">
+                      <Link className="the-link-to-the-button">
+                        <i class="fa-solid fa-gear">ㅤ</i>Blog Settings
+                      </Link>
+                    </span>
+                  </span>
+                </div>
               </div>
             </div>
             <div className="middle-part-user-page">

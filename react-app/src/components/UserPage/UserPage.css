@@ -162,10 +162,55 @@
     transition: max-height 50ms;
     position: relative;
     overflow: hidden;
-    hyphens: auto;
+
     color: black;
     white-space: pre-line;
     text-align: center;
     width: 100%;
     font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+}
+
+.edit-profile-button-container{
+
+    align-items: stretch;
+    margin: 16px 0 0;
+    display: flex;
+ 
+}
+
+.the-button-container{
+    width: 100%;
+    vertical-align: top;
+  
+
+}
+
+.edit-profile-button-container>* {
+ margin-bottom: 12px;
+}
+
+.the-link-to-the-button{
+    border-radius: 20px;
+    font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+    padding: 6px 15px;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 30px;
+    color: white;
+    background: #00b8ff;
+    border: none;
+    text-decoration: none;
+    padding-top: 6px;
+
+    justify-content: center;
+    align-items: center;
+
+    display: flex;
+    cursor: pointer;
+}
+
+.span-button-container{
+    width: 100%;
+    vertical-align: top;
+   
 }
