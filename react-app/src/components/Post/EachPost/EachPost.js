@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   deletePostThunk,
   likePostThunk,
@@ -127,7 +127,12 @@ const EachPost = ({ eachPost }) => {
           {currentUser.id === eachPost.user.id ? ( // current user is the author of this post
             <div className="single-post-container">
               <div className="single-post-username">
-                {eachPost.user.username}
+                <Link
+                  className="link-for-username"
+                  to={`/users/${eachPost.user_id}`}
+                >
+                  <p className="username-link">{eachPost.user.username}</p>
+                </Link>
               </div>
 
               <div className="single-post-title">{eachPost.title}</div>
@@ -198,7 +203,12 @@ const EachPost = ({ eachPost }) => {
             <div className="single-post-container">
               <div className="top-of-single-post-container">
                 <div className="single-post-username">
-                  {eachPost.user.username}
+                  <Link
+                    className="link-for-username"
+                    to={`/users/${eachPost.user_id}`}
+                  >
+                    <p className="username-link">{eachPost.user.username}</p>
+                  </Link>
                   <div className="to-follow-or-unfollow">{followBtn}</div>
                 </div>
               </div>
@@ -257,7 +267,14 @@ const EachPost = ({ eachPost }) => {
       ) : (
         // Not signed in
         <div className="single-post-container">
-          <div className="single-post-username">{eachPost.user.username}</div>
+          <div className="single-post-username">
+            <Link
+              className="link-for-username"
+              to={`/users/${eachPost.user_id}`}
+            >
+              <p className="username-link">{eachPost.user.username}</p>
+            </Link>
+          </div>
           <div className="single-post-title">{eachPost.title}</div>
           <div className="image-container">
             <img src={eachPost.url} className="each-image" alt=""></img>
