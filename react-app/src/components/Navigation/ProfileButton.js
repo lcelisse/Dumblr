@@ -4,7 +4,7 @@ import { followUserThunk, logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { readUsersLikedPostThunk } from "../../store/post";
 
 function ProfileButton({ user }) {
@@ -90,7 +90,9 @@ function ProfileButton({ user }) {
               <div className="like-container-amount"> </div>
             </div>
             <div className="info-container">
-              <li>{user.username}</li>
+              <Link className="link-for-username" to={`/users/${user.id}`}>
+                <li>{user.username}</li>
+              </Link>
             </div>
             <div className="info-container">
               <li>{user.email}</li>

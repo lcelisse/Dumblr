@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { deleteCommentThunk } from "../../../store/comment";
 
@@ -19,7 +20,12 @@ const PostComment = ({ comment, eachPost }) => {
               <div className="comment-container-box">
                 <div className="the-original-poster"></div>
                 <div className="username-for-comment">
-                  {comment.user.username}
+                  <Link
+                    className="link-for-username"
+                    to={`/users/${comment.user.id}`}
+                  >
+                    {comment.user.username}
+                  </Link>
                 </div>
                 <div className="the-comment-for-the-comment">
                   {comment.comment}
@@ -59,7 +65,12 @@ const PostComment = ({ comment, eachPost }) => {
             <div className="comment-container-box">
               <div className="the-original-poster"></div>
               <div className="username-for-comment">
-                {comment.user.username}
+                <Link
+                  className="link-for-username"
+                  to={`/users/${comment.user.id}`}
+                >
+                  {comment.user.username}
+                </Link>
               </div>
               <div className="the-comment-for-the-comment">
                 {comment.comment}

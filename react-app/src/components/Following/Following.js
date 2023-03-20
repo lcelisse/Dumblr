@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./Following.css";
 
 const Following = ({ isLoaded }) => {
@@ -31,7 +32,9 @@ const EachFollowing = ({ each }) => {
   return (
     <div className="each-following-post-container">
       <div className="container-for-each-following">
-        <div className="each-username-container">{each.username}</div>
+        <Link className="link-for-username" to={`/users/${each.id}`}>
+          <div className="each-username-container">{each.username}</div>
+        </Link>
       </div>
     </div>
   );

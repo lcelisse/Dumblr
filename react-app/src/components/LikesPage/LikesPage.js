@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { readUsersLikedPostThunk } from "../../store/post";
 import "./LikesPage.css";
 
@@ -37,7 +37,12 @@ const EachLikedPost = ({ each }) => {
   return (
     <div className="each-liked-post-container">
       <div className="container-for-each">
-        <div className="each-username-container">{each.user.username}</div>
+        <div className="each-username-container">
+          {" "}
+          <Link className="link-for-username" to={`/users/${each.user.id}`}>
+            {each.user.username}
+          </Link>
+        </div>
         <div className="each-title-container">{each.title}</div>
         <div className="each-image-container">
           <img className="image-for-each-post" src={each.url} />

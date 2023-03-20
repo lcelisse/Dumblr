@@ -119,7 +119,11 @@ const EachPost = ({ eachPost }) => {
   if (each && Object.values(each).length) {
     const eachArr = Object.values(each);
     postLike = eachArr.map((user) => (
-      <div className="display-username-of-likes">{user?.username}</div>
+      <div className="display-username-of-likes">
+        <Link className="link-for-username" to={`/users/${user?.id}`}>
+          {user?.username}
+        </Link>
+      </div>
     ));
   }
 
