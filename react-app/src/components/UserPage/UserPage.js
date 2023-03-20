@@ -104,16 +104,6 @@ const UserPage = () => {
 
   if (!Object.values(userPosts).length) return null;
 
-  let likesPostArr = Object.values(userLikedPost);
-
-  let likePosts;
-  if (!Object.values(userLikedPost).length) return null;
-  if (Object.values(userLikedPost).length) {
-    likePosts = likesPostArr.map((eachPost) => {
-      return <EachPost key={eachPost.id} eachPost={eachPost} />;
-    });
-  }
-
   const editHeaderImage = (e) => {
     const file = e.target.files[0];
 
@@ -218,17 +208,11 @@ const UserPage = () => {
                 <div className={myPost} onClick={myPostClickHandler}>
                   Posts
                 </div>
-                <div className={likedPost} onClick={likedPostClickHandler}>
-                  Likes
-                </div>
               </div>
             </div>
             <div className="bottom-part-user-page">
               <div className="post-div-container">
                 <div className={visibleMyPost}>{post}</div>
-              </div>
-              <div className="post-div-container">
-                <div className={visiblePost}>{likePosts}</div>
               </div>
             </div>
           </div>
