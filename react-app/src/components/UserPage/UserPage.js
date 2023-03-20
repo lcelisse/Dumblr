@@ -12,7 +12,7 @@ import {
 import { setHeaderThunk } from "../../store/session";
 import { addHeader } from "../../store/userPage";
 import "./UserPage.css";
-import OpenModalButton from "../OpenModalButton";
+import OpenModalButton from "../OpenModalButton/index";
 import EditUserPageForm from "./EditUserPageForm/EditUserPageForm";
 import EachPost from "../Post/EachPost/EachPost";
 
@@ -196,15 +196,13 @@ const UserPage = () => {
                   <div className="bio-label">{userProf?.bio}</div>
                 </div>
                 <div className="edit-profile-button-container">
-                  <span className="the-button-container">
-                    <span className="the-link-to-the-button">
-                      <OpenModalButton
-                        className="the-link-to-the-button"
-                        modalComponent={<EditUserPageForm />}
-                        buttonText="Blog Settings"
-                      />
-                    </span>
-                  </span>
+                  <div className="the-link-to-the-button">
+                    {/* <OpenModalButton
+                      className="the-link-to-the-button"
+                      modalComponent={<EditUserPageForm />}
+                      buttonText="Blog Settings"
+                    /> */}
+                  </div>
                 </div>
               </div>
             </div>
@@ -229,6 +227,7 @@ const UserPage = () => {
           </div>
         </div>
       </div>
+      <EditUserPageForm />
       {/* if this is NOT the logged in users page */}
       <div></div>
       {/* if youre not signed in*/}

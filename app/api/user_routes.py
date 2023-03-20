@@ -152,10 +152,9 @@ def edit_user(id):
 
     form_data = request.form.to_dict()
 
-    user.display_name = form_data["display_name"]
     user.title = form_data["title"]
     user.bio = form_data["bio"]
-    user.profile_image_url = form_data["profile_image_url"]
+    user.profile_image_url = profile_image_url
 
     db.session.add(user)
     db.session.commit()

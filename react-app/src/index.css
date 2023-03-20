@@ -23,6 +23,7 @@ button {
     margin-top: 25px;
     margin-left: 10px;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 ol, ul {

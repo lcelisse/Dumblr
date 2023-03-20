@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
-    display_name = db.Column(db.String(40))
+
     title = db.Column(db.String(475))
     bio = db.Column(db.String(475))
     email = db.Column(db.String(255), nullable=False, unique=True)
@@ -48,7 +48,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'display_name': self.display_name,
+
             'bio': self.bio,
             'title': self.title,
             'header_image_url': self.header_image_url,
