@@ -91,16 +91,20 @@ const EditUserPageForm = () => {
     return pfps[randomNum];
   };
 
+  let styling = {
+    background: "white",
+    borderRadius: "5px",
+    marginTop: "20px",
+    height: "40%",
+    color: "#00b8ff",
+    alignItems: "center",
+    fontFamily:
+      "Favorit, Helvetica Neue, HelveticaNeue, Helvetica, Arial, sans-serif",
+    width: "27%",
+  };
+
   return (
-    <div className="modal-edit-page-container">
-      <div className="close-modal-edit-user">
-        <button onClick={() => closeModal()} className="the-button">
-          <i class="far fa-edit"></i>
-        </button>
-      </div>
-      <div className="edit-user-page-top-part">
-        <h3 className="edit-modal-form-title">Edit Your Page</h3>
-      </div>
+    <div style={styling} className="modal-edit-page-container">
       {errors.errors && (
         <ul className="errors">
           <li style={{ color: "red" }} className="print-errors">
@@ -109,10 +113,24 @@ const EditUserPageForm = () => {
         </ul>
       )}
       <div className="modal-form-container">
-        <form className="edit-user-form" method="POST" onSubmit={handleSubmit}>
+        <form
+          className="edit-user-form"
+          method="POST"
+          style={{ marginLeft: "10px" }}
+          onSubmit={handleSubmit}
+        >
+          <div className="edit-user-page-top-part">
+            <h3
+              className="edit-modal-form-title"
+              style={{ textAlign: "center" }}
+            >
+              Edit Your Page
+            </h3>
+          </div>
           <div className="form-page-body">
             <div className="pfp-upload">
               <img
+                style={{ color: "#00b8ff", marginLeft: "35%" }}
                 ref={imageRef}
                 className="pfp-image-upload"
                 alt=""
@@ -122,7 +140,7 @@ const EditUserPageForm = () => {
                     : pfpPicker()
                 }
               />
-              <p>Upload Your Profile Picture</p>
+              <p style={{ textAlign: "center" }}>Upload Your Profile Picture</p>
               <input
                 id="profile-pic-file"
                 className="upload-file-input"
@@ -130,6 +148,11 @@ const EditUserPageForm = () => {
                 type="file"
                 accept="image/*"
                 onChange={editPfpImg}
+                style={{
+                  color: "#00b8ff",
+                  marginLeft: "34%",
+                  marginBottom: "5px",
+                }}
               />
             </div>
           </div>
@@ -137,10 +160,15 @@ const EditUserPageForm = () => {
             <p style={{ color: "red" }}>{errors.ImageSize}</p>
           )}
           <div className="edit-title-user-page">
-            <label className="title-input-label" htmlFor="title">
+            <label
+              className="title-input-label"
+              htmlFor="title"
+              style={{ color: "#00b8ff", marginLeft: "24%" }}
+            >
               Title
             </label>
             <textarea
+              style={{ color: "#00b8ff", marginLeft: "5%" }}
               className="title-area-input"
               name="title"
               placeholder="title"
@@ -150,13 +178,18 @@ const EditUserPageForm = () => {
             ></textarea>
           </div>
           <div className="edit-bio-user-page">
-            <label className="text-input-label" htmlFor="biography">
+            <label
+              className="text-input-label"
+              htmlFor="biography"
+              style={{ color: "#00b8ff", marginLeft: "16%" }}
+            >
               Biography
             </label>
             <textarea
               className="text-area-input"
               name="biography"
               placeholder="bio"
+              style={{ color: "#00b8ff", marginLeft: "5%" }}
               value={bio}
               maxLength="475"
               onChange={(e) => setBio(e.target.value)}
@@ -166,15 +199,8 @@ const EditUserPageForm = () => {
             <button
               id="modal-btn"
               type="button"
-              className="cancel-button-edit"
-              onClick={() => closeModal()}
-            >
-              Cancel
-            </button>
-            <button
-              id="modal-btn"
-              type="button"
               className="cancel-button-save"
+              style={{ marginLeft: "42%" }}
               onClick={handleSubmit}
             >
               Save Edits

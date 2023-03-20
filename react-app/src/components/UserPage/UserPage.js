@@ -117,113 +117,196 @@ const UserPage = () => {
   };
 
   return (
-    <div className="user-page-container-outer">
-      {/* if this is the logged in users page */}
-      <div className="inner-user-page-container">
-        <div className="background-of-user-page">
-          <div className="entire-body-part-for-user-page">
-            <div className="top-part-user-page">
-              <div className="header-image-container">
-                {userProf?.header_image_url ? (
-                  <div className="header-image">
-                    <img
-                      className="user-page-header"
-                      src={userProf?.header_image_url}
-                      alt="headerrrr"
-                    ></img>
-                  </div>
-                ) : (
-                  <div className="header-image">
-                    <img
-                      className="user-page-header"
-                      src={headerPicker()}
-                      alt="header"
-                    ></img>
-                  </div>
-                )}
-              </div>
-              <div className="edit-your-header-button-container">
-                <label className="header-pic-file-label" htmlFor="header-pic">
-                  <img
-                    className="cam"
-                    src="https://user-images.githubusercontent.com/110946315/219857807-5feb84a5-23c2-4cb4-b4bf-fc6f78c277f1.png"
-                    alt=""
-                  />
-                  Change Your Header
-                </label>
-                <input
-                  className="input-for-the-header"
-                  id="header-pic"
-                  name="header-pic"
-                  type="file"
-                  accept="image/*"
-                  onChange={editHeaderImage}
-                  placeholder="Edit Your Header"
-                ></input>
-              </div>
+    <>
+      {currUser?.id === userProf.id ? (
+        <div className="user-page-container-outer">
+          {/* if this is the logged in users page */}
 
-              <div className="user-page-info">
-                <div className="profile-picture-container">
-                  {userProf?.profile_image_url ? (
-                    <div className="profile-image">
+          <div className="inner-user-page-container">
+            <div className="background-of-user-page">
+              <div className="entire-body-part-for-user-page">
+                <div className="top-part-user-page">
+                  <div className="header-image-container">
+                    {userProf?.header_image_url ? (
+                      <div className="header-image">
+                        <img
+                          className="user-page-header"
+                          src={userProf?.header_image_url}
+                          alt="headerrrr"
+                        ></img>
+                      </div>
+                    ) : (
+                      <div className="header-image">
+                        <img
+                          className="user-page-header"
+                          src={headerPicker()}
+                          alt="header"
+                        ></img>
+                      </div>
+                    )}
+                  </div>
+                  <div className="edit-your-header-button-container">
+                    <label
+                      className="header-pic-file-label"
+                      htmlFor="header-pic"
+                    >
                       <img
-                        className="user-page-profile-image"
-                        src={userProf?.profile_image_url}
-                        alt="profile"
-                      ></img>
+                        className="cam"
+                        src="https://user-images.githubusercontent.com/110946315/219857807-5feb84a5-23c2-4cb4-b4bf-fc6f78c277f1.png"
+                        alt=""
+                      />
+                      Change Your Header
+                    </label>
+                    <input
+                      className="input-for-the-header"
+                      id="header-pic"
+                      name="header-pic"
+                      type="file"
+                      accept="image/*"
+                      onChange={editHeaderImage}
+                      placeholder="Edit Your Header"
+                    ></input>
+                  </div>
+
+                  <div className="user-page-info">
+                    <div className="profile-picture-container">
+                      {userProf?.profile_image_url ? (
+                        <div className="profile-image">
+                          <img
+                            className="user-page-profile-image"
+                            src={userProf?.profile_image_url}
+                            alt="profile"
+                          ></img>
+                        </div>
+                      ) : (
+                        <div className="profile-image">
+                          <img
+                            className="user-page-profile-image"
+                            src={pfpPicker()}
+                            alt="profile"
+                          ></img>
+                        </div>
+                      )}
                     </div>
-                  ) : (
-                    <div className="profile-image">
-                      <img
-                        className="user-page-profile-image"
-                        src={pfpPicker()}
-                        alt="profile"
-                      ></img>
+                    <div className="title-container">
+                      <h1 className="title-label">{userProf?.title}</h1>
                     </div>
-                  )}
-                </div>
-                <div className="title-container">
-                  <h1 className="title-label">{userProf?.title}</h1>
-                </div>
-                <div className="username-container">
-                  <p className="username-label">{`@${userProf?.username}`}</p>
-                </div>
-                {/* <div className="display-name-container"></div> */}
-                <div className="bio-container">
-                  <div className="bio-label">{userProf?.bio}</div>
-                </div>
-                <div className="edit-profile-button-container">
-                  <div className="the-link-to-the-button">
-                    {/* <OpenModalButton
+                    <div className="username-container">
+                      <p className="username-label">{`@${userProf?.username}`}</p>
+                    </div>
+                    {/* <div className="display-name-container"></div> */}
+                    <div className="bio-container">
+                      <div className="bio-label">{userProf?.bio}</div>
+                    </div>
+                    <div className="edit-profile-button-container">
+                      <div className="the-link-to-the-button">
+                        {/* <OpenModalButton
                       className="the-link-to-the-button"
                       modalComponent={<EditUserPageForm />}
                       buttonText="Blog Settings"
                     /> */}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="middle-part-user-page">
+                  <div className="user-page-nav-bar">
+                    <div className={myPost} onClick={myPostClickHandler}>
+                      Posts
+                    </div>
+                  </div>
+                </div>
+                <div className="bottom-part-user-page">
+                  <div className="post-div-container">
+                    <div className={visibleMyPost}>{post}</div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="middle-part-user-page">
-              <div className="user-page-nav-bar">
-                <div className={myPost} onClick={myPostClickHandler}>
-                  Posts
+          </div>
+          <EditUserPageForm />
+        </div>
+      ) : (
+        <div className="user-page-container-outer">
+          {/* if this is NOT the logged in users page */}
+
+          <div className="inner-user-page-container">
+            <div className="background-of-user-page">
+              <div className="entire-body-part-for-user-page">
+                <div className="top-part-user-page">
+                  <div className="header-image-container">
+                    {userProf?.header_image_url ? (
+                      <div className="header-image">
+                        <img
+                          className="user-page-header"
+                          src={userProf?.header_image_url}
+                          alt="headerrrr"
+                        ></img>
+                      </div>
+                    ) : (
+                      <div className="header-image">
+                        <img
+                          className="user-page-header"
+                          src={headerPicker()}
+                          alt="header"
+                        ></img>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="user-page-info">
+                    <div className="profile-picture-container">
+                      {userProf?.profile_image_url ? (
+                        <div className="profile-image">
+                          <img
+                            className="user-page-profile-image"
+                            src={userProf?.profile_image_url}
+                            alt="profile"
+                          ></img>
+                        </div>
+                      ) : (
+                        <div className="profile-image">
+                          <img
+                            className="user-page-profile-image"
+                            src={pfpPicker()}
+                            alt="profile"
+                          ></img>
+                        </div>
+                      )}
+                    </div>
+                    <div className="title-container">
+                      <h1 className="title-label">{userProf?.title}</h1>
+                    </div>
+                    <div className="username-container">
+                      <p className="username-label">{`@${userProf?.username}`}</p>
+                    </div>
+
+                    <div className="bio-container">
+                      <div className="bio-label">{userProf?.bio}</div>
+                    </div>
+                    <div className="edit-profile-button-container">
+                      <div className="the-link-to-the-button"></div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="bottom-part-user-page">
-              <div className="post-div-container">
-                <div className={visibleMyPost}>{post}</div>
+                <div className="middle-part-user-page">
+                  <div className="user-page-nav-bar">
+                    <div className={myPost} onClick={myPostClickHandler}>
+                      Posts
+                    </div>
+                  </div>
+                </div>
+                <div className="bottom-part-user-page">
+                  <div className="post-div-container">
+                    <div className={visibleMyPost}>{post}</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <EditUserPageForm />
-      {/* if this is NOT the logged in users page */}
-      <div></div>
-      {/* if youre not signed in*/}
-      <div></div>
-    </div>
+      )}
+    </>
   );
 };
 

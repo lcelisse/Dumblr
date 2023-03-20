@@ -1,5 +1,43 @@
-.modal-edit-page-container{
-    width: 900px;
-    background: pink;
 
+
+.modal-edit-page-container {
+    background-color: white;
+    width: 100%;
+    max-width: 625px;
+
+    
+    
+    border-radius: 0;
+    color:  rgb(0, 184, 255);
+    
+    
 }
+
+.modal-form-container {
+    background-color: white;
+    margin-left: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 960px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 20px;
+    
+    color:  rgb(0, 184, 255);
+}
+
+.edit-user-form {
+    background-color: white;
+    width: 100%;
+
+    color: rgb(0, 184, 255);
+    
+}
+
+.edit-user-page-top-part {
+    margin-left: 40%;
+}
+

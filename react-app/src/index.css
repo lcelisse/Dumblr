@@ -1,13 +1,13 @@
 /* TODO Add site wide styles */
 body {
-    background-color: #081c34;
+   
     font: inherit;
     vertical-align: baseline;
     border: none;
     font-size: 100%;
     margin: 0;
     padding: 0;
-
+    background: #081c34;
 }
 
 button {
@@ -34,3 +34,4 @@ ol, ul {
 label{
     color: white;
 }
+
