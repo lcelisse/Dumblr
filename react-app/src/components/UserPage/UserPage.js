@@ -62,18 +62,6 @@ const UserPage = () => {
   const userPosts = useSelector((state) => state.post.userPosts);
   const userLikedPost = useSelector((state) => state.post?.usersLikedPost);
 
-  const editHeaderImage = (e) => {
-    const file = e.target.files[0];
-
-    const data = new FormData();
-
-    data.append("header_picture", file);
-
-    dispatch(setHeaderThunk(data, currUser.id)).then((data) =>
-      dispatch(addHeader(data))
-    );
-  };
-
   const pfpPicker = () => {
     let pfps = [
       "https://pbs.twimg.com/media/CHd03RhUcAAGSh_.jpg",
