@@ -112,6 +112,12 @@ const CreatePostForm = ({ setShowModal }) => {
                   type="file"
                   accept="image/*"
                   onChange={uploadImg}
+                  style={{
+                    color: "#00b8ff",
+                    marginLeft: "-150px",
+                    marginTop: "75px",
+                    padding: "0",
+                  }}
                 />
               </label>
             )}
@@ -119,6 +125,7 @@ const CreatePostForm = ({ setShowModal }) => {
               className="button-to-create-css"
               disabled={loading}
               type="submit"
+              style={{ marginRight: "50px" }}
             >
               {loading ? "Your Image is Loading ...." : "Create Post"}
             </button>
