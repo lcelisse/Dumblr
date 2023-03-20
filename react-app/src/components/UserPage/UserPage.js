@@ -126,8 +126,6 @@ const UserPage = () => {
     );
   };
 
-  console.log(userProf);
-
   return (
     <div className="user-page-container-outer">
       {/* if this is the logged in users page */}
@@ -155,6 +153,14 @@ const UserPage = () => {
                 )}
               </div>
               <div className="edit-your-header-button-container">
+                <label className="header-pic-file-label" htmlFor="header-pic">
+                  <img
+                    className="cam"
+                    src="https://user-images.githubusercontent.com/110946315/219857807-5feb84a5-23c2-4cb4-b4bf-fc6f78c277f1.png"
+                    alt=""
+                  />
+                  Change Your Header
+                </label>
                 <input
                   className="input-for-the-header"
                   id="header-pic"
@@ -162,6 +168,7 @@ const UserPage = () => {
                   type="file"
                   accept="image/*"
                   onChange={editHeaderImage}
+                  placeholder="Edit Your Header"
                 ></input>
               </div>
 
