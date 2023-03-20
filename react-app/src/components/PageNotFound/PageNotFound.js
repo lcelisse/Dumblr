@@ -5,7 +5,7 @@ const PageNotFound = () => {
   return (
     <div>
       <div className="page-not-found">404 Page Not Found</div>
-      <Redirect to="/posts" />
+      <Redirect to="/" />
     </div>
   );
 };
