@@ -77,7 +77,8 @@ function App() {
                 <AboutUs />
               </Route>
               <Route path="/404">
-                <PageNotFound />{" "}
+                <PageNotFound />
+                <Redirect to="/posts" />
               </Route>
               <Route path="*">
                 <Redirect to="/404" />
