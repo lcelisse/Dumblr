@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
@@ -48,12 +48,15 @@ function App() {
               <Route path="/users/:userId">
                 <UserPage />
               </Route>{" "}
-              {/* <Route exact path="*">
-                {<PageNotFound />}
-              </Route> */}
+              <Route path="/404">
+                <PageNotFound />{" "}
+              </Route>
+              <Route path="*">
+                <Redirect to="/404" />
+              </Route>
             </switch>
           ) : (
-            <switch className="The-Body">
+            <Route className="The-Body">
               <Navigation isLoaded={isLoaded} />{" "}
               <Route exact path="/posts">
                 <Feed />
@@ -61,7 +64,7 @@ function App() {
               <Route exact path="/users/:userId/likes">
                 <LikesPage isLoaded={isLoaded} />
               </Route>
-              <Route exact path="/users/following">
+              <Route exact path="/users/:userId/following">
                 <Following isLoaded={isLoaded} />
               </Route>
               <Route exact path="/users/:userId">
@@ -73,12 +76,15 @@ function App() {
               <Route path="/">
                 <AboutUs />
               </Route>
-              {/* <Route exact path="*">
-                {<PageNotFound />}
-              </Route> */}
-            </switch>
+              <Route path="/404">
+                <PageNotFound />{" "}
+              </Route>
+              <Route path="*">
+                <Redirect to="/404" />
+              </Route>
+            </Route>
           )}
-          <Navigation isLoaded={isLoaded} />
+          {/* <Navigation isLoaded={isLoaded} />
 
           <Route path="/posts">
             <Feed />
@@ -86,14 +92,14 @@ function App() {
           <Route path="/users/:userId/likes">
             <LikesPage isLoaded={isLoaded} />
           </Route>
-          <Route path="/users/following">
+          <Route path="/users/:userId/following">
             <Following isLoaded={isLoaded} />
           </Route>
           <Route exact path="/users/:userId">
             <UserPage />
-          </Route>
+          </Route> */}
           {/* <Route exact path="*">
-            {<PageNotFound />}
+            <PageNotFound />
           </Route> */}
         </Switch>
       </BrowserRouter>

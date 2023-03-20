@@ -50,7 +50,7 @@ function ProfileButton({ user }) {
   };
 
   const onClickFollowing = () => {
-    history.push(`/users/following`);
+    history.push(`/users/${user.id}/following`);
   };
 
   return (
