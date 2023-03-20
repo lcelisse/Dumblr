@@ -76,7 +76,7 @@ def user_likes(id):
     return {post.id: post.to_dict_individual_post() for post in posts}
 
 
-@user_routes.route("/<int:id>/header-img", methods=['POST'])
+@user_routes.route("/<int:id>/header-image", methods=['POST'])
 @login_required
 def set_header(id):
     user = User.query.get(id)

@@ -114,6 +114,20 @@ const UserPage = () => {
     });
   }
 
+  const editHeaderImage = (e) => {
+    const file = e.target.files[0];
+
+    const data = new FormData();
+
+    data.append("header_picture", file);
+
+    dispatch(setHeaderThunk(data, currUser.id)).then((data) =>
+      dispatch(addHeader(data))
+    );
+  };
+
+  console.log(userProf);
+
   return (
     <div className="user-page-container-outer">
       {/* if this is the logged in users page */}
@@ -127,7 +141,7 @@ const UserPage = () => {
                     <img
                       className="user-page-header"
                       src={userProf?.header_image_url}
-                      alt="header"
+                      alt="headerrrr"
                     ></img>
                   </div>
                 ) : (
@@ -140,6 +154,17 @@ const UserPage = () => {
                   </div>
                 )}
               </div>
+              <div className="edit-your-header-button-container">
+                <input
+                  className="input-for-the-header"
+                  id="header-pic"
+                  name="header-pic"
+                  type="file"
+                  accept="image/*"
+                  onChange={editHeaderImage}
+                ></input>
+              </div>
+
               <div className="user-page-info">
                 <div className="profile-picture-container">
                   {userProf?.profile_image_url ? (
