@@ -4,10 +4,12 @@
 
 [dumblr]: dumblr.png
 
+A clone of Tumblr with a fun theme of The Office . It allows you to make post and comments . You can like other users posts and Follow other users
+
 Test it out yourself ! <a href='https://dumblr-mifflin.onrender.com/' alt=''>Dumblr</a>
 
-
 ## Technologies
+
 <p>
   <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
@@ -22,10 +24,12 @@ Test it out yourself ! <a href='https://dumblr-mifflin.onrender.com/' alt=''>Dum
   <img src="https://img.shields.io/badge/Render-informational?style=for-the-badge&logo=render&logoColor=%5bdec3" />
 </p>
 
-## Splash Page 
+## Splash Page
+
 ![IMG_3991](https://user-images.githubusercontent.com/105749905/223878932-3fe9c6b6-9d65-44cc-847d-2ce1f89218df.gif)
 
 ## Feed
+
 <p> When youre logged out you can still see the post and the comments and who liked the post </p>
 
 ![IMG_3990](https://user-images.githubusercontent.com/105749905/223879018-5eded858-c135-42b2-a339-e9f8872cdaa2.gif)
@@ -34,6 +38,6 @@ Test it out yourself ! <a href='https://dumblr-mifflin.onrender.com/' alt=''>Dum
 
 ![IMG_3989](https://user-images.githubusercontent.com/105749905/223879441-0c5284b7-2636-493d-a089-29b33105ff5c.gif)
 
-## Comments 
+## Comments
 
 ![IMG_3988](https://user-images.githubusercontent.com/105749905/223879607-6757544f-800d-4ba0-9114-ff87df7c3afc.gif)
