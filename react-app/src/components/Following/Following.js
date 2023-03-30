@@ -32,9 +32,9 @@ const EachFollowing = ({ each }) => {
   return (
     <div className="each-following-post-container">
       <div className="container-for-each-following">
-        <Link className="link-for-username" to={`/users/${each.id}`}>
-          <div className="each-username-container">{each.username}</div>
-        </Link>
+        {/* <Link className="link-for-username" to={`/users/${each.id}`}> */}
+        <div className="each-username-container">{each.username}</div>
+        {/* </Link> */}
       </div>
     </div>
   );

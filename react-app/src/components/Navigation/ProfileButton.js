@@ -90,9 +90,9 @@ function ProfileButton({ user }) {
               <div className="like-container-amount"> </div>
             </div>
             <div className="info-container">
-              <Link className="link-for-username" to={`/users/${user.id}`}>
-                <li>{user.username}</li>
-              </Link>
+              {/* <Link className="link-for-username" to={`/users/${user.id}`}> */}
+              <li>{user.username}</li>
+              {/* </Link> */}
             </div>
             <div className="info-container">
               <li>{user.email}</li>

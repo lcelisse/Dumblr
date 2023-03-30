@@ -120,9 +120,9 @@ const EachPost = ({ eachPost }) => {
     const eachArr = Object.values(each);
     postLike = eachArr.map((user) => (
       <div className="display-username-of-likes">
-        <Link className="link-for-username" to={`/users/${user?.id}`}>
-          {user?.username}
-        </Link>
+        {/* <Link className="link-for-username" to={`/users/${user?.id}`}> */}
+        {user?.username}
+        {/* </Link> */}
       </div>
     ));
   }
@@ -134,12 +134,12 @@ const EachPost = ({ eachPost }) => {
           {currentUser.id === eachPost.user.id ? ( // current user is the author of this post
             <div className="single-post-container">
               <div className="single-post-username">
-                <Link
+                {/* <Link
                   className="link-for-username"
                   to={`/users/${eachPost.user_id}`}
-                >
-                  <p className="username-link">{eachPost.user.username}</p>
-                </Link>
+                > */}
+                <p className="username-link">{eachPost.user.username}</p>
+                {/* </Link> */}
               </div>
 
               <div className="single-post-title">{eachPost.title}</div>
@@ -210,12 +210,12 @@ const EachPost = ({ eachPost }) => {
             <div className="single-post-container">
               <div className="top-of-single-post-container">
                 <div className="single-post-username">
-                  <Link
+                  {/* <Link
                     className="link-for-username"
                     to={`/users/${eachPost.user_id}`}
-                  >
-                    <p className="username-link">{eachPost.user.username}</p>
-                  </Link>
+                  > */}
+                  <p className="username-link">{eachPost.user.username}</p>
+                  {/* </Link> */}
                   <div className="to-follow-or-unfollow">{followBtn}</div>
                 </div>
               </div>
@@ -275,12 +275,12 @@ const EachPost = ({ eachPost }) => {
         // Not signed in
         <div className="single-post-container">
           <div className="single-post-username">
-            <Link
+            {/* <Link
               className="link-for-username"
               to={`/users/${eachPost.user_id}`}
-            >
-              <p className="username-link">{eachPost.user.username}</p>
-            </Link>
+            > */}
+            <p className="username-link">{eachPost.user.username}</p>
+            {/* </Link> */}
           </div>
           <div className="single-post-title">{eachPost.title}</div>
           <div className="image-container">

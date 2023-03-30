@@ -39,9 +39,9 @@ const EachLikedPost = ({ each }) => {
       <div className="container-for-each">
         <div className="each-username-container">
           {" "}
-          <Link className="link-for-username" to={`/users/${each.user.id}`}>
-            {each.user.username}
-          </Link>
+          {/* <Link className="link-for-username" to={`/users/${each.user.id}`}> */}
+          {each.user.username}
+          {/* </Link> */}
         </div>
         <div className="each-title-container">{each.title}</div>
         <div className="each-image-container">

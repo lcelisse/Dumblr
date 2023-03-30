@@ -20,12 +20,12 @@ const PostComment = ({ comment, eachPost }) => {
               <div className="comment-container-box">
                 <div className="the-original-poster"></div>
                 <div className="username-for-comment">
-                  <Link
+                  {/* <Link
                     className="link-for-username"
                     to={`/users/${comment.user.id}`}
-                  >
-                    {comment.user.username}
-                  </Link>
+                  > */}
+                  {comment.user.username}
+                  {/* </Link> */}
                 </div>
                 <div className="the-comment-for-the-comment">
                   {comment.comment}
@@ -65,12 +65,12 @@ const PostComment = ({ comment, eachPost }) => {
             <div className="comment-container-box">
               <div className="the-original-poster"></div>
               <div className="username-for-comment">
-                <Link
+                {/* <Link
                   className="link-for-username"
                   to={`/users/${comment.user.id}`}
-                >
-                  {comment.user.username}
-                </Link>
+                > */}
+                {comment.user.username}
+                {/* </Link> */}
               </div>
               <div className="the-comment-for-the-comment">
                 {comment.comment}
