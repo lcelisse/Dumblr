@@ -78,7 +78,6 @@ function App() {
               </Route>
               <Route path="/404">
                 <PageNotFound />
-                <Redirect to="/posts" />
               </Route>
               <Route path="*">
                 <Redirect to="/404" />
