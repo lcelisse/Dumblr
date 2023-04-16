@@ -24,7 +24,7 @@ function SignupFormPage() {
 
     if (password === confirmPassword) {
       const data = await dispatch(signUp(username, email, password));
-      history.push("/");
+      history.push("/posts");
       if (data) {
         setErrors(data);
       }
