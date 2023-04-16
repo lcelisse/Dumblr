@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { followUserThunk, logout } from "../../store/session";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { readUsersLikedPostThunk } from "../../store/post";
 
 function ProfileButton({ user }) {
@@ -12,9 +12,6 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
   const history = useHistory();
-  const currUser = useSelector((state) => state.session.user.id);
-
-  const following = useSelector((state) => state.session.user.Following);
 
   const openMenu = () => {
     if (showMenu) return;

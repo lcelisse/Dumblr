@@ -1,18 +1,13 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadUserThunk } from "../../store/userPage";
-import {
-  likePostThunk,
-  readUserPostThunk,
-  readUsersLikedPostThunk,
-  unlikePostThunk,
-} from "../../store/post";
+import { readUserPostThunk, readUsersLikedPostThunk } from "../../store/post";
 import { setHeaderThunk } from "../../store/session";
 import { addHeader } from "../../store/userPage";
 import "./UserPage.css";
-import OpenModalButton from "../OpenModalButton/index";
+
 import EditUserPageForm from "./EditUserPageForm/EditUserPageForm";
 import EachPost from "../Post/EachPost/EachPost";
 
@@ -27,16 +22,6 @@ const UserPage = () => {
   const [visibleMyPost, setVisibleMyPost] = useState(
     "user-post-feed-container"
   );
-
-  const likedPostClickHandler = () => {
-    if (likedPost === "users-liked-post") {
-      setLikedPost("users-liked-post-clicked");
-      setMyPost("user-page-post");
-      setVisibleMyPost("user-post-feed-container-hidden");
-
-      setVisiblePost("users-liked-post");
-    }
-  };
 
   const myPostClickHandler = () => {
     if (myPost === "user-page-post") {
@@ -60,7 +45,6 @@ const UserPage = () => {
   const userProf = useSelector((state) => state.userPage.userProfile);
 
   const userPosts = useSelector((state) => state.post.userPosts);
-  const userLikedPost = useSelector((state) => state.post?.usersLikedPost);
 
   const pfpPicker = () => {
     let pfps = [

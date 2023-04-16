@@ -1,17 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { Modal } from "../../../context/Modal";
+
 import OpenModalButton from "../../OpenModalButton";
 import EditPostForm from "../EditPost/EditPostForm";
 
 const EditPost = ({ eachPost }) => {
   const [showModal, setShowModal] = useState(false);
   const ulRef = useRef();
-
-  const openMenu = () => {
-    if (showModal) return;
-
-    setShowModal(true);
-  };
 
   useEffect(() => {
     if (!showModal) return;
@@ -30,10 +24,9 @@ const EditPost = ({ eachPost }) => {
   return (
     <div className="edit-post-container">
       <div className="edit-post-button-contaier">
-        <h1
-          className="button-for-edit-post"
-          onClick={() => setShowModal(true)}
-        ></h1>
+        <h1 className="button-for-edit-post" onClick={() => setShowModal(true)}>
+          {""}
+        </h1>
       </div>
       <div className="modal-to-create-post">
         <OpenModalButton
