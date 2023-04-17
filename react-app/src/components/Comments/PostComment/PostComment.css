@@ -48,9 +48,9 @@
     background: white;
     box-sizing: border-box;
     flex-shrink: 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex;
- 
+    width: 50%;
     margin-left: 20px;
     
     

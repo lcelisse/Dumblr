@@ -1,13 +1,14 @@
 .each-liked-post-container{
-    position: relative;
+    
     color: black;
     background: white;
     width: 100%;
     max-width: 540px;
     border-radius: 3px;
-    margin-bottom: 20px;
+    padding-top: 20px;
     margin-top: 30px;
-    padding-bottom: 50px;
+  
+   
 }
 
 .each-username-container {
@@ -15,17 +16,17 @@
     font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
     height: 100%;
     margin-left: 15px;
-    margin-top: 10px;
+    
     flex-direction: row;
     flex-grow: 1;
     justify-content: space-between;
     font-size: .875rem;
-    width: 100%;
+    width: 80%;
     font-weight: 700;
     line-height: 1.5;
     display: flex;
 border-radius: 10px;
-padding-left: 10px;
+
 }
 
 .each-title-container{
@@ -48,20 +49,6 @@ padding-left: 10px;
     object-fit: cover;
 }
 
-.each-title-container{
-    overflow: clip;
-    font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
-    margin-left: 15px;
-    margin-top: 10px;
-    width: 90%;
-    color: black;
-    box-sizing: border-box;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-}
 
 .likes-page-container {
     max-width: 990px;
@@ -75,4 +62,34 @@ padding-left: 10px;
     flex-direction: column;
     align-items: flex-end;
 
+}
+
+.nav-for-comment-stuff{
+    min-height: 30px;
+}
+
+.show-likes-for-down-clicked{
+    visibility: visible;
+background: white;
+
+overflow: scroll;
+overflow-wrap: anywhere;
+overflow-x: hidden;
+overflow-y: auto;
+justify-content: space-between;
+align-items: center;
+display: flex;
+flex-direction: column;
+align-items:first baseline;
+border-radius: 5px;
+height: 50px;
+margin-bottom: 50px;
+padding-bottom: 30px;
+
+position: relative;
+}
+
+.logged-comments-clicked{
+    margin: 0;
+    height: 150%;
 }
