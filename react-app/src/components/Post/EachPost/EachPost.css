@@ -85,6 +85,7 @@
 .single-post-bottom {
     border-top: 1px solid lightgray;
     height: 0;
+    visibility: hidden;
 }
 
 .single-post-bottom-clicked {
