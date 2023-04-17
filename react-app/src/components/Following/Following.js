@@ -1,6 +1,7 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Following.css";
+import { followUserThunk, unfollowUserThunk } from "../../store/session";
 
 const Following = ({ isLoaded }) => {
   const state = useSelector((state) => state);
@@ -29,11 +30,51 @@ const Following = ({ isLoaded }) => {
 export default Following;
 
 const EachFollowing = ({ each }) => {
+  const currSession = useSelector((state) => state.session);
+  const currUser = currSession.user;
+
+  const dispatch = useDispatch();
+  let follows = [];
+
+  if (currUser?.Following) follows = Object.keys(currUser.Following);
+
+  console.log(each);
+
+  const followUser = () => {
+    if (each.id === currUser?.id) {
+      return { Error: "You cant follow yourself" };
+    } else {
+      dispatch(followUserThunk(each.id, currUser?.id));
+    }
+  };
+
+  const unfollowUser = () => {
+    dispatch(unfollowUserThunk(each.id));
+  };
+
+  let followBtn;
+  if (follows.includes(`${each.id}`)) {
+    followBtn = (
+      <p className="follow-button" onClick={unfollowUser}>
+        Unfollow User
+      </p>
+    );
+  } else {
+    followBtn = (
+      <p className="follow-button" onClick={followUser}>
+        Follow User
+      </p>
+    );
+  }
   return (
     <div className="each-following-post-container">
       <div className="container-for-each-following">
         {/* <Link className="link-for-username" to={`/users/${each.id}`}> */}
-        <div className="each-username-container">{each.username}</div>
+        <div className="each-username-container">
+          {each.username}
+          {followBtn}{" "}
+        </div>
+
         {/* </Link> */}
       </div>
     </div>
