@@ -38,8 +38,6 @@ const EachFollowing = ({ each }) => {
 
   if (currUser?.Following) follows = Object.keys(currUser.Following);
 
-  console.log(each);
-
   const followUser = () => {
     if (each.id === currUser?.id) {
       return { Error: "You cant follow yourself" };
