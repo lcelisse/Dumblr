@@ -16,7 +16,7 @@ import UserPage from "./components/UserPage/UserPage";
 
 function App() {
   const user = useSelector((state) => state.session.user);
-  const following = useSelector((state) => state.session.user);
+
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {

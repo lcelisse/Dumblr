@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+
 import "./Following.css";
 import { followUserThunk, unfollowUserThunk } from "../../store/session";
 
 const Following = ({ isLoaded }) => {
-  const state = useSelector((state) => state);
   const following = useSelector((state) => state.session?.user?.Following);
 
   let followingArr;

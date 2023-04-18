@@ -1,12 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { readAllPostThunk } from "../../../store/post";
 import CreatePost from "../CreatePost/CreatePost";
 import EachPost from "../EachPost/EachPost";
 import "./Feed.css";
+import Pagination from "./Pagination/Pagination";
+
+let PageSize = 10;
 
 const Feed = () => {
   const dispatch = useDispatch();
+
   const allPosts = useSelector((state) => state.post.allPosts);
   const currentUser = useSelector((state) => state.session.user);
   let postArr = Object.values(allPosts);
@@ -15,10 +19,18 @@ const Feed = () => {
     dispatch(readAllPostThunk());
   }, [dispatch]);
 
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return postArr.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, postArr]);
+
   let post;
 
   if (Object.values(allPosts).length) {
-    post = postArr.map((eachPost) => {
+    post = currentTableData.map((eachPost) => {
       return <EachPost key={eachPost.id} eachPost={eachPost} />;
     });
   }
@@ -41,6 +53,13 @@ const Feed = () => {
           </div>
         </div>
       </div>
+      <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={postArr.length}
+        pageSize={PageSize}
+        onPageChange={(page) => setCurrentPage(page)}
+      />
       <div className="feed-right-side"></div>
     </div>
   );

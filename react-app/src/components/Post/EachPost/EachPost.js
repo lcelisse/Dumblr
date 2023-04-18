@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   deletePostThunk,
   likePostThunk,
-  readUsersLikedPostThunk,
   unlikePostThunk,
 } from "../../../store/post";
 import { followUserThunk, unfollowUserThunk } from "../../../store/session";
@@ -14,7 +13,7 @@ import "./EachPost.css";
 
 const EachPost = ({ eachPost }) => {
   const currentUser = useSelector((state) => state.session.user);
-  const history = useHistory();
+
   const currSession = useSelector((state) => state.session);
   const currUser = currSession.user;
   const dispatch = useDispatch();

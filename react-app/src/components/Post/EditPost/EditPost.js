@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Modal } from "../../../context/Modal";
+
 import OpenModalButton from "../../OpenModalButton";
 import EditPostForm from "../EditPost/EditPostForm";
 
@@ -7,11 +7,11 @@ const EditPost = ({ eachPost }) => {
   const [showModal, setShowModal] = useState(false);
   const ulRef = useRef();
 
-  const openMenu = () => {
-    if (showModal) return;
+  // const openMenu = () => {
+  //   if (showModal) return;
 
-    setShowModal(true);
-  };
+  //   setShowModal(true);
+  // };
 
   useEffect(() => {
     if (!showModal) return;

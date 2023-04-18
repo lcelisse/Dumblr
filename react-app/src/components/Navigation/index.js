@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
@@ -9,15 +9,15 @@ import logo from "../../assets/d.png";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
-  const [splashPage, setSplashPage] = useState("Sign Up");
-  const [removeLogin, setRemoveLogin] = useState("visible");
-  const [buttonColor, setButtonColor] = useState("splash-page-login-button-a");
+  // const [splashPage, setSplashPage] = useState("Sign Up");
+  // const [removeLogin, setRemoveLogin] = useState("visible");
+  // const [buttonColor, setButtonColor] = useState("splash-page-login-button-a");
 
   const history = useHistory();
 
-  const changeButton = (text) => {
-    setSplashPage(text);
-  };
+  // const changeButton = (text) => {
+  //   setSplashPage(text);
+  // };
 
   const handleClickLogin = () => {
     history.push("/login");
@@ -27,16 +27,16 @@ function Navigation({ isLoaded }) {
     history.push("/signup");
   };
 
-  const removeLogIn = () => {
-    setRemoveLogin("login-hidden");
-  };
+  // const removeLogIn = () => {
+  //   setRemoveLogin("login-hidden");
+  // };
 
-  const changeButtonColorA = () => {
-    setButtonColor("splash-page-login-button-a");
-  };
-  const changeButtonColorB = () => {
-    setButtonColor("splash-page-login-button-b");
-  };
+  // const changeButtonColorA = () => {
+  //   setButtonColor("splash-page-login-button-a");
+  // };
+  // const changeButtonColorB = () => {
+  //   setButtonColor("splash-page-login-button-b");
+  // };
 
   const clickFeed = () => {
     history.push("/posts");

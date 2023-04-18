@@ -3,7 +3,6 @@ import { useState, React, useEffect, useRef } from "react";
 import CreatePostForm from "../CreatePostForm/CreatePostForm";
 import "./CreatePost.css";
 import OpenModalButton from "../../OpenModalButton/index";
-import img from "../../../assets/wel.png";
 
 const CreatePost = () => {
   const [showModal, setShowModal] = useState(false);

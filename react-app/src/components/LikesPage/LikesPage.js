@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+
 import { readUsersLikedPostThunk } from "../../store/post";
 import "./LikesPage.css";
 import PostPageComments from "../Comments/PostPageComments/PostPageComments";
@@ -50,15 +50,15 @@ const EachLikedPost = ({ each }) => {
     }
   };
 
-  const onCLickLike = () => {
-    if (currentUser !== null) {
-      clickLike === false ? setClickLike(true) : setClickLike(false);
-      setClick(true);
-    } else {
-      clickLike === true ? setClickLike(false) : setClickLike(true);
-      setClick(true);
-    }
-  };
+  // const onCLickLike = () => {
+  //   if (currentUser !== null) {
+  //     clickLike === false ? setClickLike(true) : setClickLike(false);
+  //     setClick(true);
+  //   } else {
+  //     clickLike === true ? setClickLike(false) : setClickLike(true);
+  //     setClick(true);
+  //   }
+  // };
 
   let postLike;
 
@@ -85,7 +85,7 @@ const EachLikedPost = ({ each }) => {
         </div>
         <div className="each-title-container">{each.title}</div>
         <div className="each-image-container">
-          <img className="image-for-each-post" src={each.url} />
+          <img alt="" className="image-for-each-post" src={each.url} />
         </div>
         <div className="each-title-container">{each.body}</div>
         <nav className="nav-for-comment-stuff">

@@ -20,7 +20,7 @@ const PostPageComments = ({
     if (eachPost?.id) {
       dispatch(readPostCommentsThunk(eachPost.id));
     }
-  }, []);
+  }, [dispatch, eachPost.id]);
   const currentUser = useSelector((state) => state.session.user);
   if (currentUser !== null) {
     if (click === true) {

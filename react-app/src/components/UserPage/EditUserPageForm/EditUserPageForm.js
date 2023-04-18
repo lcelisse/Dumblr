@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { editUserThunk, setHeaderThunk } from "../../../store/session";
-import { addHeader, loadUser } from "../../../store/userPage";
+import { editUserThunk } from "../../../store/session";
+import { loadUser } from "../../../store/userPage";
 import { useModal } from "../../../context/Modal";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 const EditUserPageForm = () => {
   const dispatch = useDispatch();
