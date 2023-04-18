@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import { usePagination, DOTS } from "./usePagination";
-import "./pagination.css";
+import "./pagination.scss";
 const Pagination = (props) => {
   const {
     onPageChange,
@@ -34,7 +34,9 @@ const Pagination = (props) => {
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
     <ul
-      className={classnames("pagination-container", { [className]: className })}
+      className={classnames("pagination-container gfg-div", {
+        [className]: className,
+      })}
     >
       <li
         className={classnames("pagination-item", {

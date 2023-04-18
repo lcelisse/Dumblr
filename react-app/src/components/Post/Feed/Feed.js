@@ -38,30 +38,36 @@ const Feed = () => {
   if (!Object.values(allPosts).length) return null;
 
   return (
-    <div className="feed-container">
-      <div className="feed-left-side">
-        <div className="inside-feed-left-side">
-          {currentUser !== null && (
-            <div className="top-of-left-side-post">
-              <CreatePost />
-            </div>
-          )}
+    <>
+      <div className="feed-container">
+        <div className="feed-left-side">
+          <div className="inside-feed-left-side">
+            {currentUser !== null && (
+              <div className="top-of-left-side-post">
+                <CreatePost />
+              </div>
+            )}
 
-          <div className="feed-post">
-            <div className="feed-nav-bar"></div>
-            <ul className="post">{post}</ul>
+            <div className="feed-post">
+              <div className="feed-nav-bar"></div>
+              <ul className="post">{post}</ul>
+            </div>
           </div>
         </div>
-      </div>
+
+        <div className="feed-right-side"></div>
+      </div>{" "}
       <Pagination
         className="pagination-bar"
         currentPage={currentPage}
         totalCount={postArr.length}
         pageSize={PageSize}
-        onPageChange={(page) => setCurrentPage(page)}
+        onPageChange={(page) => {
+          setCurrentPage(page);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
       />
-      <div className="feed-right-side"></div>
-    </div>
+    </>
   );
 };
 
